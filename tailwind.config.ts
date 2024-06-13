@@ -8,11 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      //カスタム値
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      translate: {
+        "-translate-y-full": "-100%",
+      }
     },
   },
   plugins: [],
