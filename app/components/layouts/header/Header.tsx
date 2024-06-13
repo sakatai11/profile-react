@@ -2,8 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
+import { usePathname } from 'next/navigation';
 
 const Header = () => {
+  const pathname: string  = usePathname();
+
   useEffect(() => {
     let lastScrollTop = window.scrollY; 
 
@@ -21,7 +24,6 @@ const Header = () => {
       }
       lastScrollTop = currentScrollTop; // 現在のスクロール位置を記録
     }
-
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -32,16 +34,21 @@ const Header = () => {
 
   }, []);
 
+  // トップページではHeaderを表示しない
+  if (pathname === '/') {
+    return null;
+  }
+
   return (
     <header className="py-5 px-7 w-full fixed transition-transform duration-300">
       <div className="flex justify-between items-center">
         <Link href='/'>
-            <Image 
-              src="/home-img.svg"
-              height={24}
-              width={24}
-              alt=""
-            />
+          <Image 
+            src="/home-img.svg"
+            height={24}
+            width={24}
+            alt=""
+          />
         </Link>
         <div className="flex justify-center gap-7">
           <Link href='/profile'>Profile</Link>

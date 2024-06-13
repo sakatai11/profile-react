@@ -16,6 +16,10 @@ const config: Config = {
       },
       translate: {
         "-translate-y-full": "-100%",
+      },
+      fontFamily: {
+        'spartan': ['Spartan', 'sans-serif'],
+        'noto-sans-jp': ['Noto Sans JP', 'sans-serif']
       }
     },
   },
