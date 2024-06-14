@@ -6,7 +6,7 @@ type PageLink = {
 /** Topのリンク */
 export const topLink: PageLink[] = [
   {
-    name: "top",
+    name: "Top",
     href: "/"
   }
 ];
@@ -14,11 +14,11 @@ export const topLink: PageLink[] = [
 /** 各ページへのリンク */
 export const pageLinks: PageLink[] = [
   {
-    name: "profile",
+    name: "Profile",
     href: "/profile"
   },
   {
-    name: "blog",
+    name: "Blog",
     href: "/blog"
   }
 ];

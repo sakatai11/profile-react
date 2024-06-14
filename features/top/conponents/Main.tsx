@@ -5,21 +5,25 @@ import { pageLinks } from "@/data/links";
 const Main:React.FC = () => {
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <Image 
-        src="/illustration.png"
-        height={320}
-        width={320}
-        alt="illustration"
-      />
-      <h1 className="font-spartan text-5xl tracking-widest font-semibold">saka&apos;s portfolio site</h1>
-      <div className="mt-24">
+    <div className="flex flex-col items-center justify-center w-full h-full">
+      <div className="w-full flex flex-col items-center justify-end grow-1.3">
+        <Image 
+          src="/illustration.png"
+          height={248}
+          width={248}
+          alt=""
+          className="mb-6"
+        />
+        <h1 className="font-spartan text-5xl tracking-widest font-semibold">saka&apos;s portfolio site</h1>
+      </div>
+      <div className="flex items-center justify-center gap-16 grow">
         {
           pageLinks.map(({ name, href }) => (
-            <Link href={href} key={name}>{name}</Link>
+            <Link href={href} key={name} className="after:content-[''] after:w-6/12 after:h-0.5 after:bg-[#0094FF] after:block after:m-auto inline-block font-spartan text-2xl tracking-wider leading-relaxed">{name}</Link>
           ))
         }
       </div>
+        
     </div>
   );
 }

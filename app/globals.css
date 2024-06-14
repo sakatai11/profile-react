@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
-.h1Tit { @apply text-5xl tracking-widest font-semibold}
+@tailwind utilities;
+.h1Tit { @apply text-5xl tracking-widest font-semibold leading-relaxed}
 .h1Tit::after { @apply content-[''] block w-6/12 h-1 bg-[#0094FF] m-auto} 
 .calc-100 { height: calc(100vh - 65px);}
-@tailwind utilities;
 
 
 
