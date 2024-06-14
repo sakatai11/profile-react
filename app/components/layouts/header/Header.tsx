@@ -1,10 +1,12 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
+import { pageLinks } from "@/data/links";
+import { topLink } from "@/data/links";
 import { useEffect } from "react";
 import { usePathname } from 'next/navigation';
 
-const Header = () => {
+const Header: React.FC = () => {
   const pathname: string  = usePathname();
 
   useEffect(() => {
@@ -42,7 +44,9 @@ const Header = () => {
   return (
     <header className="py-5 px-7 w-full fixed transition-transform duration-300">
       <div className="flex justify-between items-center">
-        <Link href='/'>
+        {
+          topLink.map(({name, href}) => (
+        <Link href={href} key={name}>
           <Image 
             src="/home-img.svg"
             height={24}
@@ -50,9 +54,14 @@ const Header = () => {
             alt=""
           />
         </Link>
+          ))
+        }
         <div className="flex justify-center gap-7">
-          <Link href='/profile'>Profile</Link>
-          <Link href='/blog'>Blog</Link>
+          {
+            pageLinks.map(({name, href}) => (
+              <Link href={href} key={name}>{name}</Link>
+            ))
+          }
         </div>
       </div>
     </header>
