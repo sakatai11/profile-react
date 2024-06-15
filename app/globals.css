@@ -5,7 +5,11 @@
 .h1Tit { @apply text-5xl tracking-widest font-semibold leading-relaxed}
 .h1Tit::after { @apply content-[''] block w-6/12 h-1 bg-[#0094FF] m-auto} 
 .calc-100 { height: calc(100vh - 65px);}
-
+.hover-img::before { content: ''; position: absolute; top: -8px; right: -20px; display: block; width: 20px;  height: 21.5px; background-image: url('/hover.svg'); background-size: cover; opacity: 0;}
+.hover-img:hover::before { opacity: 1;}
+.linkNav::after { @apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-0 transition-opacity duration-300}
+.linkNav:hover::after { @apply block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100 transition-opacity duration-300}
+.is-active::after {@apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100}
 
 
 /* :root {
