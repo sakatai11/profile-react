@@ -1,9 +1,10 @@
-import Image from "next/image";
+import { getProfile } from "@/libs/microcms";
+import ProfileMain from "@/features/profile/conponents/ProfileMain";
 
-export default function ProfilePage() {
+export default async function ProfilePage() {
+  const {props : {contents}} = await getProfile();
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
-      <h1 className="font-spartan h1Tit">Profile</h1>
-    </div>
+    <ProfileMain contents={contents} />
   );
 }

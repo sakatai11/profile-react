@@ -9,7 +9,7 @@ const Main: React.FC<Children> = ({children}) => {
   const pathname: string  = usePathname();
 
   return (
-    <main className={pathname == '/' ? 'calc-100' : ''} >
+    <main className={pathname == '/' ? 'calc-100' : 'pt-[8.15rem]'} >
       {children}
     </main>
   )
