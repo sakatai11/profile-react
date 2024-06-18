@@ -4,6 +4,6 @@ export type ProfileContents = {
   id: string;
   name: string;
   url: string;
-  text: string;
+  my_info: string;
   eyecatch?: MicroCMSImage;
 } & MicroCMSDate;

@@ -17,7 +17,7 @@ const config: Config = {
       },
       container: {
         center: true,
-        padding: '1.5rem',
+        padding: "1.5rem",
       },
       translate: {
         "-translate-y-full": "-100%",

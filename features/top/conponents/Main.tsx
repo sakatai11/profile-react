@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { pageLinks } from "@/data/links";
+import illustration from "/public/illustration.png";
 
 const Main:React.FC = () => {
 
@@ -8,10 +9,10 @@ const Main:React.FC = () => {
     <div className="flex flex-col items-center justify-center w-full h-full">
       <div className="w-full flex flex-col items-center justify-end grow-1.3">
         <Image 
-          src="/illustration.png"
+          src={illustration}
           height={248}
           width={248}
-          alt=""
+          alt="イラスト"
           className="mb-6"
         />
         <h1 className="font-spartan text-5xl tracking-widest font-semibold">saka&apos;s portfolio site</h1>
