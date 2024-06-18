@@ -1,7 +1,7 @@
 import { MicroCMSDate, MicroCMSImage } from "microcms-js-sdk";
 
 export type ProfileContents = {
-  id: string
+  id: string;
   name: string;
   url: string;
   text: string;

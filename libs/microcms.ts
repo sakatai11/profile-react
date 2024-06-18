@@ -17,10 +17,14 @@ export const microCMSClient = createClient({
 
 // プロフィールの取得
 export const getProfile = async () => {
-  const result = await microCMSClient.getList<ProfileContents>({ endpoint: "profile"});
+  const result = await microCMSClient.getList<ProfileContents>({
+    customRequestInit: {
+     cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+    },
+    endpoint: "profile",
+   });
+
   return {
-    props: {
-      contents: result.contents,
-    }
+    props: result.contents,
   };
 } 
