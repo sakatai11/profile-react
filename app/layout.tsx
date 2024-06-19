@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import * as Default from "./components/layouts/Index";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "portfolio site",
   description: "hogehoge",
@@ -18,7 +16,7 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-        <body className={inter.className}>
+        <body className={'font-noto-sans-jp custom-font-features'}>
            <Default.Header />
             <Default.Main>{children}</Default.Main>
           <Default.Footer />

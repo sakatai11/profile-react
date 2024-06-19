@@ -20,7 +20,7 @@ const ProfileMain:React.FC<ProfileMainProps> = ({contents}) => {
         <h1 className="font-spartan h1Tit text-center">Profile</h1>
       </div>
       <div className="w-full mt-28">
-        <div className="flex justify-center gap-24 w-8/12 m-auto">
+        <div className="flex justify-center gap-24 w-9/12 m-auto">
           <div className="flex-1 mt-4">
             <Image 
               src={illustration}
@@ -41,7 +41,7 @@ const ProfileMain:React.FC<ProfileMainProps> = ({contents}) => {
                       <Link href={profile.url} rel="noopener noreferrer" target="_blank">{profile.url}</Link>
                     </p>
                   </div>
-                  <div className="pt-[30px] border-solid border-t border-black">
+                  <div className="space pt-[30px] border-solid border-t border-black">
                     {parse(profile.my_info)}
                   </div>
                 </React.Fragment>

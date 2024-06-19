@@ -5,12 +5,16 @@
 .h1Tit { @apply text-5xl tracking-widest font-semibold leading-relaxed}
 .h1Tit::after { @apply content-[''] block w-6/12 h-1 bg-[#0094FF] m-auto} 
 .calc-100 { height: calc(100vh - 65px);}
+.calc-min-100 { min-height: calc(100vh - 65px);}
 .hover-img::before { content: ''; position: absolute; top: -8px; right: -20px; display: block; width: 20px;  height: 21.5px; background-image: url('/hover.svg'); background-size: cover; opacity: 0;}
 .hover-img:hover::before { opacity: 1;}
 .linkNav::after { @apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-0 transition-opacity duration-300}
 .linkNav:hover::after { @apply block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100 transition-opacity duration-300}
 .is-active::after {@apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100}
 .container {max-width: 1280px;}
+.text-14 {@apply text-sm}
+.space > ul > li {@apply first:mt-0 mt-3}
+.custom-font-features {font-feature-settings: 'palt'; text-rendering: optimizeLegibility; letter-spacing: 0.06em; font-weight: 300;}
 
 
 /* :root {
