@@ -1,7 +1,9 @@
-import Main from "@/features/top/conponents/Main";
 
-export default function Top() {
+// import Main from "@/features/top/conponents/Main";
+import * as Top from "@/features/top/conponents/Index"
+
+export default function TopPage() {
   return (
-    <Main />
+    <Top.TopWrapper />
   );
 }
