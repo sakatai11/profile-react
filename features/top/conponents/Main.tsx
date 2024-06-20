@@ -3,7 +3,7 @@ import Link from "next/link";
 import { pageLinks } from "@/data/links";
 import illustration from "/public/illustration.png";
 
-const Main:React.FC = () => {
+const Main = () => {
 
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">

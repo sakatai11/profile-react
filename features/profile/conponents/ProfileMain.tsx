@@ -10,7 +10,7 @@ type ProfileMainProps = {
   contents: ProfileContents[];
 };
 
-const ProfileMain:React.FC<ProfileMainProps> = ({contents}) => {
+const ProfileMain = ({contents}: ProfileMainProps):JSX.Element => {
   console.log(contents);
 
   return (

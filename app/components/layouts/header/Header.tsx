@@ -2,11 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { pageLinks, topLink } from "@/data/links";
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
-import { useCallback } from "react";
 
-const Header: React.FC = () => {
+const Header = () => {
   const pathname = usePathname();
 
   const getLinkClass = useCallback((path:string) => {

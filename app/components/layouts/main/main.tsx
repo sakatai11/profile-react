@@ -5,7 +5,7 @@ type Children = {
   children: React.ReactNode
 }
 
-const Main: React.FC<Children> = ({children}) => {
+const Main = ({children}: Children): JSX.Element => {
   const pathname: string  = usePathname();
 
   return (
