@@ -5,6 +5,6 @@ export default async function ProfilePage() {
   const { props } = await getProfile();
 
   return (
-    <ProfileMain contents={ props } />
+    <ProfileMain contents={ props } text={'Profile'} />
   );
 }

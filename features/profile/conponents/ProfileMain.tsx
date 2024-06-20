@@ -1,4 +1,5 @@
 import { ProfileContents } from "@/types/cms/profile";
+import Title from "@/app/components/elements/title/Index";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
@@ -8,17 +9,16 @@ import React from "react";
 
 type ProfileMainProps = {
   contents: ProfileContents[];
+  text: string;
 };
 
-const ProfileMain = ({contents}: ProfileMainProps):JSX.Element => {
+const ProfileMain = ({contents, text}: ProfileMainProps):JSX.Element => {
   console.log(contents);
 
   return (
   <section>
     <div className="container">
-      <div className="flex flex-col items-center w-auto">
-        <h1 className="font-spartan h1Tit text-center">Profile</h1>
-      </div>
+      <Title text={text} />
       <div className="w-full mt-28">
         <div className="flex justify-center gap-24 w-9/12 m-auto">
           <div className="flex-1 mt-4">

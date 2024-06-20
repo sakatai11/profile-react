@@ -1,11 +1,16 @@
-const BlogMain = () => {
+import Title from "@/app/components/elements/title/Index";
+
+type BlogMainProps = {
+  text: string;
+}
+
+const BlogMain = ({text}:BlogMainProps): JSX.Element => {
   return (
     <section>
       <div className="container">
-        <div className="flex flex-col items-center w-auto">
-          <h1 className="font-spartan h1Tit text-center">Blog</h1>
-        </div>
+        <Title text={text} />
         <div className="w-full">
+          
         </div>
       </div>
     </section>
