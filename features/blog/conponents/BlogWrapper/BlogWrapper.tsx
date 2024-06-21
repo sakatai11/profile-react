@@ -1,6 +1,5 @@
 import { BlogArticles } from "@/types/cms/blog";
 import { categoryLinks } from "@/data/category";
-import { imageWebp } from "@/features/modules/imageWebP";
 import Image from "next/image";
 import Link from "next/link";
 import dummy from "/public/dummy.png";
@@ -27,7 +26,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
             <article className="flex flex-col" key={article.id}>
             <Link href={`/article/${article.id}`} className="flex flex-col items-center">
               <Image
-                src={article.eyecatch?.url ? `${article.eyecatch.url}?fm=webp` : dummy}
+                src={article.eyecatch?.url ? article.eyecatch.url : dummy}
                 alt="アイキャッチ"
                 className="rounded-xl object-cover"
                 width={1280}
