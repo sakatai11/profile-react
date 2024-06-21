@@ -24,16 +24,18 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
         {
           contents.map((article) => (
             <article className="flex flex-col" key={article.id}>
-            <Link href={`/article/${article.id}`} className="flex flex-col items-center">
-              <Image
-                src={article.eyecatch?.url ? article.eyecatch.url : dummy}
-                alt="アイキャッチ"
-                className="rounded-xl object-cover"
-                width={1280}
-                height={800}
-              />
-              <span>{article.category}</span>
-              <h2 className="text-3xl font-bold">{article.title}</h2>
+            <Link href={`/article/${article.id}`} >
+              <div className="relative">
+                <Image
+                  src={article.eyecatch?.url ? article.eyecatch.url : dummy}
+                  alt="アイキャッチ"
+                  className="rounded-xl object-cover"
+                  width={1280}
+                  height={800}
+                />
+                <span className="absolute bottom-0 left-0 inline-block bg-white mb-2.5 ml-2.5 px-2 py-1.5 rounded-md">{article.category}</span>
+              </div>
+              <h2 className="text-2xl font-medium mt-2.5 ml-2.5">{article.title}</h2>
             </Link>
           </article>
           ))

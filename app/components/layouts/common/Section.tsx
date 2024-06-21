@@ -2,6 +2,7 @@ type Children = {
   children: React.ReactNode
 }
 
+
 const Section = ({children}: Children): JSX.Element => {
   return (
     <section>
