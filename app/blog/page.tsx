@@ -19,9 +19,7 @@ export default async function BlogPage() {
     };
   }
 
-  
   const { props } = await getBlogArticle();
-  console.log(props);
 
   return (
     <Section>
