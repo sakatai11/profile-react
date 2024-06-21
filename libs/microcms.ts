@@ -1,5 +1,4 @@
 import { createClient } from "microcms-js-sdk";
-import type { ProfileContents } from "@/types/cms/profile";
 
 if (!process.env.SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -14,17 +13,3 @@ export const microCMSClient = createClient({
   serviceDomain: process.env.SERVICE_DOMAIN || "",
   apiKey: process.env.API_KEY || ""
 });
-
-// プロフィールの取得
-export const getProfile = async () => {
-  const result = await microCMSClient.getList<ProfileContents>({
-    customRequestInit: {
-     cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
-    },
-    endpoint: "profile",
-   });
-
-  return {
-    props: result.contents,
-  };
-} 
