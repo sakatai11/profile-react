@@ -1,4 +1,4 @@
-import { MicroCMSDate, MicroCMSImage } from "microcms-js-sdk";
+import { MicroCMSDate } from "microcms-js-sdk";
 
 export type ProfileContents = {
   id: string;

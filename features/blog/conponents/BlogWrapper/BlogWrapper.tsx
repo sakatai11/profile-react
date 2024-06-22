@@ -1,5 +1,6 @@
 import { BlogArticles } from "@/types/cms/blog";
 import { categoryLinks } from "@/data/category";
+import Tab from "../client/category/Tab";
 import Image from "next/image";
 import Link from "next/link";
 import dummy from "/public/dummy.png";
@@ -9,17 +10,10 @@ type BlogDataProps = {
 }
 
 const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
+
   return (
     <div className="w-full mt-28">
-      <div className="flex justify-between items-center mx-[20%]">
-        {
-          categoryLinks.map(({ name, href }) => (
-            <p key={name}>
-              <Link href={href}>{name}</Link>
-            </p>
-          ))
-        }
-      </div>
+      <Tab categoryLinks={ categoryLinks } />
       <div className="mt-14 grid grid-cols-3 gap-x-[7.5vw] gap-y-[5vw]">
         {
           contents.map((article) => (
@@ -29,7 +23,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
                 <Image
                   src={article.eyecatch?.url ? article.eyecatch.url : dummy}
                   alt="アイキャッチ"
-                  className="rounded-xl object-cover"
+                  className="rounded-xl object-cover aspect-[16/10]"
                   width={1280}
                   height={800}
                 />
