@@ -10,6 +10,8 @@ type BlogDataProps = {
 }
 
 const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
+    // 各記事のカテゴリーをコンソールに出力
+      console.log(contents);
 
   return (
     <div className="w-full mt-28">
@@ -27,7 +29,13 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
                   width={1280}
                   height={800}
                 />
-                <span className="absolute bottom-0 left-0 inline-block bg-white mb-2.5 ml-2.5 px-2 py-1.5 rounded-md">{article.category}</span>
+                {
+                  article.categories.map((category) => (
+                    <span className="absolute bottom-0 left-0 inline-block bg-white mb-2.5 ml-2.5 px-2 py-1.5 rounded-md" key={category.id}>
+                      {category.category}
+                    </span>
+                  ))
+                }
               </div>
               <h2 className="text-2xl font-medium mt-2.5 ml-2.5">{article.title}</h2>
             </Link>
