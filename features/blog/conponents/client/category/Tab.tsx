@@ -20,7 +20,10 @@ const Tab = ({ categoryLinks }: TabProps): JSX.Element => {
     {
       categoryLinks.map(({ name, href }) => (
         <p key={name}>
-          <Link href={href} className={href === pathname ? "isActive" : ""}>{name}</Link>
+          <Link 
+            href={href} 
+            className={href === pathname ? "isActive" : ""}
+          >{name}</Link>
         </p>
       ))
     }

@@ -11,5 +11,6 @@ export type Article = {
 	title: string;
 	content: string;
 	eyecatch?: MicroCMSImage;
+  // categoriesフィールドの追加
 	categories: Category[];
 } & MicroCMSDate;

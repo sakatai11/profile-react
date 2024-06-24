@@ -18,7 +18,7 @@ export const categoryLinks: categoryLink[] = [
     href: "/blog/skill"
   },
   {
-    name: "ライフスタイル",
-    href: "/blog/life"
+    name: "コラム",
+    href: "/blog/columun"
   },
 ];
