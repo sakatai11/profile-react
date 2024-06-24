@@ -1,6 +1,4 @@
 import { BlogArticles } from "@/types/cms/blog";
-import { categoryLinks } from "@/data/category";
-import Tab from "../client/category/Tab";
 import Image from "next/image";
 import Link from "next/link";
 import dummy from "/public/dummy.png";
@@ -14,8 +12,6 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
       console.log(contents);
 
   return (
-    <div className="w-full mt-28">
-      <Tab categoryLinks={ categoryLinks } />
       <div className="mt-14 grid grid-cols-3 gap-x-[7.5vw] gap-y-[5vw]">
         {
           contents.map((article) => (
@@ -43,8 +39,6 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
           ))
         }
       </div>
-
-    </div>
   );
 }
 
