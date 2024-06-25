@@ -1,15 +1,12 @@
-"use client";
-import { usePathname } from "next/navigation";
 import { Category } from "@/types/cms/category";
 import Link from "next/link";
 
 type Content = {
   contents: Category[];
+  categoryId: string;
 }
 
-const Tab = ({ contents }:Content): JSX.Element => {
-  const pathname = usePathname();
-  console.log(pathname);
+const Tab = ({ contents, categoryId }:Content): JSX.Element => {
 
   return (
     <div className="w-full mt-28">
@@ -17,7 +14,8 @@ const Tab = ({ contents }:Content): JSX.Element => {
       <p>
         <Link 
           href={"/blog"} 
-          className={"/blog" === pathname ? "isActive" : ""}
+          scroll={false}
+          className={!categoryId ? "isActive" : ""}
         >すべての記事</Link>
       </p>
       {
@@ -25,7 +23,8 @@ const Tab = ({ contents }:Content): JSX.Element => {
           <p key={id}>
             <Link 
               href={`/blog/${id}`} 
-              className={id === pathname ? "isActive" : ""}
+              scroll={false}
+              className={id === categoryId ? "isActive" : ""}
             >{category}</Link>
           </p>
         ))
