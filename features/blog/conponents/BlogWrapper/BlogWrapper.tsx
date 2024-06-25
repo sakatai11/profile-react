@@ -9,7 +9,7 @@ type BlogDataProps = {
 
 const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
     // 各記事のカテゴリーをコンソールに出力
-      console.log(contents);
+      // console.log(contents);
 
   return (
       <div className="mt-14 grid grid-cols-3 gap-x-[7.5vw] gap-y-[5vw]">

@@ -1,12 +1,12 @@
-import { Category } from "@/types/cms/category";
+import { getCategory } from "@/libs/microcms";
 import Link from "next/link";
 
 type Content = {
-  contents: Category[];
   categoryId: string;
 }
 
-const Tab = ({ contents, categoryId }:Content): JSX.Element => {
+export async function Tab({ categoryId }:Content) {
+  const { categories } = await getCategory();
 
   return (
     <div className="w-full mt-28">
@@ -19,7 +19,7 @@ const Tab = ({ contents, categoryId }:Content): JSX.Element => {
         >すべての記事</Link>
       </p>
       {
-        contents.map(({ id, category }) => (
+        categories.map(({ id, category }) => (
           <p key={id}>
             <Link 
               href={`/blog/${id}`} 
@@ -33,5 +33,3 @@ const Tab = ({ contents, categoryId }:Content): JSX.Element => {
     </div>
   );
 };
-
-export default Tab;

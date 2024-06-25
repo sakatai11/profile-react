@@ -8,18 +8,29 @@ type Props = {
   // sarchParams: { [key: string]: string | string[] | undefined };
 };
 
+export async function generateStaticParams() {
+  // 静的ルート生成
+  const { categories } = await getCategory();
+  const paths = categories.map((category) => {
+    return {
+      category: category.id,
+    };
+  });
+
+  console.log([...paths]);
+
+  return  [...paths];
+}
+
 export default async function CategoryPage(props: Props) {
   const param = props.params.categoryId;
   // 記事一覧の取得
   const { blogs } = await getBlogArticle(param);
 
-  // カテゴリIDの取得
-  const { categories } = await getCategory();
-
   return (
     <Section>
       <Title text="Blog" />
-      <Blog.Tab contents={ categories } categoryId={ param }  />
+      <Blog.Tab categoryId={ param } />
       <Blog.BlogWrapper contents={ blogs } />
     </Section>
   );
