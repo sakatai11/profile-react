@@ -6,6 +6,7 @@ type Content = {
 }
 
 export async function Tab({ categoryId }:Content) {
+  //カテゴリの取得
   const { categories } = await getCategory();
 
   return (
