@@ -1,11 +1,11 @@
-import { BlogArticles } from "@/types/cms/blog";
+import { BlogList } from "@/types/cms/blog";
 import Image from "next/image";
 import Link from "next/link";
 import dummy from "/public/dummy.png";
 
 type BlogDataProps = {
-  contents: BlogArticles[];
-}
+  contents: BlogList[];
+};
 
 const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
     // 各記事のカテゴリーをコンソールに出力

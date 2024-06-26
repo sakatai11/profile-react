@@ -1,7 +1,8 @@
 import { MicroCMSQueries, createClient } from "microcms-js-sdk";
 import { ProfileContents } from "@/types/cms/profile";
-import { BlogArticles } from "@/types/cms/blog";
+import { BlogList } from "@/types/cms/blog";
 import { Category } from "@/types/cms/category";
+import { Article } from "@/types/cms/article";
 
 if (!process.env.SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
@@ -18,12 +19,13 @@ export const microCMSClient = createClient({
 });
 
 // プロフィールの取得
-export const getProfile = async () => {
+export const getProfile = async (queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
     cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
     },
     endpoint: "profile",
+    queries,
   });
 
   return {
@@ -32,8 +34,8 @@ export const getProfile = async () => {
 }
 
 // 記事一覧の取得
-export const getBlogArticle = async (param: string) => {
-  const result = await microCMSClient.getList<BlogArticles>({
+export const getBlogArticle = async (param?: string) => {
+  const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
     cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
     },
@@ -61,4 +63,20 @@ export const getCategory = async (queries?: MicroCMSQueries) => {
   return {
     categories: result.contents,
   };
+}
+
+// 特定の記事の取得
+export const getBlogArticleDetail = async (contentId:string, queries?: MicroCMSQueries) => {
+  const result = await microCMSClient.getListDetail<Article>({
+    customRequestInit: {
+      cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+      },
+      endpoint: "blog",
+      contentId,
+      queries,
+    });
+
+    return {
+      article: result,
+    };
 }

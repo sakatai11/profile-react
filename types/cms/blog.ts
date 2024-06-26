@@ -1,7 +1,7 @@
 import { MicroCMSDate, MicroCMSImage } from "microcms-js-sdk";
-import { Article, Category } from "./category";
+import { Category } from "./category";
 
-export type BlogArticles = {
+export type BlogList = {
   id: string;
   title: string;
   categories: Category[];
