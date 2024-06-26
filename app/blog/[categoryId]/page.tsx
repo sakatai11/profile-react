@@ -26,11 +26,13 @@ export default async function CategoryPage(props: Props) {
   const param = props.params.categoryId;
   // 記事一覧の取得
   const { blogs } = await getBlogArticle(param);
+    //カテゴリの取得
+  const { categories } = await getCategory();
 
   return (
     <Section>
       <Title text="Blog" />
-      <Blog.Tab categoryId={ param } />
+      <Blog.Tab categoryId={ param } categories={ categories } />
       <Blog.BlogWrapper contents={ blogs } />
     </Section>
   );

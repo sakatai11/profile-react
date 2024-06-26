@@ -22,7 +22,9 @@ export const microCMSClient = createClient({
 export const getProfile = async (queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
-    cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+      next: {
+        revalidate: 0, // 0秒キャッシュを適用
+      },
     },
     endpoint: "profile",
     queries,
@@ -37,7 +39,9 @@ export const getProfile = async (queries?: MicroCMSQueries) => {
 export const getBlogArticle = async (param?: string) => {
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
-    cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+      next: {
+        revalidate: 0, // 0秒キャッシュを適用
+      },
     },
     endpoint: "blog",
     queries: {
@@ -54,7 +58,9 @@ export const getBlogArticle = async (param?: string) => {
 export const getCategory = async (queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getList<Category>({
     customRequestInit: {
-    cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+      next: {
+        revalidate: 0, // 0秒キャッシュを適用
+      },
     },
     endpoint: "category",
     queries,
@@ -69,7 +75,9 @@ export const getCategory = async (queries?: MicroCMSQueries) => {
 export const getBlogArticleDetail = async (contentId:string, queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-      cache: "force-cache", // キャッシュ内でデータを取得する（SSG）
+        next: {
+          revalidate: 0, // 0秒キャッシュを適用
+        },
       },
       endpoint: "blog",
       contentId,

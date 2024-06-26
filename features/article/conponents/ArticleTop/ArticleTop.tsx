@@ -5,7 +5,7 @@ type AricleDataProps = {
 };
 
 const ArticleTop = ({contents}:AricleDataProps):JSX.Element => {
-  console.log(contents);
+  // console.log(contents);
   return (
     <>
     </>

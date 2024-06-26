@@ -1,13 +1,12 @@
-import { getCategory } from "@/libs/microcms";
+import { Category } from "@/types/cms/category";
 import Link from "next/link";
 
 type Content = {
   categoryId: string;
+  categories: Category[];
 }
 
-export async function Tab({ categoryId }:Content) {
-  //カテゴリの取得
-  const { categories } = await getCategory();
+export async function Tab({ categoryId, categories }:Content) {
 
   return (
     <div className="w-full mt-28">
