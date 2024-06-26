@@ -23,7 +23,7 @@ export const getProfile = async (queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
       next: {
-        revalidate: 0, // 0秒キャッシュを適用
+        revalidate: 100, // 100秒キャッシュを適用
       },
     },
     endpoint: "profile",
@@ -40,7 +40,7 @@ export const getBlogArticle = async (param?: string) => {
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
       next: {
-        revalidate: 0, // 0秒キャッシュを適用
+        revalidate: 100, // 100秒キャッシュを適用
       },
     },
     endpoint: "blog",
@@ -59,7 +59,7 @@ export const getCategory = async (queries?: MicroCMSQueries) => {
   const result = await microCMSClient.getList<Category>({
     customRequestInit: {
       next: {
-        revalidate: 0, // 0秒キャッシュを適用
+        revalidate: 100, // 100秒キャッシュを適用
       },
     },
     endpoint: "category",
@@ -76,7 +76,7 @@ export const getBlogArticleDetail = async (contentId:string, queries?: MicroCMSQ
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
         next: {
-          revalidate: 0, // 0秒キャッシュを適用
+          revalidate: 100, // 100秒キャッシュを適用
         },
       },
       endpoint: "blog",
