@@ -6,15 +6,15 @@ type AccountLink = {
 /** 各種アカウントのリンク */
 export const accountLinks: AccountLink[] = [
   {
-    icon: "mastodon",
-    href: "https://imastodon.net/@arrow2nd"
+    icon: "X-icon",
+    href: "https://twitter.com/skt1910hg_r"
   },
   {
-    icon: "github",
-    href: "https://github.com/arrow2nd"
+    icon: "github-icon",
+    href: "https://github.com/sakatai11"
   },
   {
-    icon: "mail",
-    href: "mailto:contact@arrow2nd.com"
+    icon: "link-icon",
+    href: "https://www.taichi-portfolio.com"
   }
 ];

@@ -1,10 +1,11 @@
 import { ProfileContents } from "@/types/cms/profile";
+import { accountLinks } from "@/data/accounts";
 import parse from "html-react-parser";
 import Link from "next/link";
 import Image from "next/image";
 import illustration from "/public/illustration.png";
-import linkIcon from "/public/link-icon.svg";
 import React from "react";
+import { profile } from "console";
 
 type ProfileDataProps = {
   contents: ProfileContents[];
@@ -14,25 +15,42 @@ const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
   return (
     <div className="w-full mt-28">
     <div className="flex justify-center gap-24 mx-[12.5%]">
-      <div className="flex-1 mt-4">
-        <Image 
-          src={illustration}
-          height={260}
-          width={260}
-          alt="イラスト"
-          className="m-auto"
-          />
+      <div className="flex flex-col items-center flex-1 gap-6">
+        <div className="mt-2">
+          <Image 
+            src={illustration}
+            height={260}
+            width={260}
+            alt="イラスト"
+            className="m-auto"
+            />
+        </div>
+        <div className="flex justify-start items-center gap-8">
+          {
+            contents.map((profile) => (
+              profile.link_icon.map((icon) => {
+                // URLからファイル名を抽出
+                const iconName = icon.url?.split('/').pop()?.split('.')[0] ?? 'default-icon';
+                // accountLinksから対応するリンクを検索
+                const link = accountLinks.find(link => link.icon === iconName);
+                return (
+                  <div key={iconName} className="w-5 h-5">
+                    <Link href={link ? link.href : '#'} rel="noopener noreferrer" target="_blank">
+                      <Image src={icon.url} height={icon.height} width={icon.width} alt={iconName} />
+                    </Link>
+                  </div>
+                )
+              })
+            ))
+          }
+        </div>
       </div>
       <div className="flex-1">
         {
           contents.map((profile) => (
             <React.Fragment key={profile.id}>
               <div className="pb-[30px]">
-                <p className="text-2xl mb-2">{profile.name}</p>
-                <p className="relative pl-5 text-xs">
-                  <span className="absolute top-0 left-0 flex items-center h-full"><Image src={linkIcon} height={16} width={16} alt="アイコン" /></span>
-                  <Link href={profile.url} rel="noopener noreferrer" target="_blank">{profile.url}</Link>
-                </p>
+                <p className="text-3xl tracking-widest">{profile.name}</p>
               </div>
               <div className="space pt-[30px] border-solid border-t border-black">
                 {parse(profile.my_info)}
