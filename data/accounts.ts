@@ -14,7 +14,7 @@ export const accountLinks: AccountLink[] = [
     href: "https://github.com/sakatai11"
   },
   {
-    icon: "link-icon",
+    icon: "picture-icon",
     href: "https://www.taichi-portfolio.com"
   }
 ];
