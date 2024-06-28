@@ -12,7 +12,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
       // console.log(contents);
 
   return (
-      <div className="mt-14 grid grid-cols-3 gap-x-[7.5vw] gap-y-[5vw]">
+      <div className="mt-14 grid grid-cols-3 gap-x-[5.5vw] gap-y-[5vw]">
         {
           contents.map((article) => (
             <article className="flex flex-col" key={article.id}>
