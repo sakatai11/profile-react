@@ -4,6 +4,7 @@ import parse from "html-react-parser";
 import ArticleTocTable from "../ArticleTocTable/ArticleTocTable";
 import Image from "next/image";
 import dummy from "@/public/dummy.png";
+import time from "@/public/time.svg";
 
 type AricleDataProps = {
   contents: Article;
@@ -24,16 +25,21 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
 
   return (
     <article className="mx-[12.5%]">
-      {
-        contents.categories.map((category) => (
-          <span key={category.id} className="text-sm">
-            {category.category}
+      <div className="flex items-center gap-5">
+        {
+          contents.categories.map((category) => (
+            <span key={category.id} className="text-sm">
+              {category.category}
+            </span>
+          ))
+        }
+        <time className="text-sm block">
+          <span className="flex items-center">
+            <Image src={time} width={15} height={15} alt="公開日" className="mr-1"/>
+            {formattedDate}
           </span>
-        ))
-      }
-      <time className="pl-7 text-sm">
-        {formattedDate}
-      </time>
+        </time>
+      </div>
       <h1 className="text-4xl mt-5 leading-snug">{contents.title}</h1>
       <div className="mt-8">
         <Image 
