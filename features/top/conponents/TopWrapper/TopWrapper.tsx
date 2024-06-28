@@ -19,7 +19,7 @@ const TopWrapper = () => {
       <div className="flex items-center justify-center gap-16 grow">
         {
           pageLinks.map(({ name, href }) => (
-            <Link href={href} key={name} className="hover-img relative after:content-[''] after:w-6/12 after:h-0.5 after:bg-[#0094FF] after:block after:m-auto inline-block font-spartan text-2xl tracking-wider leading-relaxed">{name}</Link>
+            <Link href={href} key={name} className="hover-img relative after:content-[''] after:w-6/12 after:h-1 after:bg-[#0094FF] after:block after:m-auto after:rounded inline-block font-spartan text-2xl tracking-wider leading-relaxed">{name}</Link>
           ))
         }
       </div>

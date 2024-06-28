@@ -1,10 +1,16 @@
 import { Article } from "@/types/cms/article";
+import { TocProps } from "@/types/cms/toc";
+import parse from "html-react-parser";
+import ArticleTocTable from "../ArticleTocTable/ArticleTocTable";
+import Image from "next/image";
+import dummy from "@/public/dummy.png";
 
 type AricleDataProps = {
   contents: Article;
+  toc?: TocProps[]
 };
 
-const ArticleWrapper = ({contents}:AricleDataProps):JSX.Element => {
+const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
   
   // ISO 8601 形式の日付を Date オブジェクトに変換
   const date = new Date(contents.publishedAt);
@@ -18,9 +24,35 @@ const ArticleWrapper = ({contents}:AricleDataProps):JSX.Element => {
 
   return (
     <article className="mx-[12.5%]">
-      <time>
+      {
+        contents.categories.map((category) => (
+          <span key={category.id} className="text-sm">
+            {category.category}
+          </span>
+        ))
+      }
+      <time className="pl-7 text-sm">
         {formattedDate}
       </time>
+      <h1 className="text-4xl mt-5 leading-snug">{contents.title}</h1>
+      <div className="mt-8">
+        <Image 
+          src={contents.eyecatch?.url ? contents.eyecatch?.url : dummy }
+          height={contents.eyecatch?.height}
+          width={contents.eyecatch?.width}
+          alt="アイキャッチ"
+          className="rounded-xl object-cover aspect-[16/10]"
+        />
+      </div>
+      {
+        toc ? (
+          <ArticleTocTable toc={toc} />
+        ) : undefined
+      }
+      <div>
+        {parse(contents.content)}
+      </div>
+
     </article>
   );
 }

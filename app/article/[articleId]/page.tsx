@@ -30,16 +30,11 @@ export default async function ArticlePage(props: Props) {
   const toc = createTableOfContents(article.content);
   // console.log(article.toc_visible);
   console.log(article);
+  console.log(toc);
 
   return (
     <Section>
-      <Article.ArticleTop contents={article}  />
-      {
-        article.toc_visible && (
-          <Article.ArticleTocTable toc={toc} />
-        )
-      }
-      <Article.ArticleWrapper contents={ article } />
+      <Article.ArticleWrapper contents={ article } toc={toc} />
     </Section>
   );
 }

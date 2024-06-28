@@ -3,7 +3,7 @@ import * as cheerio from 'cheerio';
 
 export const createTableOfContents = (richText: string): TocProps[] => {
   const $ = cheerio.load(richText);
-  const headings = $('h1, h2, h3').toArray();
+  const headings = $('h2, h3').toArray();
   const tableOfContents: TocProps[] = headings
     .map((heading) => {
       if (heading.type === 'tag') {

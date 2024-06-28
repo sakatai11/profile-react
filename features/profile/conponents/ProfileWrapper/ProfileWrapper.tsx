@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import illustration from "/public/illustration.png";
 import React from "react";
-import { profile } from "console";
 
 type ProfileDataProps = {
   contents: ProfileContents[];

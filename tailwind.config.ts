@@ -24,6 +24,12 @@ const config: Config = {
       flexGrow: {
         1.3: "1.3",
       },
+      backgroundImage: {
+        'anker-icon': "url('/anker-icon.svg')",
+      },
+      backgroundSize: {
+        13: "13px",
+      }
     },
   },
   plugins: [],

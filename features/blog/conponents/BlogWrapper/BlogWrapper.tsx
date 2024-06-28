@@ -1,7 +1,7 @@
 import { BlogList } from "@/types/cms/blog";
 import Image from "next/image";
 import Link from "next/link";
-import dummy from "/public/dummy.png";
+import dummy from "@/public/dummy.png";
 
 type BlogDataProps = {
   contents: BlogList[];
