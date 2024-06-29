@@ -55,7 +55,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
           <ArticleTocTable toc={toc} />
         ) : undefined
       }
-      <div>
+      <div className="aricleContents">
         {parse(contents.content)}
       </div>
 

@@ -29,6 +29,9 @@ const config: Config = {
       },
       backgroundSize: {
         13: "13px",
+      },
+      backgroundColor: {
+        skyblue: "#0094FF",
       }
     },
   },
