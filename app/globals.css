@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+strong {@apply font-bold}
 .h1Tit { @apply text-5xl tracking-widest font-semibold leading-relaxed}
 .h1Tit::after { @apply content-[''] block w-6/12 h-1.5 bg-[#0094FF] m-auto rounded} 
 .calc-100 { height: calc(100vh - 65px);}
@@ -16,10 +17,15 @@
 .space > ul > li {@apply first:mt-0 mt-3}
 .custom-font-features {font-feature-settings: 'palt'; text-rendering: optimizeLegibility; letter-spacing: 0.06em; font-weight: 300;}
 .isActive {@apply text-[#0094FF]}
-.aricleContents > h2 {@apply relative text-[1.625rem] pl-6 mt-16 }
+.aricleContents > h2 {@apply relative text-[1.625rem] pl-6 mt-16 font-medium}
 .aricleContents > h2::before {@apply absolute content-[''] w-1 h-full top-0 left-0 bg-skyblue block rounded} 
 .aricleContents > h3 {@apply text-[1.375rem] mt-9}
+.aricleContents > ul {@apply mt-9}
 .aricleContents > p {@apply mt-9 leading-8 text-lg}
+.aricleContents > ul > li {@apply relative pl-3.5 text-lg leading-8}
+.aricleContents > ul > li > .indent {@apply absolute left-0 top-0}
+
+
 
 
 /* :root {
