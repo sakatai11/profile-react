@@ -24,7 +24,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
   }).format(date).replace(/\//g, '.');
 
   return (
-    <article className="mx-[12.5%]">
+    <article className="mx-[12.5%]" >
       <div className="flex items-center gap-5">
         {
           contents.categories.map((category) => (

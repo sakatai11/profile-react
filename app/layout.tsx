@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 import * as Default from "./components/layouts/Index";
 
@@ -17,12 +16,11 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-        <body className={'font-noto-sans-jp custom-font-features'}>
-        <Script src="//cdn.iframe.ly/embed.js" />
-           <Default.Header />
-            <Default.Main>{children}</Default.Main>
-          <Default.Footer />
-        </body>
+      <body className={'font-noto-sans-jp custom-font-features'}>
+        <Default.Header />
+          <Default.Main>{children}</Default.Main>
+        <Default.Footer />
+      </body>
     </html>
   );
 }
