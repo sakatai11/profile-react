@@ -29,12 +29,18 @@ export default async function ArticlePage(props: Props) {
 
   const toc = createTableOfContents(article.content);
   // console.log(article.toc_visible);
-  console.log(article);
-  console.log(toc);
+  // console.log(article);
+  // console.log(toc);
+  const category = article.categories[0].id;
+  console.log(category);
+
+  const { blogs } = await getBlogArticle(category)
+  console.log(blogs)
 
   return (
     <Section>
       <Article.ArticleWrapper contents={ article } toc={toc} />
+      <Article.ArticleCategory contents={ blogs } param={param} />
     </Section>
   );
 }
