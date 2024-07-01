@@ -1,6 +1,5 @@
 import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
 import Section from "@/app/components/layouts/common/Section";
-import Script from "@/features/article/iframe/Script";
 import { createTableOfContents } from "@/libs/utils";
 import * as Article from "@/features/article/conponents/Index";
 
@@ -34,11 +33,8 @@ export default async function ArticlePage(props: Props) {
   console.log(toc);
 
   return (
-    <>
-      <Script />
-        <Section>
-          <Article.ArticleWrapper contents={ article } toc={toc} />
-        </Section>
-    </>
+    <Section>
+      <Article.ArticleWrapper contents={ article } toc={toc} />
+    </Section>
   );
 }
