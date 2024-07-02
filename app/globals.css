@@ -20,10 +20,14 @@ strong {@apply font-bold}
 .aricleContents > h2 {@apply relative text-[1.625rem] pl-6 mt-16 font-medium}
 .aricleContents > h2::before {@apply absolute content-[''] w-1 h-full top-0 left-0 bg-skyblue block rounded} 
 .aricleContents > h3 {@apply text-[1.375rem] mt-9}
-.aricleContents > ul {@apply mt-9}
+.aricleContents > ul,.aricleContents > div[data-filename] {@apply mt-9}
 .aricleContents > p {@apply mt-9 leading-8 text-lg}
 .aricleContents > ul > li {@apply relative pl-3.5 text-lg leading-8}
 .aricleContents > ul > li > .indent {@apply absolute left-0 top-0}
+.aricleContents > div[data-filename] > .filename {@apply inline-block bg-[#dfdfdf] text-center py-1 px-4 rounded-t}
+.aricleContents > div[data-filename] > pre > code {@apply rounded-se  rounded-es rounded-ee}
+
+
 
 
 

@@ -2,6 +2,10 @@ import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
 import Section from "@/app/components/layouts/common/Section";
 import { createTableOfContents } from "@/libs/utils";
 import * as Article from "@/features/article/conponents/Index";
+// シンタックスハイライト
+// import { load } from 'cheerio';
+// import hljs from 'highlight.js';
+// import 'highlight.js/styles/hybrid.css';
 
 type Props = {
   params: {articleId: string};
@@ -35,7 +39,16 @@ export default async function ArticlePage(props: Props) {
   console.log(category);
 
   const { blogs } = await getBlogArticle(category)
-  console.log(blogs)
+  console.log(blogs);
+
+  // シンタックスハイライト
+  // const $ = load(article.content);
+  // $('pre code').each((_, elm) => {
+  //     const result = hljs.highlightAuto($(elm).text());
+  //     $(elm).html(result.value);
+  //     $(elm).addClass('hljs');
+  // });
+  // article.content = $.html();
 
   return (
     <Section>

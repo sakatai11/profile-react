@@ -33,7 +33,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
                   ))
                 }
               </div>
-              <h2 className="text-2xl font-medium mt-2.5 ml-2.5">{article.title}</h2>
+              <p className="text-2xl font-medium mt-2.5 ml-2.5">{article.title}</p>
             </Link>
           </article>
           ))

@@ -2,6 +2,7 @@ import { Article } from "@/types/cms/article";
 import { TocProps } from "@/types/cms/toc";
 import parse from "html-react-parser";
 import ArticleTocTable from "../ArticleTocTable/ArticleTocTable";
+import ArticleRichEditor from "../ArticleRichEditor/ArticleRichEditor";
 import Image from "next/image";
 import dummy from "@/public/dummy.png";
 import time from "@/public/time.svg";
@@ -55,10 +56,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
           <ArticleTocTable toc={toc} />
         ) : undefined
       }
-      <div className="aricleContents">
-        {parse(contents.content)}
-      </div>
-
+      <ArticleRichEditor content={contents.content} />
     </article>
   );
 }
