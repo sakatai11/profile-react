@@ -1,6 +1,5 @@
 import { Article } from "@/types/cms/article";
 import { TocProps } from "@/types/cms/toc";
-import parse from "html-react-parser";
 import ArticleTocTable from "../ArticleTocTable/ArticleTocTable";
 import ArticleRichEditor from "../ArticleRichEditor/ArticleRichEditor";
 import Image from "next/image";
@@ -8,21 +7,20 @@ import dummy from "@/public/dummy.png";
 import time from "@/public/time.svg";
 
 type AricleDataProps = {
-  contents: Article;
-  toc?: TocProps[]
+  articleData: {
+    contents: Article;
+    richEditor: string;
+    toc?: TocProps[]
+  }
 };
 
-const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
-  
-  // // ISO 8601 形式の日付を Date オブジェクトに変換
-  // const date = new Date(contents.publishedAt);
-
-  // // 日付を 'yyyy.MM.dd' 形式にフォーマット
-  // const formattedDate = new Intl.DateTimeFormat('ja-JP', {
-  //   year: 'numeric',
-  //   month: '2-digit',
-  //   day: '2-digit'
-  // }).format(date).replace(/\//g, '.');
+const ArticleWrapper = ({articleData}:AricleDataProps):JSX.Element => {
+  const { contents, richEditor, toc } = articleData;
+  const options:Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  }
 
   return (
     <article className="mx-[12.5%]" >
@@ -37,7 +35,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
         <time className="text-sm block">
           <span className="flex items-center">
             <Image src={time} width={15} height={15} alt="公開日" className="mr-1"/>
-            {/* {formattedDate} */}
+            {new Date(contents.publishedAt).toLocaleDateString("ja-JP", options)}
           </span>
         </time>
       </div>
@@ -56,7 +54,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
           <ArticleTocTable toc={toc} />
         ) : undefined
       }
-      <ArticleRichEditor content={contents.content} />
+      <ArticleRichEditor richEditor={richEditor} />
     </article>
   );
 }

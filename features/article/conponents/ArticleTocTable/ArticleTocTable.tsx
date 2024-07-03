@@ -6,7 +6,7 @@ type ArticleTocTableProps = {
 };
 
 const ArticleTocTable = ({toc}:ArticleTocTableProps):JSX.Element | undefined => {
-  console.log(toc)
+  // console.log(toc)
 
   return (
     toc.length > 0 ? (
