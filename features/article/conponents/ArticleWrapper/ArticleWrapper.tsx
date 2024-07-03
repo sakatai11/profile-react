@@ -14,15 +14,15 @@ type AricleDataProps = {
 
 const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
   
-  // ISO 8601 形式の日付を Date オブジェクトに変換
-  const date = new Date(contents.publishedAt);
+  // // ISO 8601 形式の日付を Date オブジェクトに変換
+  // const date = new Date(contents.publishedAt);
 
-  // 日付を 'yyyy.MM.dd' 形式にフォーマット
-  const formattedDate = new Intl.DateTimeFormat('ja-JP', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).format(date).replace(/\//g, '.');
+  // // 日付を 'yyyy.MM.dd' 形式にフォーマット
+  // const formattedDate = new Intl.DateTimeFormat('ja-JP', {
+  //   year: 'numeric',
+  //   month: '2-digit',
+  //   day: '2-digit'
+  // }).format(date).replace(/\//g, '.');
 
   return (
     <article className="mx-[12.5%]" >
@@ -37,7 +37,7 @@ const ArticleWrapper = ({contents, toc}:AricleDataProps):JSX.Element => {
         <time className="text-sm block">
           <span className="flex items-center">
             <Image src={time} width={15} height={15} alt="公開日" className="mr-1"/>
-            {formattedDate}
+            {/* {formattedDate} */}
           </span>
         </time>
       </div>
