@@ -2,15 +2,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { pageLinks, topLink } from "@/data/links";
-import { useEffect, useCallback } from "react";
+import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
   const pathname = usePathname();
-
-  const getLinkClass = useCallback((path:string) => {
-    return pathname === path? 'is-active' : '';
-  },[pathname]);
 
   useEffect(() => {
     // クライアントサイドでのみ実行
@@ -66,7 +62,7 @@ const Header = () => {
         <div className="flex justify-center gap-7">
           {
             pageLinks.map(({name, href}) => (
-              <Link href={href} key={name} className={`linkNav ${getLinkClass(href)}`}>{name}</Link>
+              <Link href={href} key={name} className={'linkNav'}>{name}</Link>
             ))
           }
         </div>
