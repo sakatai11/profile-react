@@ -46,6 +46,7 @@ export const getBlogArticle = async (param?: string) => {
     endpoint: "blog",
     queries: {
       filters: param ? `categories[contains]${param}`: '',
+      orders: "-publishedAt",
     }
   });
 
