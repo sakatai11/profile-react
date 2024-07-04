@@ -1,5 +1,5 @@
 import Header from "./header/Header";
-import Main from "./TemMain/main";
+import Main from "./Main/main";
 import Footer from "./footer/footer";
 
 export { Header, Main ,Footer };
