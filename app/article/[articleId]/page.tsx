@@ -14,16 +14,10 @@ type Props = {
 export async function generateStaticParams() {
   // 静的ルート生成
   const { blogs } = await getBlogArticle();
-  const paths = blogs.map((article) => {
-    return {
+  return blogs.map((article) =>({
       article: article.id,
-    };
-  });
-
-  console.log([...paths]);
-
-  return  [...paths];
-}
+  }));
+};
 
 export default async function ArticlePage(props: Props) {
   const param = props.params.articleId;

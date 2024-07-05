@@ -11,15 +11,9 @@ type Props = {
 export async function generateStaticParams() {
   // 静的ルート生成
   const { categories } = await getCategory();
-  const paths = categories.map((category) => {
-    return {
+  return categories.map((category) => ({
       category: category.id,
-    };
-  });
-
-  console.log([...paths]);
-
-  return  [...paths];
+  }));
 }
 
 export default async function CategoryPage(props: Props) {
