@@ -39,7 +39,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
               </article>
               ))
           ) : (
-            <p>記事がありません</p>
+            null
           )
         }
       </div>

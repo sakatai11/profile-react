@@ -1,6 +1,7 @@
 import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
 import Section from "@/app/components/layouts/common/Section";
 import { createTableOfContents } from "@/libs/utils";
+import { notFound } from "next/navigation";
 import * as Article from "@/features/article/conponents/Index";
 // シンタックスハイライト
 import { load } from 'cheerio';
@@ -15,7 +16,7 @@ export async function generateStaticParams() {
   // 静的ルート生成
   const { blogs } = await getBlogArticle();
   return blogs.map((article) =>({
-      article: article.id,
+      articleId: article.id,
   }));
 };
 
@@ -23,6 +24,13 @@ export default async function ArticlePage(props: Props) {
   const param = props.params.articleId;
  // 特定の記事の取得
   const { article } = await getBlogArticleDetail(param);
+
+  if (!article) {
+    console.log("実行");
+    notFound();
+  }
+
+  // console.log(article);
 
   const toc = createTableOfContents(article.content);
   // console.log(article.toc_visible);
@@ -54,7 +62,7 @@ export default async function ArticlePage(props: Props) {
   // ファイル名を表示するためのspanタグを生成
   $('div[data-filename]').each((_, elm) => {
     const fileName = $(elm).attr('data-filename');
-    console.log(fileName);
+    // console.log(fileName);
     if (fileName) {
       $(elm).prepend(`<span class="filename">${fileName}</span>`);
       }
@@ -67,7 +75,7 @@ export default async function ArticlePage(props: Props) {
     if (className?.includes('language-typescript')) {
       language = 'typescript';
     }
-    console.log(language);
+    // console.log(language);
     if (language) {
       const html = highlighter.codeToHtml(codeText, {
         lang: language,

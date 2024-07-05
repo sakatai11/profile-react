@@ -1,6 +1,7 @@
 import { getBlogArticle, getCategory } from "@/libs/microcms";
 import Section from "@/app/components/layouts/common/Section";
 import Title from "@/app/components/elements/title/Index";
+import { notFound } from "next/navigation";
 import * as Blog from "@/features/blog/conponents/Index";
 
 type Props = {
@@ -12,7 +13,7 @@ export async function generateStaticParams() {
   // 静的ルート生成
   const { categories } = await getCategory();
   return categories.map((category) => ({
-      category: category.id,
+      categoryId: category.id,
   }));
 }
 
@@ -22,6 +23,11 @@ export default async function CategoryPage(props: Props) {
   const { blogs } = await getBlogArticle(param);
     //カテゴリの取得
   const { categories } = await getCategory();
+
+  if (blogs.length == 0 ) {
+    notFound();
+  }
+
 
   return (
     <Section>
