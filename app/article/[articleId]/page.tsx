@@ -26,7 +26,6 @@ export default async function ArticlePage(props: Props) {
   const { article } = await getBlogArticleDetail(param);
 
   if (!article) {
-    console.log("実行");
     notFound();
   }
 

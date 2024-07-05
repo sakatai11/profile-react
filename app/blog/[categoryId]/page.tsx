@@ -24,7 +24,7 @@ export default async function CategoryPage(props: Props) {
     //カテゴリの取得
   const { categories } = await getCategory();
 
-  if (blogs.length == 0 ) {
+  if ((blogs.length == 0) && (!blogs)) {
     notFound();
   }
 
