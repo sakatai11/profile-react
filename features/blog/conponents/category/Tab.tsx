@@ -15,7 +15,7 @@ export async function Tab({ categoryId, categories }:Content) {
         <Link 
           href={"/blog"} 
           scroll={false}
-          className={!categoryId ? "isActive" : ""}
+          className={!categoryId ? "isActive" : "hover-img relative"}
         >すべての記事</Link>
       </p>
       {
@@ -24,7 +24,7 @@ export async function Tab({ categoryId, categories }:Content) {
             <Link 
               href={`/blog/${id}`} 
               scroll={false}
-              className={id === categoryId ? "isActive" : ""}
+              className={id === categoryId ? "isActive" : "hover-img relative"}
             >{category}</Link>
           </p>
         ))
