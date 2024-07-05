@@ -38,7 +38,7 @@ export default async function ArticlePage(props: Props) {
   const category = article.categories[0].id;
   // console.log(category);
 
-  const { blogs } = await getBlogArticle(category)
+  const { blogs } = await getBlogArticle(category);
   // console.log(blogs);
 
   // シンタックスハイライト
@@ -84,10 +84,16 @@ export default async function ArticlePage(props: Props) {
     }
   });
 
+  // console.log(blogs.length);
+
   return (
     <Section>
       <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
-      <Article.ArticleCategory contents={ blogs } param={param} />
+      {
+        blogs.length > 1 ? (
+          <Article.ArticleCategory contents={ blogs } param={param} />
+        ): null
+      }
     </Section>
   );
 }

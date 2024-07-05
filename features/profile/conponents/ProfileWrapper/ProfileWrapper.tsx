@@ -49,7 +49,7 @@ const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
           contents.map((profile) => (
             <React.Fragment key={profile.id}>
               <div className="pb-[30px]">
-                <p className="text-3xl tracking-widest">{profile.name}</p>
+                <p className="text-3xl">{profile.name}</p>
               </div>
               <div className="space pt-[30px] border-solid border-t border-black">
                 {parse(profile.my_info)}

@@ -7,7 +7,7 @@ type ArticleRichEditorProps = {
 const ArticleRichEditor = ({richEditor}:ArticleRichEditorProps):JSX.Element => {
 
   return (
-    <div className="aricleContents" >
+    <div className="aricleContents pb-14" >
       {parse(richEditor)}
     </div>
   )

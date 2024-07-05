@@ -17,7 +17,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
           contents.length > 0 ? (
               contents.map((article) => (
                 <article className="flex flex-col" key={article.id}>
-                <Link href={`/article/${article.id}`} >
+                <Link href={`/article/${article.id}`} className="hover:text-skyblue hover:opacity-80" >
                   <div className="relative">
                     <Image
                       src={article.eyecatch?.url ? article.eyecatch.url : dummy}

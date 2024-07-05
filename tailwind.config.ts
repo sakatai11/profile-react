@@ -32,6 +32,9 @@ const config: Config = {
       },
       backgroundColor: {
         skyblue: "#0094FF",
+      },
+      colors: {
+        skyblue: "#0094FF",
       }
     },
   },
