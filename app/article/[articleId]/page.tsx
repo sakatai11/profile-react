@@ -20,7 +20,7 @@ export async function generateStaticParams() {
     };
   });
 
-  // console.log([...paths]);
+  console.log([...paths]);
 
   return  [...paths];
 }
