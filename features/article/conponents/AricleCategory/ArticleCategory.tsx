@@ -27,7 +27,7 @@ const ArticleCategory = ({ contents,param }:BlogDataProps):JSX.Element => {
                       <Image
                         src={article.eyecatch?.url ? article.eyecatch.url : dummy}
                         alt="アイキャッチ"
-                        className="rounded-xl object-cover aspect-[16/10]"
+                        className="rounded-xl object-cover aspect-[16/10] shadow"
                         width={1280}
                         height={800}
                       />
