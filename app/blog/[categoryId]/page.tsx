@@ -34,6 +34,7 @@ export default async function CategoryPage(props: Props) {
       <Title text="Blog" />
       <Blog.Tab categoryId={ param } categories={ categories } />
       <Blog.BlogWrapper contents={ blogs } />
+      <Blog.BlogPagination totalCount={blogs.length} currentPage={1} />
     </Section>
   );
 }
