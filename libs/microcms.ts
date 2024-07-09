@@ -58,7 +58,7 @@ export const getBlogArticle = async (param?: string, queries?: { limit?: number;
 }
 
 // カテゴリIDの取得
-export const getCategory = async (queries?: MicroCMSQueries) => {
+export const getCategory = async (param?: string) => {
   const result = await microCMSClient.getList<Category>({
     customRequestInit: {
       next: {
@@ -66,7 +66,9 @@ export const getCategory = async (queries?: MicroCMSQueries) => {
       },
     },
     endpoint: "category",
-    queries,
+    queries: {
+      filters: param ? `id[equals]${param}`: '',
+    }
   });
 
   return {
