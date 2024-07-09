@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "rm -rf .next/cache && rm -rf node_modules && npm cache clean --force",
-    "build": "npm install && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -20,12 +19,9 @@
     "shiki": "^1.10.1"
   },
   "devDependencies": {
-    "@types/hast": "^3.0.4",
     "@types/node": "^20",
-    "@types/prop-types": "^15.7.12",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "@types/unist": "^3.0.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "postcss": "^8",
