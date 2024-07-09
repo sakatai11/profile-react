@@ -4,10 +4,13 @@ export default function BlogIndex() {
   // categoryIdが空の場合に渡すデフォルトのprops
   const defaultProps = {
     params: { 
-      categoryId: '' 
+      categoryId: '',
+      current: '',
     }
   };
 
   // 全ての記事を表示
-  return <CategoryPage {...defaultProps} />;
+  return (
+    <CategoryPage {...defaultProps} />
+  );
 }

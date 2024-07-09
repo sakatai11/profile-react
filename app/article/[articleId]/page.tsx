@@ -15,13 +15,13 @@ type Props = {
 export async function generateStaticParams() {
   // 静的ルート生成
   const { blogs } = await getBlogArticle();
-  return blogs.map((article) =>({
+  return blogs.contents.map((article) =>({
       articleId: article.id,
   }));
 };
 
-export default async function ArticlePage(props: Props) {
-  const param = props.params.articleId;
+export default async function ArticlePage({params}: Props) {
+  const param = params.articleId;
  // 特定の記事の取得
   const { article } = await getBlogArticleDetail(param);
 
@@ -90,8 +90,8 @@ export default async function ArticlePage(props: Props) {
     <Section>
       <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
       {
-        blogs.length > 1 ? (
-          <Article.ArticleCategory contents={ blogs } param={param} />
+        blogs.contents.length > 1 ? (
+          <Article.ArticleCategory contents={ blogs.contents } param={param} />
         ): null
       }
     </Section>

@@ -1,19 +1,25 @@
-// import { PaginationType } from "@/types/cms/pagination";
+import Link from "next/link";
+import { PAGE_NAVI } from "@/types/cms/setting";
 
-type TotalCountProps = {
-  totalCount: number;
+type PaginationProps = {
   currentPage: number;
-}
+  totalCount: number;
+  postlimit?: number;
+};
 
-const BlogPagination = ({totalCount, currentPage}:TotalCountProps):JSX.Element => {
-  const totalPages = Math.ceil(totalCount / 12);
+const BlogPagination = ({currentPage,totalCount,postlimit = PAGE_NAVI.NEW_LIST_LIMIT,}: PaginationProps):JSX.Element => {
+  // const pages = Array.from(
+  //   length: Math.ceil(totalCount)
+  // );
 
   return (
-    <div>
-      <p>{`現在のページ: ${currentPage}`}</p>
-      <p>{`総ページ数: ${totalPages}`}</p>
-    </div>
+    <>
+      <p>{currentPage}</p>
+      <p>{totalCount}</p>
+      <p>{postlimit}</p>
+    </>
   );
-}
+
+};
 
 export default BlogPagination;

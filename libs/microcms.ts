@@ -36,7 +36,7 @@ export const getProfile = async (queries?: MicroCMSQueries) => {
 }
 
 // 記事一覧の取得
-export const getBlogArticle = async (param?: string) => {
+export const getBlogArticle = async (param?: string, queries?: { limit?: number; offset?: number }) => {
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
       next: {
@@ -45,14 +45,15 @@ export const getBlogArticle = async (param?: string) => {
     },
     endpoint: "blog",
     queries: {
-      limit: 50,
+      limit: queries?.limit,
+      offset: queries?.offset,
       filters: param ? `categories[contains]${param}`: '',
       orders: "-publishedAt",
     }
   });
 
   return {
-    blogs: result.contents,
+    blogs: result,
   };
 }
 
