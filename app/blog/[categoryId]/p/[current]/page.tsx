@@ -30,8 +30,6 @@ export async function generateStaticParams() {
     })
   );
 
-  // console.log(paramsArray.flat());
-
   // 二次元配列をフラットにする
   return paramsArray.flat();
 }

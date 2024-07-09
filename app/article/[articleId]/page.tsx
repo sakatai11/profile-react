@@ -2,6 +2,7 @@ import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
 import Section from "@/app/components/layouts/common/Section";
 import { createTableOfContents } from "@/libs/utils";
 import { notFound } from "next/navigation";
+import { PAGE_NAVI } from "@/types/cms/setting";
 import * as Article from "@/features/article/conponents/Index";
 // シンタックスハイライト
 import { load } from 'cheerio';
@@ -14,7 +15,10 @@ type Props = {
 
 export async function generateStaticParams() {
   // 静的ルート生成
-  const { blogs } = await getBlogArticle();
+  const { blogs } = await getBlogArticle("",{
+    limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, //取得記事数
+  });
+
   return blogs.contents.map((article) =>({
       articleId: article.id,
   }));
@@ -29,17 +33,11 @@ export default async function ArticlePage({params}: Props) {
     notFound();
   }
 
-  // console.log(article);
-
   const toc = createTableOfContents(article.content);
-  // console.log(article.toc_visible);
-  // console.log(article);
-  // console.log(toc);
+
   const category = article.categories[0].id;
-  // console.log(category);
 
   const { blogs } = await getBlogArticle(category);
-  // console.log(blogs);
 
   // シンタックスハイライト
   const highlighter = await createHighlighter({
