@@ -18,11 +18,12 @@ const Header = () => {
       // headerのスクロール位置を取得
       const header = document.querySelector("header");
       const currentScrollTop = window.scrollY;
-      
+
       if (header) {
         if (currentScrollTop > lastScrollTop) {
           header.classList.add("-translate-y-full");
-        } else if (currentScrollTop < lastScrollTop || currentScrollTop === 0) {
+        } else if (currentScrollTop < lastScrollTop || currentScrollTop === 15) {
+          console.log(currentScrollTop);
           // 上にスクロールした場合
           header.classList.remove("-translate-y-full");
         } 
