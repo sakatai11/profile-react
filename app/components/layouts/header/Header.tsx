@@ -20,10 +20,9 @@ const Header = () => {
       const currentScrollTop = window.scrollY;
 
       if (header) {
-        if (currentScrollTop > lastScrollTop) {
+        if (currentScrollTop > 50) {
           header.classList.add("-translate-y-full");
-        } else if (currentScrollTop < lastScrollTop || currentScrollTop === 15) {
-          console.log(currentScrollTop);
+        } else if (currentScrollTop < lastScrollTop || currentScrollTop === 0) {
           // 上にスクロールした場合
           header.classList.remove("-translate-y-full");
         } 
