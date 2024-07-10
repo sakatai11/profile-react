@@ -2,6 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+header {-webkit-backdrop-filter: blur(12px);}
 strong {@apply font-bold}
 .h1Tit { @apply text-5xl md:text-[28px] tracking-widest font-semibold leading-relaxed}
 .h1Tit::after { @apply content-[''] block w-6/12 h-1.5 md:h-1 bg-[#0094FF] m-auto rounded} 
