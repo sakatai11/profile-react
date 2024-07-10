@@ -6,7 +6,7 @@ import illustration from "/public/illustration.png";
 const TopWrapper = () => {
   return (
     <div className="flex flex-col items-center justify-center w-full h-full">
-      <div className="w-full flex flex-col items-center justify-end grow-1.3">
+      <div className="w-full flex flex-col items-center justify-end grow">
         <Image 
           src={illustration}
           height={248}

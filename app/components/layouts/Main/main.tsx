@@ -9,7 +9,7 @@ const Main = ({children}: Children): JSX.Element => {
   const pathname: string  = usePathname();
 
   return (
-    <main className={pathname == '/' ? 'calc-100' : 'pt-[6.45rem] calc-min-100'} >
+    <main className={pathname == '/' ? 'h-svh' : 'pt-[6.45rem] calc-min-100'} >
       {children}
     </main>
   )

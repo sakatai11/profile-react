@@ -26,9 +26,9 @@ const config: Config = {
         'spartan': ['Spartan', 'sans-serif'],
         'noto-sans-jp': ['Noto Sans JP', 'sans-serif']
       },
-      flexGrow: {
-        1.3: "1.3",
-      },
+      // flexGrow: {
+      //   1.3: "1.3",
+      // },
       backgroundImage: {
         'anker-icon': "url('/anker-icon.svg')",
       },
