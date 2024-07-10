@@ -45,7 +45,7 @@ const Header = () => {
   }
 
   return (
-    <header className="py-5 px-7 w-full fixed transition-transform duration-300">
+    <header className="py-5 md:py-3 px-7 md:px-5 w-full fixed z-50 transition-transform duration-300">
       <div className="flex justify-between items-center">
         {
           topLink.map(({name, href}) => (

@@ -12,10 +12,10 @@ type ProfileDataProps = {
 
 const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
   return (
-    <div className="w-full mt-28">
-    <div className="flex justify-center gap-24 mx-[12.5%]">
+    <div className="w-full mt-28 md:mt-11">
+    <div className="flex md:flex-col justify-center gap-24 md:gap-12 mx-[12.5%] md:mx-0 md:mb-10">
       <div className="flex flex-col items-center flex-1 gap-6">
-        <div className="mt-2">
+        <div className="mt-2 md:h-44 md:w-44">
           <Image 
             src={illustration}
             height={260}
@@ -49,7 +49,7 @@ const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
           contents.map((profile) => (
             <React.Fragment key={profile.id}>
               <div className="pb-[30px]">
-                <p className="text-3xl">{profile.name}</p>
+                <p className="text-3xl md:text-center md:text-2xl">{profile.name}</p>
               </div>
               <div className="space pt-[30px] border-solid border-t border-black">
                 {parse(profile.my_info)}

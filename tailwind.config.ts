@@ -10,6 +10,11 @@ const config: Config = {
   theme: {
     extend: {
       //カスタム値
+      screens: {
+        sm: {'max': '560px'},
+        md: {'max': '768px'},
+        tb: {'max': '960px'}
+      },
       container: {
         center: true,
         padding: "1.5rem",

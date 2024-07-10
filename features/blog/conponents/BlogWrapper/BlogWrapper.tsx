@@ -12,7 +12,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
       // console.log(contents);
 
   return (
-      <div className="mt-14 grid grid-cols-3 gap-x-[5.5vw] gap-y-[5vw]">
+      <div className="mt-14 grid grid-cols-3 md:grid-cols-1 gap-x-[5.5vw] gap-y-[5vw] md:gap-y-16">
         {
           contents.length > 0 ? (
               contents.map((article) => (
@@ -34,7 +34,7 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
                       ))
                     }
                   </div>
-                  <p className="text-2xl font-medium mt-2.5 ml-2.5">{article.title}</p>
+                  <p className="text-2xl font-medium m-2.5">{article.title}</p>
                 </Link>
               </article>
               ))

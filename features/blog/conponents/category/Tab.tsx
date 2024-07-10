@@ -9,9 +9,9 @@ type Content = {
 export async function Tab({ categoryId, categories }:Content) {
 
   return (
-    <div className="w-full mt-28">
-      <div className="flex justify-between items-center mx-[20%]">
-      <p>
+    <div className="w-full mt-28 md:mt-16">
+      <div className="flex justify-between items-center mx-[20%] md:mx-0">
+      <p className="md:text-xs">
         <Link 
           href={"/blog"} 
           scroll={false}
@@ -20,7 +20,7 @@ export async function Tab({ categoryId, categories }:Content) {
       </p>
       {
         categories.map(({ id, category }) => (
-          <p key={id}>
+          <p className="md:text-xs" key={id}>
             <Link 
               href={`/blog/${id}`} 
               scroll={false}

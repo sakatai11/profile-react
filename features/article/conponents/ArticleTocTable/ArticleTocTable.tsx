@@ -11,7 +11,7 @@ const ArticleTocTable = ({toc}:ArticleTocTableProps):JSX.Element | undefined => 
   return (
     toc.length > 0 ? (
       <div className="my-14">
-      <div className="p-9 border-solid border-2 border-[#CED1D9] rounded-lg">
+      <div className="p-9 md:p-5 border-solid border-2 border-[#CED1D9] rounded-lg">
         <p className="text-xl font-bold mb-2.5">目次</p>
         <ul>
           {toc.map((data) => (

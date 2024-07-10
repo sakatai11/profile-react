@@ -16,7 +16,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
 
   return (
     <nav className="my-20">
-      <ul className="flex justify-center items-center gap-5">
+      <ul className="flex justify-center items-center gap-5 md:mx-16">
         {currentPage > 1 && (
           <li>
             {currentPage - 1 === 1 ? (

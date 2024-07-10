@@ -12,14 +12,14 @@ const TopWrapper = () => {
           height={248}
           width={248}
           alt="イラスト"
-          className="mb-6"
+          className="mb-6 md:h-44 md:w-44"
         />
-        <h1 className="font-spartan text-5xl tracking-widest font-semibold">Saka&apos;s portfolio site</h1>
+        <h1 className="font-spartan text-5xl md:text-2xl tracking-widest font-semibold">Saka&apos;s portfolio site</h1>
       </div>
       <div className="flex items-center justify-center gap-16 grow">
         {
           pageLinks.map(({ name, href }) => (
-            <Link href={href} key={name} className="hover-img relative after:content-[''] after:w-6/12 after:h-1 after:bg-skyblue after:block after:m-auto after:rounded inline-block font-spartan text-2xl tracking-wider leading-relaxed">{name}</Link>
+            <Link href={href} key={name} className="hover-img relative after:content-[''] after:w-6/12 after:h-1 after:bg-skyblue after:block after:m-auto after:rounded inline-block font-spartan text-2xl md:text-lg tracking-wider leading-relaxed">{name}</Link>
           ))
         }
       </div>
