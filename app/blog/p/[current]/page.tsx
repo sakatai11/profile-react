@@ -2,11 +2,11 @@ import { getBlogArticle } from "@/libs/microcms";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import CurrentCategoryPage from "../../[categoryId]/p/[current]/page";
 
-const defaultProps = {
+type Props = {
   params: {
-    categoryId: '',
-    current: '2'
-  }
+    categoryId: string;
+    current: string;
+  };
 };
 
 export async function generateStaticParams() {
@@ -23,10 +23,11 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function CurrentBlogIndex() {
+export default function CurrentBlogIndex({ params }: Props) {
+  const { current } = params;
 
   // 全ての記事を表示
   return (
-    <CurrentCategoryPage {...defaultProps} />
+    <CurrentCategoryPage params={{ categoryId: '', current}} />
   );
 }

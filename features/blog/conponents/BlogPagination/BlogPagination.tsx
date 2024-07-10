@@ -9,14 +9,22 @@ type PaginationProps = {
 };
 
 const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.NEW_LIST_LIMIT,}: PaginationProps):JSX.Element => {
-  const pages = Array.from(
-    { length: Math.ceil(totalCount / postlimit) },
-    (_, i) => i + 1
-  );
+  const totalPages = Math.ceil(totalCount / postlimit);
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  console.log(basePath);
+
 
   return (
     <div>
       <ul>
+        {currentPage > 1 && (
+          <li>
+            <Link href={`${!basePath ? '/blog' : basePath}/p/${currentPage - 1}`}>
+              ← Previous
+            </Link>
+          </li>
+        )}
         {pages.map((p) => (
           <li key={p}>
             {currentPage !== p ? (
@@ -25,7 +33,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
                   {p}
                 </Link>
               ) : (
-                <Link href={`${!basePath ? '/blog' : basePath }/p/${p}`}>
+                <Link href={`${!basePath ? '/blog' : basePath}/p/${p}`}>
                   {p}
                 </Link>
               )
@@ -34,6 +42,13 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
             )}
           </li>
         ))}
+        {currentPage < totalPages && (
+          <li>
+            <Link href={`${!basePath ? '/blog' : basePath}/p/${currentPage + 1}`}>
+              Next →
+            </Link>
+          </li>
+        )}
       </ul>
     </div>
   );
