@@ -50,7 +50,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
                   {p}
                 </Link>
               ) : (
-                <Link href={`$s{!basePath ? '/blog' : basePath}/p/${p}`}>
+                <Link href={`${!basePath ? '/blog' : basePath}/p/${p}`}>
                   {p}
                 </Link>
               )
