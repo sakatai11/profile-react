@@ -39,7 +39,7 @@ const ArticleWrapper = ({articleData}:AricleDataProps):JSX.Element => {
           </span>
         </time>
       </div>
-      <h1 className="text-4xl md:text-2xl mt-5 leading-snug">{contents.title}</h1>
+      <h1 className="text-4xl font-medium md:text-2xl mt-5 leading-snug">{contents.title}</h1>
       <div className="mt-8">
         <Image 
           src={contents.eyecatch?.url ? contents.eyecatch?.url : dummy }

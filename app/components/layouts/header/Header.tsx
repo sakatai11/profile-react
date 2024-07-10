@@ -17,15 +17,15 @@ const Header = () => {
       const handleScroll = () => {
       // headerのスクロール位置を取得
       const header = document.querySelector("header");
+      const currentScrollTop = window.scrollY;
+      
       if (header) {
-        const currentScrollTop = window.scrollY;
-    
         if (currentScrollTop > lastScrollTop) {
           header.classList.add("-translate-y-full");
-        } else if (currentScrollTop < lastScrollTop) {
+        } else if (currentScrollTop < lastScrollTop || currentScrollTop === 0) {
           // 上にスクロールした場合
           header.classList.remove("-translate-y-full");
-        }
+        } 
         lastScrollTop = currentScrollTop; // 現在のスクロール位置を記録
       }
       };
