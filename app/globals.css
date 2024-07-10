@@ -21,19 +21,18 @@ strong {@apply font-bold}
 .aricleContents > h3 {@apply text-[1.375rem] md:text-lg mt-9 font-bold}
 .aricleContents > ul,.aricleContents > div[data-filename] {@apply mt-9}
 .aricleContents > p {@apply mt-9 leading-8 md:leading-7 text-lg md:text-base}
-.aricleContents > p > a {@apply break-words}
+.aricleContents > p > a {@apply break-words hover:underline}
 .aricleContents > ul > li {@apply relative pl-3.5 md:pl-4 text-lg md:text-base leading-8 md:leading-7}
 .aricleContents > ul > li > .indent {@apply absolute left-0 top-0}
 .aricleContents > div[data-filename] > .filename {@apply inline-block bg-[#dfdfdf] text-center py-1 px-4 rounded-t}
 .aricleContents > div[data-filename] > pre {@apply rounded-se-lg  rounded-es-lg rounded-ee-lg p-3.5 overflow-x-scroll}
+.aricleContents > figure {@apply text-center mt-9}
+.aricleContents > figure > figcaption {@apply mt-4}
+.aricleContents > figure > img {@apply m-auto}
 
 @media screen and (max-width: 768px) {
   .hover-img::before {width: 16px; height: 17.5px; top: -10px; right: -18px;}
 }
-
-
-
-
 
 /* :root {
   --foreground-rgb: 0, 0, 0;

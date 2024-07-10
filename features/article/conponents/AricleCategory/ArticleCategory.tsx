@@ -1,4 +1,5 @@
 import { BlogList } from "@/types/cms/blog";
+import LinkButton from "@/app/components/elements/button/Index";
 import Link from "next/link";
 import Image from "next/image";
 import dummy from"@/public/dummy.png";
@@ -15,7 +16,7 @@ const ArticleCategory = ({ contents,param }:BlogDataProps):JSX.Element => {
   return (
     <section>
       <div className="mx-[12.5%] md:mx-0">
-        <div className="py-14 border-t-2 border-[#CED1D9]">
+        <div className="pt-14 border-t-2 border-[#CED1D9]">
           <h2 className="relative text-[1.625rem] md:text-2xl pl-6 font-medium before:absolute before:content-[''] before:w-1 before:h-full before:top-0 before:left-0 before:bg-skyblue before:block before:rounded">関連記事</h2>
           <div className="mt-9 grid grid-cols-3 md:grid-cols-1 md:gap-y-16 gap-x-[5.5vw]">
             {
@@ -49,6 +50,7 @@ const ArticleCategory = ({ contents,param }:BlogDataProps):JSX.Element => {
             }
           </div>
         </div>
+      <LinkButton text="記事一覧を見る" />
       </div>
     </section>
   );
