@@ -2,10 +2,10 @@
 import { usePathname } from "next/navigation";
 
 const Footer = () => {
-  const pathname = usePathname();
+  const pathName = usePathname();
   
     // トップページではFooterを表示しない
-    if (pathname === '/') {
+    if (pathName === '/') {
       return null;
     }
 

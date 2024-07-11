@@ -6,9 +6,9 @@ type Children = {
 const Section = ({children}: Children): JSX.Element => {
   return (
     <section>
-    <div className="container">
-    {children}
-    </div>
+      <div className="container">
+        {children}
+      </div>
     </section>
   );
 }

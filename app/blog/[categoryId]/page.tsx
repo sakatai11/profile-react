@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 }
 
 export default async function CategoryPage({params}: Props) {
-  const currentPage = 1;
+  const currentPage = 1; // 最初のページ
 
   // 記事一覧の取得
   const { blogs } = await getBlogArticle(params.categoryId,{

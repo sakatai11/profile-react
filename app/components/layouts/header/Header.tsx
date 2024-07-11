@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const Header = () => {
-  const pathname = usePathname();
+  const pathName = usePathname();
 
   useEffect(() => {
     // クライアントサイドでのみ実行
@@ -45,7 +45,7 @@ const Header = () => {
   }, []);
 
   // トップページではHeaderを表示しない
-  if (pathname === '/') {
+  if (pathName === '/') {
     return null;
   }
 
