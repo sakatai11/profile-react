@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 
   // パラメータを生成
   return [...Array(totalPages)].map((_, i) => ({
-    current: (i + 2).toString(), // 数値を文字列に変換
+    current: (i + 1).toString(), // 数値を文字列に変換
   }));
 }
 
