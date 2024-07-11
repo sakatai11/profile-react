@@ -1,7 +1,6 @@
 import { getProfile } from "@/libs/microcms";
-import Section from "../components/layouts/common/Section";
+import MotionWrapper from "../components/motion/motionWrapper";
 import Title from "../components/elements/title/Index";
-// import MotionWrapper from "../components/motion/MotionWrapper";
 import * as Profile from "@/features/profile/conponents/Index" 
 
 export default async function ProfilePage() {
@@ -9,9 +8,11 @@ export default async function ProfilePage() {
   const { props } = await getProfile();
 
   return (
-      <Section>
-        <Title text={'Profile'} />
-        <Profile.ProfileWrapper contents={ props }/>
-      </Section>
+    <>
+      <Title text={'Profile'} />
+        <MotionWrapper>
+          <Profile.ProfileWrapper contents={ props }/>
+        </MotionWrapper>
+    </>
   );
 }

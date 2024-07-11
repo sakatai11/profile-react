@@ -1,6 +1,6 @@
 import { getBlogArticle, getCategory } from "@/libs/microcms";
 import { PAGE_NAVI } from "@/types/cms/setting";
-import Section from "@/app/components/layouts/common/Section";
+import MotionWrapper from "@/app/components/motion/motionWrapper";
 import Title from "@/app/components/elements/title/Index";
 import { notFound } from "next/navigation";
 import * as Blog from "@/features/blog/conponents/Index";
@@ -38,11 +38,13 @@ export default async function CategoryPage({params}: Props) {
   }
 
   return (
-    <Section>
+    <>
       <Title text="Blog" />
-      <Blog.Tab categoryId={ params.categoryId } categories={ categories } />
-      <Blog.BlogWrapper contents={ blogs.contents } />
+          <Blog.Tab categoryId={ params.categoryId } categories={ categories } />
+            <MotionWrapper>
+              <Blog.BlogWrapper contents={ blogs.contents } />
+            </MotionWrapper>
       <Blog.BlogPagination basePath={params.categoryId} currentPage={currentPage} postlimit={PAGE_NAVI.NEW_LIST_LIMIT} totalCount={blogs.totalCount} />
-    </Section>
+    </>
   );
 }

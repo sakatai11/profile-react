@@ -1,5 +1,5 @@
 import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
-import Section from "@/app/components/layouts/common/Section";
+import MotionWrapper from "@/app/components/motion/motionWrapper";
 import { createTableOfContents } from "@/libs/utils";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
@@ -85,13 +85,15 @@ export default async function ArticlePage({params}: Props) {
   // console.log(blogs.length);
 
   return (
-    <Section>
-      <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
+    <>
+      <MotionWrapper>
+        <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
+      </MotionWrapper>
       {
         blogs.contents.length > 1 ? (
           <Article.ArticleCategory contents={ blogs.contents } param={param} />
         ): null
       }
-    </Section>
+    </>
   );
 }
