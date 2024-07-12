@@ -1,4 +1,3 @@
-
 export type MicroCMSImageProps = {
   src: string;
   width: number;

@@ -1,12 +1,15 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-// import Template from "./template";
+// import { Inter } from "next/font/google";
 import "./globals.css";
+import { Site } from "@/data/site";
 import * as Default from "./components/layouts/Index";
 
 export const metadata: Metadata = {
-  title: "portfolio site",
-  description: "hogehoge",
+  title: {
+    default: Site.defaultTitle,
+    template: Site.titleTemplate
+  },
+  description: Site.defaultDescription,
 };
 
 export default function RootLayout({
