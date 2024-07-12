@@ -23,10 +23,17 @@ export async function generateStaticParams() {
 
       const totalPages = Math.ceil(blogs.totalCount / PAGE_NAVI.NEW_LIST_LIMIT);
 
-      return [...Array(totalPages)].map((_, i) => ({
-        current: (i + 1).toString(), // 数値を文字列に変換
-        categoryId: category.id,
-      }));
+      return [...Array(totalPages)].map((_, i) => {
+        const currentPage = (i + 1).toString();
+        // 各カテゴリの最初のページを除外
+        if (currentPage === "1") {
+          return null;
+        }
+        return {
+          current: currentPage,
+          categoryId: category.id,
+        };
+      }).filter(Boolean); // null値を削除
     })
   );
 
