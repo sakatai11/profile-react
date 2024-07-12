@@ -1,4 +1,4 @@
-import { MicroCMSQueries, createClient } from "microcms-js-sdk";
+import { createClient } from "microcms-js-sdk";
 import { ProfileContents } from "@/types/cms/profile";
 import { BlogList } from "@/types/cms/blog";
 import { Category } from "@/types/cms/category";
@@ -19,7 +19,7 @@ export const microCMSClient = createClient({
 });
 
 // プロフィールの取得
-export const getProfile = async (queries?: MicroCMSQueries) => {
+export const getProfile = async () => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
       next: {
@@ -27,7 +27,9 @@ export const getProfile = async (queries?: MicroCMSQueries) => {
       },
     },
     endpoint: "profile",
-    queries,
+    queries: {
+      fields: ['id', 'name', 'link_icon', 'my_info']
+    }
   });
 
   return {
@@ -47,6 +49,7 @@ export const getBlogArticle = async (param?: string, queries?: { limit?: number;
     queries: {
       limit: queries?.limit,
       offset: queries?.offset,
+      fields: ['id', 'title', 'categories', 'url','content','eyecatch'],
       filters: param ? `categories[contains]${param}`: '',
       orders: "-publishedAt",
     }
@@ -67,6 +70,7 @@ export const getCategory = async (param?: string) => {
     },
     endpoint: "category",
     queries: {
+      fields: ['id', 'category'],
       filters: param ? `id[equals]${param}`: '',
     }
   });
@@ -77,7 +81,7 @@ export const getCategory = async (param?: string) => {
 }
 
 // 特定の記事の取得
-export const getBlogArticleDetail = async (contentId:string, queries?: MicroCMSQueries) => {
+export const getBlogArticleDetail = async (contentId:string) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
         next: {
@@ -86,7 +90,9 @@ export const getBlogArticleDetail = async (contentId:string, queries?: MicroCMSQ
       },
       endpoint: "blog",
       contentId,
-      queries,
+      queries: {
+        fields: ['id', 'publishedAt', 'title', 'categories', 'content','eyecatch', 'toc_visible']
+      }
     });
 
     return {
