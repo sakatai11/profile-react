@@ -2,6 +2,7 @@ import { ProfileContents } from "@/types/cms/profile";
 import { accountLinks } from "@/data/accounts";
 import parse from "html-react-parser";
 import Link from "next/link";
+import MicroCmsImage from "@/features/components/MicroCmsImage/MicroCmsImage";
 import Image from "next/image";
 import illustration from "/public/illustration.png";
 import React from "react";
@@ -35,7 +36,12 @@ const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
                 return (
                   <div key={iconName} className="w-5 h-5">
                     <Link href={link ? link.href : '#'} rel="noopener noreferrer" target="_blank">
-                      <Image src={icon.url} height={icon.height} width={icon.width} alt={iconName} />
+                      <MicroCmsImage 
+                        src={icon.url}
+                        width={icon.width || 32}
+                        height={icon.height || 32}
+                        alt={iconName}
+                      />
                     </Link>
                   </div>
                 )

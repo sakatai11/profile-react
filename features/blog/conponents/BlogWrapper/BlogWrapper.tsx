@@ -1,7 +1,6 @@
 import { BlogList } from "@/types/cms/blog";
-import Image from "next/image";
+import MicroCmsImage from "@/features/components/MicroCmsImage/MicroCmsImage";
 import Link from "next/link";
-import dummy from "@/public/dummy.png";
 
 type BlogDataProps = {
   contents: BlogList[];
@@ -19,12 +18,12 @@ const BlogWrapper = ({contents}:BlogDataProps): JSX.Element => {
                 <article className="flex flex-col" key={article.id}>
                 <Link href={`/article/${article.id}`} className="hover:text-skyblue hover:opacity-80" >
                   <div className="relative">
-                    <Image
-                      src={article.eyecatch?.url ? article.eyecatch.url : dummy}
+                    <MicroCmsImage 
+                      src={article.eyecatch?.url ? article.eyecatch.url : ''}
+                      width={article.eyecatch?.width || 1280}
+                      height={article.eyecatch?.height || 800}
                       alt="アイキャッチ"
                       className="rounded-xl object-cover aspect-[16/10] shadow"
-                      width={1280}
-                      height={800}
                     />
                     {
                       article.categories.map((category) => (

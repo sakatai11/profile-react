@@ -2,8 +2,9 @@ import { Article } from "@/types/cms/article";
 import { TocProps } from "@/types/cms/toc";
 import ArticleTocTable from "../ArticleTocTable/ArticleTocTable";
 import ArticleRichEditor from "../ArticleRichEditor/ArticleRichEditor";
+import Link from "next/link";
 import Image from "next/image";
-import dummy from "@/public/dummy.png";
+import MicroCmsImage from "@/features/components/MicroCmsImage/MicroCmsImage";
 import time from "@/public/time.svg";
 
 type AricleDataProps = {
@@ -27,9 +28,9 @@ const ArticleWrapper = ({articleData}:AricleDataProps):JSX.Element => {
       <div className="flex items-center gap-5">
         {
           contents.categories.map((category) => (
-            <span key={category.id} className="text-sm">
+            <Link href={`/blog/${category.id}`}  key={category.id} className="text-xs py-1 px-1.5 border-[1px] border-black rounded-md hover:bg-black hover:text-white" >
               {category.category}
-            </span>
+            </Link>
           ))
         }
         <time className="text-sm block">
@@ -41,10 +42,10 @@ const ArticleWrapper = ({articleData}:AricleDataProps):JSX.Element => {
       </div>
       <h1 className="text-4xl font-medium md:text-2xl mt-5 leading-snug">{contents.title}</h1>
       <div className="mt-8">
-        <Image 
-          src={contents.eyecatch?.url ? contents.eyecatch?.url : dummy }
-          height={contents.eyecatch?.height}
-          width={contents.eyecatch?.width}
+        <MicroCmsImage 
+          src={contents.eyecatch?.url ? contents.eyecatch.url : ''}
+          width={contents.eyecatch?.width || 1280}
+          height={contents.eyecatch?.height || 800}
           alt="アイキャッチ"
           className="rounded-xl object-cover aspect-[16/10]"
         />
