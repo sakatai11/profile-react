@@ -1,3 +1,5 @@
-import TopWrapper from "./TopWrapper/TopWrapper";
+import TopTitle from "./TopTitle/TopTitle";
+import TopImg from "./TopImg/TopImg";
+import TopNav from "./TopNav/TopNav";
 
-export { TopWrapper };
+export { TopImg, TopTitle, TopNav };
