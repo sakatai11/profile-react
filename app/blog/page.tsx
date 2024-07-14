@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { BlogSite } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: BlogSite.title
+  title: BlogSite.title,
+  description: BlogSite.description
 };
 
 export default function BlogIndex() {

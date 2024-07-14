@@ -77,6 +77,7 @@ export const getCategory = async (param?: string) => {
 
   return {
     categories: result.contents,
+    category: result.contents[0] //metaの取得
   };
 }
 

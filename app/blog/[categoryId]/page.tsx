@@ -3,14 +3,23 @@ import { PAGE_NAVI } from "@/types/cms/setting";
 import MotionWrapper from "@/app/components/motion/motionWrapper";
 import Title from "@/app/components/elements/title/Index";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import * as Blog from "@/features/blog/conponents/Index";
 
 type Props = {
   params: {
     categoryId: string;
   };
-  // sarchParams: { [key: string]: string | string[] | undefined };
 };
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { category } = await getCategory(params.categoryId);
+
+    return {
+      title: category.category,
+      description: `${category.category}の記事一覧です。`
+    };
+}
 
 export async function generateStaticParams() {
   // 静的ルート生成

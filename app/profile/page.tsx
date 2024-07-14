@@ -6,7 +6,8 @@ import Title from "../components/elements/title/Index";
 import * as Profile from "@/features/profile/conponents/Index" 
 
 export const metadata: Metadata = {
-  title: ProfileSite.title
+  title: ProfileSite.title,
+  description: ProfileSite.description
 };
 
 export default async function ProfilePage() {

@@ -2,13 +2,15 @@
 export const Site = {
   defaultTitle: "Saka's personal website",
   defaultDescription: "さかの個人ウェブサイトです。趣味、ウェブ技術についてまとめています。",
-  titleTemplate: "%s | さか",
+  titleTemplate: "%s | さか"
 };
 
 export const ProfileSite = {
-  title: "Profile"
+  title: "Profile",
+  description: "プロフィールです。"
 };
 
 export const BlogSite = {
-  title: "Blog"
+  title: "Blog",
+  description: "すべての記事一覧です。"
 };
