@@ -34,6 +34,10 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
         ],
         locale: 'jp',
         type: 'website',
+      },
+      twitter: {
+        card: "summary_large_image", 
+        site: "@skt1910hg_r"
       }
     };
 }

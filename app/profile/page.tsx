@@ -9,14 +9,7 @@ import * as Profile from "@/features/profile/conponents/Index"
 
 export const metadata: Metadata = {
   title: profileSite.title,
-  description: profileSite.description,
-  openGraph: {
-    ...profileSite.openGraph,
-    ...commonOpenGraph
-  },
-  twitter: {
-    ...commonTwitterOpenGraph
-  }
+  description: profileSite.description
 };
 
 export default async function ProfilePage() {
