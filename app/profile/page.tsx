@@ -8,7 +8,9 @@ import * as Profile from "@/features/profile/conponents/Index"
 export const metadata: Metadata = {
   title: ProfileSite.title,
   description: ProfileSite.description,
-  openGraph: ProfileSite.openGraph
+  openGraph: {
+    ...ProfileSite.openGraph
+  }
 };
 
 export default async function ProfilePage() {

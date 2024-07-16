@@ -5,7 +5,9 @@ import { BlogSite } from "@/data/site";
 export const metadata: Metadata = {
   title: BlogSite.title,
   description: BlogSite.description,
-  openGraph: BlogSite.openGraph
+  openGraph: {
+    ...BlogSite.openGraph
+  }
 };
 
 export default function BlogIndex() {

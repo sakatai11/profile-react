@@ -24,11 +24,16 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       description: ArticleSite.description,
       openGraph : {
         url: new URL(`/article/${params.articleId}`,process.env.SERVER_DOMAIN || "").toString(),
+        siteName: 'クリエイターさかの個人ウェブサイト',
         images: [
           {
-            url: article.eyecatch?.url ? article.eyecatch.url : dummy.src
+            width: article.eyecatch?.width ? article.eyecatch?.width : "1280",
+            height: article.eyecatch?.height ? article.eyecatch?.height : "800",
+            url: article.eyecatch?.url ? article.eyecatch.url : dummy.src,
           }
         ],
+        locale: 'jp',
+        type: 'website',
       }
     };
 }
