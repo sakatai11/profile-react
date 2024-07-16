@@ -19,7 +19,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       title: category.category,
       description: `${category.category}の記事一覧です。`,
       openGraph : {
-        url: `/blog/${params.categoryId}`
+        url: new URL(`/blog/${params.categoryId}`,process.env.SERVER_DOMAIN || "").toString()
       }
     };
 }

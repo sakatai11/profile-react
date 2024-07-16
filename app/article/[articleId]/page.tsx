@@ -23,7 +23,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       title: article.title,
       description: ArticleSite.description,
       openGraph : {
-        url: `/article/${params.articleId}`,
+        url: new URL(`/article/${params.articleId}`,process.env.SERVER_DOMAIN || "").toString(),
         images: [
           {
             url: article.eyecatch?.url ? article.eyecatch.url : dummy.src
