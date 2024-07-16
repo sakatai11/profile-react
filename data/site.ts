@@ -2,6 +2,7 @@ import { topLink } from "./links";
 import { pageLinks } from "./links";
 import { OpenGraph, SiteConfig } from "@/types/ogp/seoOgp";
 
+//blog,profile,articleで利用
 export type SiteInfo = {
   title?: string;
   description: string;

@@ -4,6 +4,7 @@ import MotionWrapper from "@/app/components/motion/motionWrapper";
 import Title from "@/app/components/elements/title/Index";
 import { blogSite } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
+import { commonTwitterOpenGraph } from "@/data/twitter";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import * as Blog from "@/features/blog/conponents/Index";
@@ -20,9 +21,12 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
   return {
     title: category.category,
     description: `${category.category}の記事一覧です。`,
-    openGraph : {
+    openGraph: {
       ...blogSite.openGraph,
       ...commonOpenGraph
+    },
+    twitter: {
+      ...commonTwitterOpenGraph
     }
   };
 }

@@ -2,13 +2,17 @@ import CategoryPage from "./[categoryId]/page";
 import type { Metadata } from "next";
 import { blogSite } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
+import { commonTwitterOpenGraph } from "@/data/twitter";
 
 export const metadata: Metadata = {
   title: blogSite.title,
   description: blogSite.description,
   openGraph: {
     ...blogSite.openGraph,
-    ...commonOpenGraph
+    ...commonOpenGraph,
+  },
+  twitter: {
+    ...commonTwitterOpenGraph
   }
 };
 

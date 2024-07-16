@@ -4,6 +4,7 @@ import Title from "@/app/components/elements/title/Index";
 import * as Blog from "@/features/blog/conponents/Index";
 import { blogSite } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
+import { commonTwitterOpenGraph } from "@/data/twitter";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import type { Metadata } from "next";
@@ -24,6 +25,9 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
       openGraph: {
         ...blogSite,
         ...commonOpenGraph
+      },
+      twitter: {
+        ...commonTwitterOpenGraph
       }
     };
 }

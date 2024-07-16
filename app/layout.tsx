@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
+import { commonTwitterOpenGraph } from "@/data/twitter";
 import * as Default from "./components/layouts/Index";
 
 export const metadata: Metadata = {
@@ -14,6 +15,9 @@ export const metadata: Metadata = {
   openGraph: {
     ...site.defaultOpenGraph,
     ...commonOpenGraph
+  },
+  twitter: {
+    ...commonTwitterOpenGraph
   }
 };
 

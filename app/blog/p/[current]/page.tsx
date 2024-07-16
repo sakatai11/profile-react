@@ -3,6 +3,7 @@ import { PAGE_NAVI } from "@/types/cms/setting";
 import CurrentCategoryPage from "../../[categoryId]/p/[current]/page";
 import { blogSite } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
+import { commonTwitterOpenGraph } from "@/data/twitter";
 import type { Metadata } from "next";
 
 type Props = {
@@ -18,6 +19,9 @@ export const metadata: Metadata = {
   openGraph: {
     ...blogSite.openGraph,
     ...commonOpenGraph
+  },
+  twitter: {
+    ...commonTwitterOpenGraph
   }
 };
 
