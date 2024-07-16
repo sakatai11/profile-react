@@ -6,6 +6,7 @@ import { PAGE_NAVI } from "@/types/cms/setting";
 import type { Metadata } from "next";
 import { ArticleSite } from "@/data/site";
 import * as Article from "@/features/article/conponents/Index";
+import dummy from "@/public/dummy.png";
 // シンタックスハイライト
 import { load } from 'cheerio';
 import { createHighlighter } from "shiki";
@@ -20,7 +21,15 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     return {
       title: article.title,
-      description: ArticleSite.description
+      description: ArticleSite.description,
+      openGraph : {
+        url: `/article/${params.articleId}`,
+        images: [
+          {
+            url: article.eyecatch?.url ? article.eyecatch.url : dummy.src
+          }
+        ],
+      }
     };
 }
 

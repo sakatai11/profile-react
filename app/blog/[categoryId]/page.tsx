@@ -17,7 +17,10 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     return {
       title: category.category,
-      description: `${category.category}の記事一覧です。`
+      description: `${category.category}の記事一覧です。`,
+      openGraph : {
+        url: `/blog/${params.categoryId}`
+      }
     };
 }
 

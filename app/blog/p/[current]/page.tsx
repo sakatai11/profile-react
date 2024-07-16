@@ -13,7 +13,8 @@ type Props = {
 
 export const metadata: Metadata = {
   title: BlogSite.title,
-  description: BlogSite.description
+  description: BlogSite.description,
+  openGraph: BlogSite.openGraph
 };
 
 export async function generateStaticParams() {

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     template: Site.titleTemplate
   },
   description: Site.defaultDescription,
+  openGraph: {
+    ...Site.defaultOpenGraph
+  }
 };
 
 export default function RootLayout({
