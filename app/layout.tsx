@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 // import { Inter } from "next/font/google";
 import "./globals.css";
-import { Site } from "@/data/site";
+import { site } from "@/data/site";
+import { commonOpenGraph } from "@/data/ogp";
 import * as Default from "./components/layouts/Index";
 
 export const metadata: Metadata = {
   title: {
-    default: Site.defaultTitle,
-    template: Site.titleTemplate
+    default: site.defaultTitle,
+    template: site.titleTemplate
   },
-  description: Site.defaultDescription,
+  description: site.defaultDescription,
   openGraph: {
-    ...Site.defaultOpenGraph
+    ...site.defaultOpenGraph,
+    ...commonOpenGraph
   }
 };
 

@@ -1,7 +1,8 @@
 import { getBlogArticle } from "@/libs/microcms";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import CurrentCategoryPage from "../../[categoryId]/p/[current]/page";
-import { BlogSite } from "@/data/site";
+import { blogSite } from "@/data/site";
+import { commonOpenGraph } from "@/data/ogp";
 import type { Metadata } from "next";
 
 type Props = {
@@ -12,10 +13,11 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: BlogSite.title,
-  description: BlogSite.description,
+  title: blogSite.title,
+  description: blogSite.description,
   openGraph: {
-    ...BlogSite.openGraph
+    ...blogSite.openGraph,
+    ...commonOpenGraph
   }
 };
 

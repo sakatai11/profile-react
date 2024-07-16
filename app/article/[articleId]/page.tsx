@@ -4,7 +4,7 @@ import { createTableOfContents } from "@/libs/utils";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import type { Metadata } from "next";
-import { ArticleSite } from "@/data/site";
+import { articleSite } from "@/data/site";
 import * as Article from "@/features/article/conponents/Index";
 import dummy from "@/public/dummy.png";
 // シンタックスハイライト
@@ -21,7 +21,7 @@ export const generateMetadata = async ({ params }: Props): Promise<Metadata> => 
 
     return {
       title: article.title,
-      description: ArticleSite.description,
+      description: articleSite.description,
       openGraph : {
         url: new URL(`/article/${params.articleId}`,process.env.SERVER_DOMAIN || "").toString(),
         siteName: 'クリエイターさかの個人ウェブサイト',

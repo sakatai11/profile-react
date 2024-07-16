@@ -1,12 +1,14 @@
 import CategoryPage from "./[categoryId]/page";
 import type { Metadata } from "next";
-import { BlogSite } from "@/data/site";
+import { blogSite } from "@/data/site";
+import { commonOpenGraph } from "@/data/ogp";
 
 export const metadata: Metadata = {
-  title: BlogSite.title,
-  description: BlogSite.description,
+  title: blogSite.title,
+  description: blogSite.description,
   openGraph: {
-    ...BlogSite.openGraph
+    ...blogSite.openGraph,
+    ...commonOpenGraph
   }
 };
 

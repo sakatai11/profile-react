@@ -1,15 +1,17 @@
 import { getProfile } from "@/libs/microcms";
 import type { Metadata } from "next";
-import { ProfileSite } from "@/data/site";
+import { profileSite } from "@/data/site";
+import { commonOpenGraph } from "@/data/ogp";
 import MotionWrapper from "../components/motion/motionWrapper";
 import Title from "../components/elements/title/Index";
 import * as Profile from "@/features/profile/conponents/Index" 
 
 export const metadata: Metadata = {
-  title: ProfileSite.title,
-  description: ProfileSite.description,
+  title: profileSite.title,
+  description: profileSite.description,
   openGraph: {
-    ...ProfileSite.openGraph
+    ...profileSite.openGraph,
+    ...commonOpenGraph
   }
 };
 

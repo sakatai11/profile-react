@@ -2,7 +2,8 @@ import { getBlogArticle, getCategory } from "@/libs/microcms";
 import MotionWrapper from "@/app/components/motion/motionWrapper";
 import Title from "@/app/components/elements/title/Index";
 import * as Blog from "@/features/blog/conponents/Index";
-import { BlogSite } from "@/data/site";
+import { blogSite } from "@/data/site";
+import { commonOpenGraph } from "@/data/ogp";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import type { Metadata } from "next";
@@ -17,15 +18,12 @@ type Props = {
 export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
   const { category } = await getCategory(params.categoryId);
 
-  // BlogSite から url を除外
-  const { url, ...restBlogSite } = BlogSite.openGraph;
-
     return {
       title: category.category,
       description: `${category.category}の記事一覧です。`,
       openGraph: {
-        url: new URL(`/blog/${params.categoryId}`,process.env.SERVER_DOMAIN || "").toString(),
-        ...restBlogSite
+        ...blogSite,
+        ...commonOpenGraph
       }
     };
 }
