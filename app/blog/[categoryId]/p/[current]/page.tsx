@@ -4,6 +4,7 @@ import Title from "@/app/components/elements/title/Index";
 import * as Blog from "@/features/blog/conponents/Index";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
+import type { Metadata } from "next";
 
 type Props = {
   params: {
@@ -11,6 +12,15 @@ type Props = {
     categoryId: string;
   };
 };
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { category } = await getCategory(params.categoryId);
+
+    return {
+      title: category.category,
+      description: `${category.category}の記事一覧です。`
+    };
+}
 
 export async function generateStaticParams() {
   const { categories } = await getCategory();

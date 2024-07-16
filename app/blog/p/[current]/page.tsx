@@ -1,12 +1,19 @@
 import { getBlogArticle } from "@/libs/microcms";
 import { PAGE_NAVI } from "@/types/cms/setting";
 import CurrentCategoryPage from "../../[categoryId]/p/[current]/page";
+import { BlogSite } from "@/data/site";
+import type { Metadata } from "next";
 
 type Props = {
   params: {
     categoryId: string;
     current: string;
   };
+};
+
+export const metadata: Metadata = {
+  title: BlogSite.title,
+  description: BlogSite.description
 };
 
 export async function generateStaticParams() {

@@ -3,6 +3,8 @@ import MotionWrapper from "@/app/components/motion/motionWrapper";
 import { createTableOfContents } from "@/libs/utils";
 import { notFound } from "next/navigation";
 import { PAGE_NAVI } from "@/types/cms/setting";
+import type { Metadata } from "next";
+import { ArticleSite } from "@/data/site";
 import * as Article from "@/features/article/conponents/Index";
 // シンタックスハイライト
 import { load } from 'cheerio';
@@ -12,6 +14,15 @@ type Props = {
   params: {articleId: string};
   // sarchParams: { [key: string]: string | string[] | undefined };
 };
+
+export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+  const { article } = await getBlogArticleDetail(params.articleId);
+
+    return {
+      title: article.title,
+      description: ArticleSite.description
+    };
+}
 
 export async function generateStaticParams() {
   // 静的ルート生成
