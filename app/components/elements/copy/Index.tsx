@@ -6,10 +6,11 @@ type CopyProps = {
 }
 
 const Copy = ({children}:CopyProps):JSX.Element => {
-  const url = typeof window !== 'undefined' ? window.location.href : '';
   const [copied, setCopied] = useState(false);
-
+  
   const clickHandler = async () => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+
     try {
       await navigator.clipboard.writeText(url)
       setCopied(true);
