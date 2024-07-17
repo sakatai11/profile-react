@@ -118,6 +118,7 @@ export default async function ArticlePage({params}: Props) {
       <MotionWrapper>
         <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
       </MotionWrapper>
+      <Article.ArticleShare />
       {
         blogs.contents.length > 1 ? (
           <Article.ArticleCategory contents={ blogs.contents } param={param} />

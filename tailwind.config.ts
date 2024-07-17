@@ -31,6 +31,7 @@ const config: Config = {
       // },
       backgroundImage: {
         'anker-icon': "url('/anker-icon.svg')",
+        'share-icon': "url('/share-icon.svg')"
       },
       backgroundSize: {
         13: "13px",

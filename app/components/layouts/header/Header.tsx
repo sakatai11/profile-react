@@ -52,9 +52,7 @@ const Header = () => {
   return (
     <header className="py-5 md:py-3 px-7 md:px-5 w-full fixed z-50 duration-500 backdrop-blur-md">
       <div className="flex justify-between items-center">
-        {
-          topLink.map(({name, href}) => (
-        <Link href={href} key={name}>
+        <Link href={topLink.href} key={topLink.name}>
           <Image 
             src="/home-img.svg"
             height={24}
@@ -62,8 +60,6 @@ const Header = () => {
             alt="イラスト"
           />
         </Link>
-          ))
-        }
         <div className="flex justify-center gap-7">
           {
             pageLinks.map(({name, href}) => (
