@@ -12,7 +12,6 @@ const SnsBtn = ({url, title}:SnsProps):JSX.Element => {
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
-
   const accountName = commonTwitterOpenGraph.site.replace(/^@/, '');
 
 // 事前に分岐処理を行う
