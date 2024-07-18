@@ -6,22 +6,25 @@ import clipIcon from "@/public/clip-icon.svg";
 type ShareLink = {
   alt: string;
   src: string;
+  url?: string;
 };
 
 /** 各種アカウントのシェアリンク */
 export const shareLinks: ShareLink[] = [
   {
     alt: "X-icon",
-    src: XIcon
+    src: XIcon,
+    url: "https://twitter.com/share?url="
   },
   {
     alt: "facebook-icon",
-    src: facebookIcon
-    
+    src: facebookIcon,
+    url: "https://www.facebook.com/sharer/sharer.php?u="
   },
   {
     alt: "line-icon",
-    src: lineIcon
+    src: lineIcon,
+    url: "https://social-plugins.line.me/lineit/share?url="
   }
 ];
 

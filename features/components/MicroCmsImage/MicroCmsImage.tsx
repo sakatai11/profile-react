@@ -13,7 +13,7 @@ export default function MicroCmsImage ({
 }:MicroCMSImageProps):JSX.Element {
 	return (
 		<Image 
-			src={src ? (`${src}?fm=webp&w=${width}&h=${height}&${option}&${format}`) : dummy}
+			src={src ? (`${src}?fm=webp&w=${width}&h=${height}&${option}&${format}`) : dummy.src}
 			width={width}
 			height={height}
 			alt={alt}

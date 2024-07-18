@@ -2,14 +2,14 @@
 import { useState } from "react";
 
 type CopyProps = {
-  children: React.ReactNode
+  url: string;
+  children: React.ReactNode;
 }
 
-const Copy = ({children}:CopyProps):JSX.Element => {
+const Copy = ({url, children}:CopyProps):JSX.Element => {
   const [copied, setCopied] = useState(false);
   
   const clickHandler = async () => {
-    const url = typeof window !== 'undefined' ? window.location.href : '';
 
     try {
       await navigator.clipboard.writeText(url)
