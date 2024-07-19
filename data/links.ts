@@ -18,6 +18,10 @@ export const pageLinks: PageLink[] = [
   {
     name: "Blog",
     href: "/blog"
+  },
+  {
+    name: "Contact",
+    href: "/contact"
   }
 ];
 

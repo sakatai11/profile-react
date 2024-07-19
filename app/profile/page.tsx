@@ -1,8 +1,6 @@
 import { getProfile } from "@/libs/microcms";
 import type { Metadata } from "next";
 import { profileSite } from "@/data/site";
-import { commonOpenGraph } from "@/data/ogp";
-import { commonTwitterOpenGraph } from "@/data/twitter";
 import MotionWrapper from "../components/motion/motionWrapper";
 import Title from "../components/elements/title/Index";
 import * as Profile from "@/features/profile/conponents/Index" 
