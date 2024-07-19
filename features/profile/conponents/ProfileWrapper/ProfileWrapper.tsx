@@ -23,6 +23,7 @@ const ProfileWrapper = ({contents}:ProfileDataProps):JSX.Element => {
             width={260}
             alt="イラスト"
             className="m-auto"
+            priority
             />
         </div>
         <div className="flex justify-start items-center gap-8">

@@ -27,6 +27,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
                   width={20}
                   alt="arrow-left"
                   className="rotate-90"
+                  priority
                 />
               </Link>
             ) : (
@@ -37,6 +38,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
                   width={20}
                   alt="arrow-left"
                   className="rotate-90"
+                  priority
                 />
               </Link>
             )}
@@ -68,6 +70,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
               width={20}
               alt="arrow-right"
               className="-rotate-90"
+              priority
               />
             </Link>
           </li>

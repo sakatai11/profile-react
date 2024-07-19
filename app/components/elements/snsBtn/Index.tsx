@@ -43,6 +43,7 @@ const processedLinks = shareLinks.map((shareLink) => {
                 width={35}
                 height={35}
                 alt={shareLink.alt}
+                priority
               />
             </Link>
           </li>

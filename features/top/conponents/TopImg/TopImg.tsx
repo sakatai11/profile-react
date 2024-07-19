@@ -11,6 +11,7 @@ const TopImg = () => {
           width={248}
           alt="イラスト"
           className="mb-6 md:h-44 md:w-44"
+          priority
         />
       </div>
     </>

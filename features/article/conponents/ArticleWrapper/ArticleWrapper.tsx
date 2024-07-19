@@ -35,7 +35,7 @@ const ArticleWrapper = ({articleData}:AricleDataProps):JSX.Element => {
         }
         <time className="text-sm block">
           <span className="flex items-center">
-            <Image src={time} width={15} height={15} alt="公開日" className="mr-1"/>
+            <Image src={time} width={15} height={15} alt="公開日" className="mr-1" priority/>
             {new Date(contents.publishedAt).toLocaleDateString("ja-JP", options)}
           </span>
         </time>
