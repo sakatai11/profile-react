@@ -22,9 +22,7 @@ export const microCMSClient = createClient({
 export const getProfile = async () => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
-      next: {
-        revalidate: 600, // 600秒キャッシュを適用
-      },
+        cache: 'force-cache', // キャッシュを強制的に使用
     },
     endpoint: "profile",
     queries: {
@@ -42,7 +40,7 @@ export const getBlogArticle = async (param?: string, queries?: { limit?: number;
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
       next: {
-        revalidate: 600, // 600秒キャッシュを適用
+        revalidate: 86400, // 86400秒（24時間）キャッシュを適用
       },
     },
     endpoint: "blog",
@@ -64,9 +62,7 @@ export const getBlogArticle = async (param?: string, queries?: { limit?: number;
 export const getCategory = async (param?: string) => {
   const result = await microCMSClient.getList<Category>({
     customRequestInit: {
-      next: {
-        revalidate: 600, // 600秒キャッシュを適用
-      },
+        cache: 'force-cache', // キャッシュを強制的に使用
     },
     endpoint: "category",
     queries: {
@@ -85,9 +81,7 @@ export const getCategory = async (param?: string) => {
 export const getBlogArticleDetail = async (contentId:string) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-        next: {
-          revalidate: 600, // 600秒キャッシュを適用
-        },
+          cache: 'force-cache', // キャッシュを強制的に使用
       },
       endpoint: "blog",
       contentId,
