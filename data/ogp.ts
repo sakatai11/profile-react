@@ -14,7 +14,7 @@ export const commonOpenGraph:CommonOpenGraph  = {
     {
       width: '260',
       height: '260',
-      url: '/illustration.png'
+      url: '/illustration.webp'
     }
   ],
   locale: 'jp',
