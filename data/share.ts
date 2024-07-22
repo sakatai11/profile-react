@@ -1,6 +1,6 @@
-import facebookIcon from "@/public/facebook-icon.svg";
+import facebookIcon from "@/public/facebook-icon.png";
 import XIcon from "@/public/X-icon.svg";
-import lineIcon from "@/public/line-icon.svg";
+import lineIcon from "@/public/line-icon.png";
 import clipIcon from "@/public/clip-icon.svg";
 
 type ShareLink = {
