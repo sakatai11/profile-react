@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-// import { Inter } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { commonOpenGraph } from "@/data/ogp";
 import { commonTwitterOpenGraph } from "@/data/twitter";
 import * as Default from "./components/layouts/Index";
+
+const NotoSansJPFont = Noto_Sans_JP({ 
+  weight: ["400", "500", "700"], 
+  display: "swap" ,
+  subsets: ["latin"] 
+});
 
 export const metadata: Metadata = {
   title: {
@@ -29,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="ja">
-      <body className={'font-noto-sans-jp custom-font-features'}>
+      <body className={`${NotoSansJPFont.className} custom-font-features`}>
         <Default.Header />
           {children}
         <Default.Footer />

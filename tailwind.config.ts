@@ -24,7 +24,6 @@ const config: Config = {
       },
       fontFamily: {
         'spartan': ['Spartan', 'sans-serif'],
-        'noto-sans-jp': ['Noto Sans JP', 'sans-serif']
       },
       // flexGrow: {
       //   1.3: "1.3",
