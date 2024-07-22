@@ -1,5 +1,5 @@
 import Image from "next/image";
-import illustration from "/public/illustration.png";
+import illustration from "/public/illustration.webp";
 
 const TopImg = () => {
   return (
