@@ -8,7 +8,7 @@ const TopNav = () => {
         <Link
           href={href}
           key={name}
-          className="hover-img relative after:content-[''] after:w-6/12 after:h-1 after:bg-skyblue after:block after:m-auto after:rounded inline-block font-spartan font-normal text-2xl md:text-lg tracking-wider leading-relaxed"
+          className="hover-img relative inline-block font-spartan text-2xl font-normal leading-relaxed tracking-wider after:m-auto after:block after:h-1 after:w-6/12 after:rounded after:bg-skyblue after:content-[''] md:text-lg"
         >
           {name}
         </Link>

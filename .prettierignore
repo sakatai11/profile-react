@@ -3,9 +3,5 @@ node_modules/
 out/
 public/
 package-lock.json
-next.config.mjs
-tsconfig.json
-next-env.d.ts
 postcss.config.mjs
-*.cjs
-*.mjs
+next.config.mjs

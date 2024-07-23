@@ -30,12 +30,12 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
           <Link
             href={`/blog/${category.id}`}
             key={category.id}
-            className="text-xs py-1 px-1.5 border-[1px] border-black rounded-md hover:bg-black hover:text-white"
+            className="rounded-md border border-black px-1.5 py-1 text-xs hover:bg-black hover:text-white"
           >
             {category.category}
           </Link>
         ))}
-        <time className="text-sm block">
+        <time className="block text-sm">
           <span className="flex items-center">
             <Image
               src={time}
@@ -52,7 +52,7 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
           </span>
         </time>
       </div>
-      <h1 className="text-4xl font-medium md:text-2xl mt-5 leading-snug">
+      <h1 className="mt-5 text-4xl font-medium leading-snug md:text-2xl">
         {contents.title}
       </h1>
       <div className="mt-8">
@@ -61,7 +61,7 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
           width={contents.eyecatch?.width || 1280}
           height={contents.eyecatch?.height || 800}
           alt="アイキャッチ"
-          className="rounded-xl object-cover aspect-[16/10]"
+          className="aspect-[16/10] rounded-xl object-cover"
         />
       </div>
       {toc ? <ArticleTocTable toc={toc} /> : undefined}

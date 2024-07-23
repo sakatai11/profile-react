@@ -8,8 +8,8 @@ type Content = {
 
 export async function Tab({ categoryId, categories }: Content) {
   return (
-    <div className="w-full mt-28 md:mt-16">
-      <div className="flex justify-between items-center mx-[20%] md:mx-0">
+    <div className="mt-28 w-full md:mt-16">
+      <div className="mx-[20%] flex items-center justify-between md:mx-0">
         <p className="md:text-xs">
           <Link
             href={'/blog'}

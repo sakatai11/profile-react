@@ -12,16 +12,16 @@ const ArticleTocTable = ({
 
   return toc.length > 0 ? (
     <div className="my-14">
-      <div className="p-9 md:p-5 border-solid border-2 border-[#CED1D9] rounded-lg">
-        <p className="text-xl font-bold mb-2.5">目次</p>
+      <div className="rounded-lg border-2 border-solid border-[#CED1D9] p-9 md:p-5">
+        <p className="mb-2.5 text-xl font-bold">目次</p>
         <ul>
           {toc.map((data) => (
             <li
               key={data.id}
               className={
                 data.name === 'h2'
-                  ? 'font-bold mb-1.5 bg-anker-icon bg-[2px] bg-no-repeat pl-8 last:mb-0'
-                  : 'font-medium mb-2.5 bg-anker-icon bg-13 bg-[33px] bg-no-repeat pl-14 last:mb-0'
+                  ? 'mb-1.5 bg-anker-icon bg-[2px] bg-no-repeat pl-8 font-bold last:mb-0'
+                  : 'mb-2.5 bg-anker-icon bg-13 bg-[33px] bg-no-repeat pl-14 font-medium last:mb-0'
               }
             >
               <Link href={`#${data.id}`} className="hover:underline">

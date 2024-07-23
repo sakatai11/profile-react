@@ -15,11 +15,11 @@ const ArticleCategory = ({ contents, param }: BlogDataProps): JSX.Element => {
   return (
     <section>
       <div className="mx-[12.5%] md:mx-0">
-        <div className="pt-14 border-t-2 border-[#CED1D9]">
-          <h2 className="relative text-[1.625rem] md:text-2xl pl-6 font-medium before:absolute before:content-[''] before:w-1 before:h-full before:top-0 before:left-0 before:bg-skyblue before:block before:rounded">
+        <div className="border-t-2 border-[#CED1D9] pt-14">
+          <h2 className="relative pl-6 text-[1.625rem] font-medium before:absolute before:left-0 before:top-0 before:block before:h-full before:w-1 before:rounded before:bg-skyblue before:content-[''] md:text-2xl">
             関連記事
           </h2>
-          <div className="mt-9 grid grid-cols-3 md:grid-cols-1 md:gap-y-16 gap-x-[5.5vw]">
+          <div className="mt-9 grid grid-cols-3 gap-x-[5.5vw] md:grid-cols-1 md:gap-y-16">
             {filteredContents.length > 0
               ? filteredContents.slice(0, 3).map((article) => (
                   <article className="flex flex-col" key={article.id}>
@@ -35,18 +35,18 @@ const ArticleCategory = ({ contents, param }: BlogDataProps): JSX.Element => {
                           width={article.eyecatch?.width || 1280}
                           height={article.eyecatch?.height || 800}
                           alt="アイキャッチ"
-                          className="rounded-xl object-cover aspect-[16/10] shadow"
+                          className="aspect-[16/10] rounded-xl object-cover shadow"
                         />
                         {article.categories.map((category) => (
                           <span
-                            className="absolute text-sm md:text-base bottom-0 left-0 inline-block bg-white mb-2.5 ml-2.5 px-2 py-1.5 rounded-md"
+                            className="absolute bottom-0 left-0 mb-2.5 ml-2.5 inline-block rounded-md bg-white px-2 py-1.5 text-sm md:text-base"
                             key={category.id}
                           >
                             {category.category}
                           </span>
                         ))}
                       </div>
-                      <p className="text-base md:text-2xl font-semibold md:font-medium m-2.5">
+                      <p className="m-2.5 text-base font-semibold md:text-2xl md:font-medium">
                         {article.title}
                       </p>
                     </Link>

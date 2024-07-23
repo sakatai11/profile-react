@@ -35,4 +35,5 @@ next-env.d.ts
 # 以下は追跡しない
 node_modules/
 .vscode/
+.eslintcache
 

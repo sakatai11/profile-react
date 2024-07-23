@@ -25,7 +25,7 @@ const Copy = ({ url, children }: CopyProps): JSX.Element => {
         {children}
       </button>
       {copied && (
-        <span className="absolute -top-6 -left-6 text-[10px] w-max">
+        <span className="absolute -left-6 -top-6 w-max text-[10px]">
           コピーしました！
         </span>
       )}

@@ -3,8 +3,8 @@ import MotionWrapper from './components/motion/motionWrapper';
 
 export default function TopPage() {
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full">
-      <div className="w-full flex flex-col items-center justify-end grow">
+    <div className="flex size-full flex-col items-center justify-center">
+      <div className="flex w-full grow flex-col items-center justify-end">
         <MotionWrapper delay={0}>
           <Top.TopImg />
         </MotionWrapper>
@@ -14,7 +14,7 @@ export default function TopPage() {
       </div>
       <MotionWrapper
         delay={0.4}
-        className={'flex flex-col justify-center grow'}
+        className={'flex grow flex-col justify-center'}
       >
         <Top.TopNav />
       </MotionWrapper>

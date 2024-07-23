@@ -19,11 +19,11 @@ const ArticleShare = ({ param, title }: ParamProps): JSX.Element => {
   return (
     <section>
       <div className="mx-[12.5%] md:mx-0">
-        <div className="py-14 border-t-2 border-[#CED1D9]">
-          <h2 className="flex items-center w-fit font-medium mx-auto before:mr-4 before:bg-share-icon before:inline-block before:bg-no-repeat before:w-5 before:h-5 before:bg-contain before:align-middle">
+        <div className="border-t-2 border-[#CED1D9] py-14">
+          <h2 className="mx-auto flex w-fit items-center font-medium before:mr-4 before:inline-block before:size-5 before:bg-share-icon before:bg-contain before:bg-no-repeat before:align-middle">
             記事をシェア
           </h2>
-          <ul className="flex items-center justify-center gap-14 md:gap-10 mt-14">
+          <ul className="mt-14 flex items-center justify-center gap-14 md:gap-10">
             <SnsBtn url={url} title={title} />
             <li className="relative">
               <Copy url={url}>

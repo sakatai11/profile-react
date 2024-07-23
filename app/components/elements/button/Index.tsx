@@ -6,10 +6,10 @@ type LinkButtonProps = {
 
 const LinkButton = ({ text }: LinkButtonProps): JSX.Element => {
   return (
-    <div className="py-14 w-[320px] md:w-full text-center m-auto">
+    <div className="m-auto w-[320px] py-14 text-center md:w-full">
       <Link
         href="/blog"
-        className="p-3 block text-center bg-skyblue text-white rounded-lg duration-500 opacity-100 hover:opacity-70 hover:duration-500"
+        className="block rounded-lg bg-skyblue p-3 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
       >
         {text}
       </Link>

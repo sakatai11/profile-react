@@ -21,7 +21,7 @@ const BlogPagination = ({
 
   return (
     <nav className="my-20">
-      <ul className="flex justify-center items-center gap-5 md:mx-16">
+      <ul className="flex items-center justify-center gap-5 md:mx-16">
         {currentPage > 1 && (
           <li>
             {currentPage - 1 === 1 ? (
@@ -54,7 +54,7 @@ const BlogPagination = ({
         {pages.map((p) => (
           <li
             key={p}
-            className={`${'flex justify-center items-center w-10 h-auto aspect-square'} ${currentPage !== p ? 'hover:text-skyblue' : 'rounded-full border border-[#0094FF]'}`}
+            className={`${'flex aspect-square h-auto w-10 items-center justify-center'} ${currentPage !== p ? 'hover:text-skyblue' : 'rounded-full border border-skyblue'}`}
           >
             {currentPage !== p ? (
               p === 1 ? (

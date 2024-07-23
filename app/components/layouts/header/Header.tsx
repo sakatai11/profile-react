@@ -48,8 +48,8 @@ const Header = () => {
   }
 
   return (
-    <header className="py-5 md:py-3 px-7 md:px-5 w-full fixed z-50 duration-500 backdrop-blur-md">
-      <div className="flex justify-between items-center">
+    <header className="fixed z-50 w-full px-7 py-5 backdrop-blur-md duration-500 md:px-5 md:py-3">
+      <div className="flex items-center justify-between">
         <Link href={topLink.href} key={topLink.name}>
           <Image
             src="/home-img.svg"

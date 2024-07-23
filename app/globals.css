@@ -14,10 +14,10 @@ strong {
   @apply font-bold;
 }
 .h1Tit {
-  @apply text-5xl md:text-[28px] tracking-widest font-semibold leading-relaxed;
+  @apply text-5xl font-semibold leading-relaxed tracking-widest md:text-[28px];
 }
 .h1Tit::after {
-  @apply content-[''] block w-6/12 h-1.5 md:h-1 bg-[#0094FF] m-auto rounded;
+  @apply m-auto block h-1.5 w-6/12 rounded bg-[#0094FF] content-[''] md:h-1;
 }
 /* .calc-100 { height: calc(100vh - 65px);} */
 .calc-min-100 {
@@ -39,10 +39,10 @@ strong {
   opacity: 1;
 }
 .linkNav::after {
-  @apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-0 duration-300;
+  @apply m-auto block h-0.5 w-6/12 bg-[#000000] opacity-0 duration-300 content-[''];
 }
 .linkNav:hover::after {
-  @apply block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100 duration-700;
+  @apply m-auto block h-0.5 w-6/12 bg-[#000000] opacity-100 duration-700;
 }
 .container {
   max-width: 1280px;
@@ -51,7 +51,7 @@ strong {
   @apply text-sm;
 }
 .space > ul > li {
-  @apply first:mt-0 mt-3;
+  @apply mt-3 first:mt-0;
 }
 .custom-font-features {
   text-rendering: optimizeLegibility;
@@ -62,38 +62,38 @@ strong {
   @apply text-skyblue;
 }
 .aricleContents > h2 {
-  @apply relative text-[1.625rem] md:text-2xl pl-6 mt-16 font-bold;
+  @apply relative mt-16 pl-6 text-[1.625rem] font-bold md:text-2xl;
 }
 .aricleContents > h2::before {
-  @apply absolute content-[''] w-1 h-full top-0 left-0 bg-skyblue block rounded;
+  @apply absolute left-0 top-0 block h-full w-1 rounded bg-skyblue content-[''];
 }
 .aricleContents > h3 {
-  @apply text-[1.375rem] md:text-lg mt-9 font-bold;
+  @apply mt-9 text-[1.375rem] font-bold md:text-lg;
 }
 .aricleContents > ul,
 .aricleContents > div[data-filename] {
   @apply mt-9;
 }
 .aricleContents > p {
-  @apply mt-9 leading-8 md:leading-7 text-lg md:text-base;
+  @apply mt-9 text-lg leading-8 md:text-base md:leading-7;
 }
 .aricleContents > p > a {
   @apply break-words hover:underline;
 }
 .aricleContents > ul > li {
-  @apply relative pl-3.5 md:pl-4 text-lg md:text-base leading-8 md:leading-7;
+  @apply relative pl-3.5 text-lg leading-8 md:pl-4 md:text-base md:leading-7;
 }
 .aricleContents > ul > li > .indent {
   @apply absolute left-0 top-0;
 }
 .aricleContents > div[data-filename] > .filename {
-  @apply inline-block bg-[#dfdfdf] text-center py-1 px-4 rounded-t;
+  @apply inline-block rounded-t bg-[#dfdfdf] px-4 py-1 text-center;
 }
 .aricleContents > div[data-filename] > pre {
-  @apply rounded-se-lg  rounded-es-lg rounded-ee-lg p-3.5 overflow-x-scroll;
+  @apply overflow-x-scroll rounded-ee-lg rounded-es-lg rounded-se-lg p-3.5;
 }
 .aricleContents > figure {
-  @apply text-center mt-9;
+  @apply mt-9 text-center;
 }
 .aricleContents > figure > figcaption {
   @apply mt-4;

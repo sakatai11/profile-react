@@ -11,7 +11,7 @@ export default function Template({ children }: Children): JSX.Element {
   // console.log('anme');
 
   return (
-    <main className={pathName === '/' ? 'h-svh' : 'pt-[6.45rem] calc-min-100'}>
+    <main className={pathName === '/' ? 'h-svh' : 'calc-min-100 pt-[6.45rem]'}>
       {pathName === '/' ? children : <Section>{children}</Section>}
     </main>
   );

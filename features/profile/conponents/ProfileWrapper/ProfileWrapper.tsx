@@ -13,10 +13,10 @@ type ProfileDataProps = {
 
 const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
   return (
-    <div className="w-full mt-28 md:mt-11">
-      <div className="flex md:flex-col justify-center gap-24 md:gap-12 mx-[12.5%] md:mx-0 md:mb-10">
-        <div className="flex flex-col items-center flex-1 gap-6">
-          <div className="mt-2 md:h-44 md:w-44">
+    <div className="mt-28 w-full md:mt-11">
+      <div className="mx-[12.5%] flex justify-center gap-24 md:mx-0 md:mb-10 md:flex-col md:gap-12">
+        <div className="flex flex-1 flex-col items-center gap-6">
+          <div className="mt-2 md:size-44">
             <Image
               src={illustration}
               height={260}
@@ -26,7 +26,7 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
               priority
             />
           </div>
-          <div className="flex justify-start items-center gap-8">
+          <div className="flex items-center justify-start gap-8">
             {contents.map((profile) =>
               profile.link_icon.map((icon) => {
                 // URLからファイル名を抽出
@@ -37,7 +37,7 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
                   (link) => link.icon === iconName,
                 );
                 return (
-                  <div key={iconName} className="w-5 h-5">
+                  <div key={iconName} className="size-5">
                     <Link
                       href={link ? link.href : '#'}
                       rel="noopener noreferrer"
@@ -64,7 +64,7 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
                   {profile.name}
                 </p>
               </div>
-              <div className="space pt-[30px] border-solid border-t border-black">
+              <div className="space border-t border-solid border-black pt-[30px]">
                 {parse(profile.my_info)}
               </div>
             </React.Fragment>

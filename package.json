@@ -6,8 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prettier": "prettier --write app data features libs types"
+    "lint": "next lint --fix",
+    "prettier": "prettier --write .",
+    "format": "npm run lint && npm run prettier"
   },
   "dependencies": {
     "@alloc/quick-lru": "^5.2.0",
@@ -28,8 +29,11 @@
     "@typescript-eslint/parser": "^7.17.0",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-tailwindcss": "^3.17.4",
     "postcss": "^8",
     "prettier": "^3.3.3",
+    "prettier-plugin-tailwindcss": "^0.6.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.2"
   }

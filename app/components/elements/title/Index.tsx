@@ -3,8 +3,8 @@ type Props = {
 };
 
 const Title = ({ text }: Props): JSX.Element => (
-  <div className="flex flex-col items-center w-auto">
-    <h1 className="font-spartan font-normal h1Tit text-center">{text}</h1>
+  <div className="flex w-auto flex-col items-center">
+    <h1 className="h1Tit text-center font-spartan font-normal">{text}</h1>
   </div>
 );
 
