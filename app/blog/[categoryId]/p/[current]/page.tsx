@@ -33,13 +33,18 @@ export async function generateStaticParams() {
         limit: PAGE_NAVI.NEW_LIST_LIMIT,
       });
 
+      // // 9記事のみ、もしくはそれ以下の場合は空の配列を返す
+      // if (blogs.totalCount <= PAGE_NAVI.NEW_LIST_LIMIT) {
+      //   return [];
+      // }
+
       const totalPages = Math.ceil(blogs.totalCount / PAGE_NAVI.NEW_LIST_LIMIT);
 
       return [...Array(totalPages)]
         .map((_, i) => {
           const currentPage = (i + 1).toString();
-          // 各カテゴリの最初のページを除外
-          if (currentPage === '1') {
+          // totalPagesが2以降存在する場合、各カテゴリの最初のページを除外
+          if (currentPage === '1' && totalPages > 1) {
             return null;
           }
           return {

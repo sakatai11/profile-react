@@ -28,8 +28,8 @@ export async function generateStaticParams() {
   return [...Array(totalPages)]
     .map((_, i) => {
       const currentPage = (i + 1).toString();
-      // 各カテゴリの最初のページを除外
-      if (currentPage === '1') {
+      // totalPagesが2以降存在する場合、各カテゴリの最初のページを除外
+      if (currentPage === '1' && totalPages > 1) {
         return null;
       }
       return {

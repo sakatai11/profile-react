@@ -20,10 +20,13 @@ export const microCMSClient = createClient({
 
 // プロフィールの取得
 export const getProfile = async () => {
+  const customRequestInit: RequestInit | undefined =
+    process.env.NODE_ENV === 'production'
+      ? { cache: 'force-cache' as RequestCache }
+      : undefined;
+
   const result = await microCMSClient.getList<ProfileContents>({
-    customRequestInit: {
-      cache: 'force-cache', // キャッシュを強制的に使用
-    },
+    customRequestInit,
     endpoint: 'profile',
     queries: {
       fields: ['id', 'name', 'link_icon', 'my_info'],
@@ -40,12 +43,13 @@ export const getBlogArticle = async (
   param?: string,
   queries?: { limit?: number; offset?: number },
 ) => {
+  const customRequestInit: RequestInit | undefined =
+    process.env.NODE_ENV === 'production'
+      ? { next: { revalidate: 86400 } }
+      : undefined;
+
   const result = await microCMSClient.getList<BlogList>({
-    customRequestInit: {
-      next: {
-        revalidate: 86400, // 86400秒（24時間）キャッシュを適用
-      },
-    },
+    customRequestInit,
     endpoint: 'blog',
     queries: {
       limit: queries?.limit,
@@ -63,10 +67,13 @@ export const getBlogArticle = async (
 
 // カテゴリIDの取得
 export const getCategory = async (param?: string) => {
+  const customRequestInit: RequestInit | undefined =
+    process.env.NODE_ENV === 'production'
+      ? { cache: 'force-cache' as RequestCache }
+      : undefined;
+
   const result = await microCMSClient.getList<Category>({
-    customRequestInit: {
-      cache: 'force-cache', // キャッシュを強制的に使用
-    },
+    customRequestInit,
     endpoint: 'category',
     queries: {
       fields: ['id', 'category'],
@@ -82,10 +89,13 @@ export const getCategory = async (param?: string) => {
 
 // 特定の記事の取得
 export const getBlogArticleDetail = async (contentId: string) => {
+  const customRequestInit: RequestInit | undefined =
+    process.env.NODE_ENV === 'production'
+      ? { cache: 'force-cache' as RequestCache }
+      : undefined;
+
   const result = await microCMSClient.getListDetail<Article>({
-    customRequestInit: {
-      cache: 'force-cache', // キャッシュを強制的に使用
-    },
+    customRequestInit,
     endpoint: 'blog',
     contentId,
     queries: {
