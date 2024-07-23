@@ -34,7 +34,9 @@ export const generateMetadata = async ({
         {
           width: article.eyecatch?.width ? article.eyecatch?.width : '1280',
           height: article.eyecatch?.height ? article.eyecatch?.height : '800',
-          url: article.eyecatch?.url ? article.eyecatch.url : dummy.src,
+          url: article.eyecatch?.url
+            ? article.eyecatch.url
+            : new URL(dummy.src, process.env.SERVER_DOMAIN || '').toString(), // URLを生成
         },
       ],
       locale: 'jp',
