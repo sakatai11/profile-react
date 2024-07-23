@@ -1,3 +1,3 @@
-import ProfileWrapper from "./ProfileWrapper/ProfileWrapper";
+import ProfileWrapper from './ProfileWrapper/ProfileWrapper';
 
 export { ProfileWrapper };

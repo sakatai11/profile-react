@@ -1,4 +1,4 @@
-import { Images } from "@/types/ogp/seoOgp";
+import { Images } from '@/types/ogp/seoOgp';
 
 type CommonOpenGraph = {
   siteName: string;
@@ -8,14 +8,17 @@ type CommonOpenGraph = {
 };
 
 // top,profile,blog対応
-export const commonOpenGraph:CommonOpenGraph  = {
+export const commonOpenGraph: CommonOpenGraph = {
   siteName: 'クリエイターさかの個人ウェブサイト',
   images: [
     {
       width: '260',
       height: '260',
-      url: new URL('/illustration.webp', process.env.SERVER_DOMAIN || "").toString(), // URLを生成
-    }
+      url: new URL(
+        '/illustration.webp',
+        process.env.SERVER_DOMAIN || '',
+      ).toString(), // URLを生成
+    },
   ],
   locale: 'jp',
   type: 'website',

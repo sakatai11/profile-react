@@ -1,12 +1,12 @@
-import { MicroCMSDate, MicroCMSImage } from "microcms-js-sdk";
-import { Category } from "./category";
+import { MicroCMSDate, MicroCMSImage } from 'microcms-js-sdk';
+import { Category } from './category';
 
 export type Article = {
-	id: string;
+  id: string;
   publishedAt: string;
-	title: string;
-	categories: Category[];
-	content: string;
-	eyecatch?: MicroCMSImage;
-	toc_visible: boolean;
+  title: string;
+  categories: Category[];
+  content: string;
+  eyecatch?: MicroCMSImage;
+  toc_visible: boolean;
 } & MicroCMSDate;

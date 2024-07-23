@@ -1,3 +1,3 @@
-import NotFoundWrapper from "./NotFoundWrapper/NotFoundWrapper";
+import NotFoundWrapper from './NotFoundWrapper/NotFoundWrapper';
 
 export { NotFoundWrapper };

@@ -1,16 +1,21 @@
-import Link from "next/link";
-import Image from "next/image";
-import { PAGE_NAVI } from "@/types/cms/setting";
-import arrow from "@/public/anker-icon.svg"
+import Link from 'next/link';
+import Image from 'next/image';
+import { PAGE_NAVI } from '@/types/cms/setting';
+import arrow from '@/public/anker-icon.svg';
 
 type PaginationProps = {
-  basePath?:string;
+  basePath?: string;
   currentPage: number;
   totalCount: number;
   postlimit?: number;
 };
 
-const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.NEW_LIST_LIMIT,}: PaginationProps):JSX.Element => {
+const BlogPagination = ({
+  basePath,
+  currentPage,
+  totalCount,
+  postlimit = PAGE_NAVI.NEW_LIST_LIMIT,
+}: PaginationProps): JSX.Element => {
   const totalPages = Math.ceil(totalCount / postlimit);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
@@ -21,7 +26,7 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
           <li>
             {currentPage - 1 === 1 ? (
               <Link href={`/blog/${basePath}`}>
-                <Image 
+                <Image
                   src={arrow}
                   height={20}
                   width={20}
@@ -31,8 +36,10 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
                 />
               </Link>
             ) : (
-              <Link href={`${!basePath ? '/blog' : basePath}/p/${currentPage - 1}`}>
-                <Image 
+              <Link
+                href={`${!basePath ? '/blog' : basePath}/p/${currentPage - 1}`}
+              >
+                <Image
                   src={arrow}
                   height={20}
                   width={20}
@@ -45,12 +52,13 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
           </li>
         )}
         {pages.map((p) => (
-          <li key={p} className={`${"flex justify-center items-center w-10 h-auto aspect-square"} ${currentPage !== p ? "hover:text-skyblue" : "rounded-full border border-[#0094FF]"}`}>
+          <li
+            key={p}
+            className={`${'flex justify-center items-center w-10 h-auto aspect-square'} ${currentPage !== p ? 'hover:text-skyblue' : 'rounded-full border border-[#0094FF]'}`}
+          >
             {currentPage !== p ? (
               p === 1 ? (
-                <Link href={`/blog/${basePath}`}>
-                  {p}
-                </Link>
+                <Link href={`/blog/${basePath}`}>{p}</Link>
               ) : (
                 <Link href={`${!basePath ? '/blog' : basePath}/p/${p}`}>
                   {p}
@@ -63,14 +71,16 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
         ))}
         {currentPage < totalPages && (
           <li>
-            <Link href={`${!basePath ? '/blog' : basePath}/p/${currentPage + 1}`}>
-            <Image 
-              src={arrow}
-              height={20}
-              width={20}
-              alt="arrow-right"
-              className="-rotate-90"
-              priority
+            <Link
+              href={`${!basePath ? '/blog' : basePath}/p/${currentPage + 1}`}
+            >
+              <Image
+                src={arrow}
+                height={20}
+                width={20}
+                alt="arrow-right"
+                className="-rotate-90"
+                priority
               />
             </Link>
           </li>
@@ -78,7 +88,6 @@ const BlogPagination = ({basePath,currentPage,totalCount,postlimit = PAGE_NAVI.N
       </ul>
     </nav>
   );
-
 };
 
 export default BlogPagination;

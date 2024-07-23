@@ -2,7 +2,7 @@ export type Images = {
   width: string;
   height: string;
   url: string;
-}
+};
 
 export type OpenGraph = {
   url: string;

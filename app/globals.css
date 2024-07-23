@@ -1,38 +1,114 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@font-face {font-family: 'Spartan';src: url('/fonts/Spartan/Spartan-VariableFont_wght.ttf') format('truetype');font-weight: 100 900;font-style: normal;}
-header {-webkit-backdrop-filter: blur(12px);}
-strong {@apply font-bold}
-.h1Tit { @apply text-5xl md:text-[28px] tracking-widest font-semibold leading-relaxed}
-.h1Tit::after { @apply content-[''] block w-6/12 h-1.5 md:h-1 bg-[#0094FF] m-auto rounded} 
+@font-face {
+  font-family: 'Spartan';
+  src: url('/fonts/Spartan/Spartan-VariableFont_wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+header {
+  -webkit-backdrop-filter: blur(12px);
+}
+strong {
+  @apply font-bold;
+}
+.h1Tit {
+  @apply text-5xl md:text-[28px] tracking-widest font-semibold leading-relaxed;
+}
+.h1Tit::after {
+  @apply content-[''] block w-6/12 h-1.5 md:h-1 bg-[#0094FF] m-auto rounded;
+}
 /* .calc-100 { height: calc(100vh - 65px);} */
-.calc-min-100 { min-height: calc(100vh - 65px);}
-.hover-img::before { content: ''; position: absolute; top: -8px; right: -20px; display: block; width: 20px; height: 21.5px; background-image: url('/hover.svg'); background-size: cover; opacity: 0;}
-.hover-img:hover::before { opacity: 1;}
-.linkNav::after { @apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-0 duration-300}
-.linkNav:hover::after { @apply block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100 duration-700}
-.container {max-width: 1280px;}
-.text-14 {@apply text-sm}
-.space > ul > li {@apply first:mt-0 mt-3}
-.custom-font-features {text-rendering: optimizeLegibility; letter-spacing: 0.06em; font-weight: 300;}
-.isActive {@apply text-skyblue}
-.aricleContents > h2 {@apply relative text-[1.625rem] md:text-2xl pl-6 mt-16 font-bold}
-.aricleContents > h2::before {@apply absolute content-[''] w-1 h-full top-0 left-0 bg-skyblue block rounded} 
-.aricleContents > h3 {@apply text-[1.375rem] md:text-lg mt-9 font-bold}
-.aricleContents > ul,.aricleContents > div[data-filename] {@apply mt-9}
-.aricleContents > p {@apply mt-9 leading-8 md:leading-7 text-lg md:text-base}
-.aricleContents > p > a {@apply break-words hover:underline}
-.aricleContents > ul > li {@apply relative pl-3.5 md:pl-4 text-lg md:text-base leading-8 md:leading-7}
-.aricleContents > ul > li > .indent {@apply absolute left-0 top-0}
-.aricleContents > div[data-filename] > .filename {@apply inline-block bg-[#dfdfdf] text-center py-1 px-4 rounded-t}
-.aricleContents > div[data-filename] > pre {@apply rounded-se-lg  rounded-es-lg rounded-ee-lg p-3.5 overflow-x-scroll}
-.aricleContents > figure {@apply text-center mt-9}
-.aricleContents > figure > figcaption {@apply mt-4}
-.aricleContents > figure > img {@apply m-auto}
+.calc-min-100 {
+  min-height: calc(100vh - 65px);
+}
+.hover-img::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: -20px;
+  display: block;
+  width: 20px;
+  height: 21.5px;
+  background-image: url('/hover.svg');
+  background-size: cover;
+  opacity: 0;
+}
+.hover-img:hover::before {
+  opacity: 1;
+}
+.linkNav::after {
+  @apply content-[''] block w-6/12 h-0.5 bg-[#000000] m-auto opacity-0 duration-300;
+}
+.linkNav:hover::after {
+  @apply block w-6/12 h-0.5 bg-[#000000] m-auto opacity-100 duration-700;
+}
+.container {
+  max-width: 1280px;
+}
+.text-14 {
+  @apply text-sm;
+}
+.space > ul > li {
+  @apply first:mt-0 mt-3;
+}
+.custom-font-features {
+  text-rendering: optimizeLegibility;
+  letter-spacing: 0.06em;
+  font-weight: 300;
+}
+.isActive {
+  @apply text-skyblue;
+}
+.aricleContents > h2 {
+  @apply relative text-[1.625rem] md:text-2xl pl-6 mt-16 font-bold;
+}
+.aricleContents > h2::before {
+  @apply absolute content-[''] w-1 h-full top-0 left-0 bg-skyblue block rounded;
+}
+.aricleContents > h3 {
+  @apply text-[1.375rem] md:text-lg mt-9 font-bold;
+}
+.aricleContents > ul,
+.aricleContents > div[data-filename] {
+  @apply mt-9;
+}
+.aricleContents > p {
+  @apply mt-9 leading-8 md:leading-7 text-lg md:text-base;
+}
+.aricleContents > p > a {
+  @apply break-words hover:underline;
+}
+.aricleContents > ul > li {
+  @apply relative pl-3.5 md:pl-4 text-lg md:text-base leading-8 md:leading-7;
+}
+.aricleContents > ul > li > .indent {
+  @apply absolute left-0 top-0;
+}
+.aricleContents > div[data-filename] > .filename {
+  @apply inline-block bg-[#dfdfdf] text-center py-1 px-4 rounded-t;
+}
+.aricleContents > div[data-filename] > pre {
+  @apply rounded-se-lg  rounded-es-lg rounded-ee-lg p-3.5 overflow-x-scroll;
+}
+.aricleContents > figure {
+  @apply text-center mt-9;
+}
+.aricleContents > figure > figcaption {
+  @apply mt-4;
+}
+.aricleContents > figure > img {
+  @apply m-auto;
+}
 
 @media screen and (max-width: 768px) {
-  .hover-img::before {width: 16px; height: 17.5px; top: -10px; right: -18px;}
+  .hover-img::before {
+    width: 16px;
+    height: 17.5px;
+    top: -10px;
+    right: -18px;
+  }
 }
 
 /* :root {

@@ -1,11 +1,11 @@
-import Image from "next/image";
-import illustration from "/public/illustration.webp";
+import Image from 'next/image';
+import illustration from '/public/illustration.webp';
 
 const TopImg = () => {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-end grow">
-        <Image 
+        <Image
           src={illustration}
           height={248}
           width={248}
@@ -16,6 +16,6 @@ const TopImg = () => {
       </div>
     </>
   );
-}
+};
 
 export default TopImg;

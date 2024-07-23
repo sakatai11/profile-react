@@ -1,4 +1,4 @@
-import { MicroCMSDate } from "microcms-js-sdk";
+import { MicroCMSDate } from 'microcms-js-sdk';
 
 export type TocProps = {
   id: string;

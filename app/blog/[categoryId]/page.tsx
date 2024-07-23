@@ -1,10 +1,10 @@
-import { getBlogArticle, getCategory } from "@/libs/microcms";
-import { PAGE_NAVI } from "@/types/cms/setting";
-import MotionWrapper from "@/app/components/motion/motionWrapper";
-import Title from "@/app/components/elements/title/Index";
-import { notFound } from "next/navigation";
-import type { Metadata } from "next";
-import * as Blog from "@/features/blog/conponents/Index";
+import { getBlogArticle, getCategory } from '@/libs/microcms';
+import { PAGE_NAVI } from '@/types/cms/setting';
+import MotionWrapper from '@/app/components/motion/motionWrapper';
+import Title from '@/app/components/elements/title/Index';
+import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
+import * as Blog from '@/features/blog/conponents/Index';
 
 type Props = {
   params: {
@@ -12,29 +12,31 @@ type Props = {
   };
 };
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { category } = await getCategory(params.categoryId);
 
   return {
     title: category.category,
-    description: `${category.category}の記事一覧です。`
+    description: `${category.category}の記事一覧です。`,
   };
-}
+};
 
 export async function generateStaticParams() {
   // 静的ルート生成
   const { categories } = await getCategory();
-  
+
   return categories.map((category) => ({
-      categoryId: category.id,
+    categoryId: category.id,
   }));
 }
 
-export default async function CategoryPage({params}: Props) {
+export default async function CategoryPage({ params }: Props) {
   const currentPage = 1; // 最初のページ
 
   // 記事一覧の取得
-  const { blogs } = await getBlogArticle(params.categoryId,{
+  const { blogs } = await getBlogArticle(params.categoryId, {
     limit: PAGE_NAVI.NEW_LIST_LIMIT,
     offset: PAGE_NAVI.NEW_LIST_LIMIT * (currentPage - 1),
   });
@@ -42,18 +44,23 @@ export default async function CategoryPage({params}: Props) {
   //カテゴリの取得
   const { categories } = await getCategory();
 
-  if ((blogs.contents.length === 0) && (!blogs)) {
+  if (blogs.contents.length === 0 && !blogs) {
     notFound();
   }
 
   return (
     <>
       <Title text="Blog" />
-          <Blog.Tab categoryId={ params.categoryId } categories={ categories } />
-            <MotionWrapper>
-              <Blog.BlogWrapper contents={ blogs.contents } />
-            </MotionWrapper>
-      <Blog.BlogPagination basePath={params.categoryId} currentPage={currentPage} postlimit={PAGE_NAVI.NEW_LIST_LIMIT} totalCount={blogs.totalCount} />
+      <Blog.Tab categoryId={params.categoryId} categories={categories} />
+      <MotionWrapper>
+        <Blog.BlogWrapper contents={blogs.contents} />
+      </MotionWrapper>
+      <Blog.BlogPagination
+        basePath={params.categoryId}
+        currentPage={currentPage}
+        postlimit={PAGE_NAVI.NEW_LIST_LIMIT}
+        totalCount={blogs.totalCount}
+      />
     </>
   );
 }

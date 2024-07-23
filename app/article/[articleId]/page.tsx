@@ -1,61 +1,66 @@
-import { getBlogArticle, getBlogArticleDetail } from "@/libs/microcms";
-import MotionWrapper from "@/app/components/motion/motionWrapper";
-import { createTableOfContents } from "@/libs/utils";
-import { notFound } from "next/navigation";
-import { PAGE_NAVI } from "@/types/cms/setting";
-import type { Metadata } from "next";
-import { articleSite } from "@/data/site";
-import * as Article from "@/features/article/conponents/Index";
-import dummy from "@/public/dummy.png";
+import { getBlogArticle, getBlogArticleDetail } from '@/libs/microcms';
+import MotionWrapper from '@/app/components/motion/motionWrapper';
+import { createTableOfContents } from '@/libs/utils';
+import { notFound } from 'next/navigation';
+import { PAGE_NAVI } from '@/types/cms/setting';
+import type { Metadata } from 'next';
+import { articleSite } from '@/data/site';
+import * as Article from '@/features/article/conponents/Index';
+import dummy from '@/public/dummy.png';
 // シンタックスハイライト
 import { load } from 'cheerio';
-import { createHighlighter } from "shiki";
+import { createHighlighter } from 'shiki';
 
 type Props = {
-  params: {articleId: string};
+  params: { articleId: string };
   // sarchParams: { [key: string]: string | string[] | undefined };
 };
 
-export const generateMetadata = async ({ params }: Props): Promise<Metadata> => {
+export const generateMetadata = async ({
+  params,
+}: Props): Promise<Metadata> => {
   const { article } = await getBlogArticleDetail(params.articleId);
 
-    return {
-      title: article.title,
-      description: articleSite.description,
-      openGraph : {
-        url: new URL(`/article/${params.articleId}`,process.env.SERVER_DOMAIN || "").toString(),
-        siteName: 'クリエイターさかの個人ウェブサイト',
-        images: [
-          {
-            width: article.eyecatch?.width ? article.eyecatch?.width : "1280",
-            height: article.eyecatch?.height ? article.eyecatch?.height : "800",
-            url: article.eyecatch?.url ? article.eyecatch.url : dummy.src,
-          }
-        ],
-        locale: 'jp',
-        type: 'website',
-      },
-      twitter: {
-        card: "summary_large_image", 
-        site: "@skt1910hg_r"
-      }
-    };
-}
+  return {
+    title: article.title,
+    description: articleSite.description,
+    openGraph: {
+      url: new URL(
+        `/article/${params.articleId}`,
+        process.env.SERVER_DOMAIN || '',
+      ).toString(),
+      siteName: 'クリエイターさかの個人ウェブサイト',
+      images: [
+        {
+          width: article.eyecatch?.width ? article.eyecatch?.width : '1280',
+          height: article.eyecatch?.height ? article.eyecatch?.height : '800',
+          url: article.eyecatch?.url ? article.eyecatch.url : dummy.src,
+        },
+      ],
+      locale: 'jp',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@skt1910hg_r',
+    },
+  };
+};
 
 export async function generateStaticParams() {
   // 静的ルート生成
-  const { blogs } = await getBlogArticle("",{
+  const { blogs } = await getBlogArticle('', {
     limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, //取得記事数
   });
 
-  return blogs.contents.map((article) =>({
-      articleId: article.id,
+  return blogs.contents.map((article) => ({
+    articleId: article.id,
   }));
-};
+}
 
-export default async function ArticlePage({params}: Props) {
+export default async function ArticlePage({ params }: Props) {
   const param = params.articleId;
- // 特定の記事の取得
+  // 特定の記事の取得
   const { article } = await getBlogArticleDetail(param);
 
   if (!article) {
@@ -70,8 +75,8 @@ export default async function ArticlePage({params}: Props) {
 
   // シンタックスハイライト
   const highlighter = await createHighlighter({
-    themes: ["slack-dark"],
-    langs: ["tsx", "shell", "typescript", ],
+    themes: ['slack-dark'],
+    langs: ['tsx', 'shell', 'typescript'],
   });
 
   const $ = load(article.content);
@@ -91,10 +96,10 @@ export default async function ArticlePage({params}: Props) {
     // console.log(fileName);
     if (fileName) {
       $(elm).prepend(`<span class="filename">${fileName}</span>`);
-      }
+    }
   });
 
-  $("pre code").each((_, elm) => {
+  $('pre code').each((_, elm) => {
     const codeText = $(elm).text();
     const className = $(elm).attr('class');
     let language;
@@ -105,7 +110,7 @@ export default async function ArticlePage({params}: Props) {
     if (language) {
       const html = highlighter.codeToHtml(codeText, {
         lang: language,
-        theme: "slack-dark",
+        theme: 'slack-dark',
       });
       $(elm).parent().replaceWith(html);
     }
@@ -116,14 +121,14 @@ export default async function ArticlePage({params}: Props) {
   return (
     <>
       <MotionWrapper>
-        <Article.ArticleWrapper articleData={{ contents: article, richEditor: $.html(), toc: toc }} />
+        <Article.ArticleWrapper
+          articleData={{ contents: article, richEditor: $.html(), toc: toc }}
+        />
       </MotionWrapper>
-      <Article.ArticleShare param={param} title={article.title}  />
-      {
-        blogs.contents.length > 1 ? (
-          <Article.ArticleCategory contents={ blogs.contents } param={param} />
-        ): null
-      }
+      <Article.ArticleShare param={param} title={article.title} />
+      {blogs.contents.length > 1 ? (
+        <Article.ArticleCategory contents={blogs.contents} param={param} />
+      ) : null}
     </>
   );
 }

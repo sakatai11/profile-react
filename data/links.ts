@@ -4,24 +4,22 @@ type PageLink = {
 };
 
 /** Topのリンク */
-export const topLink: PageLink = 
-  {
-    name: "Top",
-    href: "/"
-  };
+export const topLink: PageLink = {
+  name: 'Top',
+  href: '/',
+};
 /** 各ページへのリンク */
 export const pageLinks: PageLink[] = [
   {
-    name: "Profile",
-    href: "/profile"
+    name: 'Profile',
+    href: '/profile',
   },
   {
-    name: "Blog",
-    href: "/blog"
+    name: 'Blog',
+    href: '/blog',
   },
   {
-    name: "Contact",
-    href: "/contact"
-  }
+    name: 'Contact',
+    href: '/contact',
+  },
 ];
-
