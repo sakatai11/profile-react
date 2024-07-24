@@ -25,7 +25,8 @@ const BlogWrapper = ({ contents }: BlogDataProps): JSX.Element => {
                     width={article.eyecatch?.width || 1280}
                     height={article.eyecatch?.height || 800}
                     alt="アイキャッチ"
-                    className="aspect-[16/10] rounded-xl object-cover shadow"
+                    className="aspect-[16/10] w-screen rounded-xl object-cover shadow"
+                    sizes="100vw"
                   />
                   {article.categories.map((category) => (
                     <span

@@ -36,6 +36,7 @@ const ArticleCategory = ({ contents, param }: BlogDataProps): JSX.Element => {
                           height={article.eyecatch?.height || 800}
                           alt="アイキャッチ"
                           className="aspect-[16/10] rounded-xl object-cover shadow"
+                          sizes="100vw"
                         />
                         {article.categories.map((category) => (
                           <span

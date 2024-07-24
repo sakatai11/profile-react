@@ -6,4 +6,5 @@ export type MicroCMSImageProps = {
   format?: string;
   alt: string;
   className?: string;
+  sizes: string;
 };

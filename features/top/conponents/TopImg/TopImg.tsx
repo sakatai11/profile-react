@@ -12,6 +12,7 @@ const TopImg = () => {
           alt="イラスト"
           className="mb-6 md:size-44"
           priority
+          sizes="100vw"
         />
       </div>
     </>

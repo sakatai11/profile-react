@@ -10,6 +10,7 @@ export default function MicroCmsImage({
   format = 'auto=format',
   alt,
   className,
+  sizes,
 }: MicroCMSImageProps): JSX.Element {
   return (
     <Image
@@ -23,6 +24,7 @@ export default function MicroCmsImage({
       alt={alt}
       className={className}
       priority
+      sizes={sizes}
     />
   );
 }

@@ -44,6 +44,7 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
               alt="公開日"
               className="mr-1"
               priority
+              sizes="100vw"
             />
             {new Date(contents.publishedAt).toLocaleDateString(
               'ja-JP',
@@ -61,7 +62,8 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
           width={contents.eyecatch?.width || 1280}
           height={contents.eyecatch?.height || 800}
           alt="アイキャッチ"
-          className="aspect-[16/10] rounded-xl object-cover"
+          className="aspect-[16/10] w-screen rounded-xl object-cover"
+          sizes="100vw"
         />
       </div>
       {toc ? <ArticleTocTable toc={toc} /> : undefined}
