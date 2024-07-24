@@ -85,9 +85,11 @@ export const getBlogArticleDetail = async (
   contentId: string,
   draftKey?: string,
 ) => {
+  const cacheSetting = draftKey ? 'no-store' : 'force-cache';
+
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-      cache: 'force-cache', // キャッシュを強制的に使用
+      cache: cacheSetting, // キャッシュ設定を条件に応じて変更
     },
     endpoint: 'blog',
     contentId,
