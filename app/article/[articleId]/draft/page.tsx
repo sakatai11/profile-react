@@ -1,5 +1,5 @@
-// //SSR
-// export const dynamic = 'force-dynamic';
+//SSR
+export const dynamic = 'force-dynamic';
 
 import { getBlogArticle, getBlogArticleDetail } from '@/libs/microcms';
 import MotionWrapper from '@/app/components/motion/motionWrapper';
