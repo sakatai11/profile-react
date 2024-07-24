@@ -1,7 +1,3 @@
-// このページをEdge Runtimeで実行するように設定
-// Edge Runtimeは、サーバーレス環境で動的にコンテンツを生成するために使用
-export const runtime = 'edge';
-
 import { getBlogArticle } from '@/libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import CurrentCategoryPage from '../../[categoryId]/p/[current]/page';
