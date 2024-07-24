@@ -1,3 +1,6 @@
+// SSG
+export const dynamic = 'force-static';
+
 import { getBlogArticle, getCategory } from '@/libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import MotionWrapper from '@/app/components/motion/motionWrapper';
