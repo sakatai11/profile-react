@@ -1,3 +1,6 @@
+// SSG
+export const dynamic = 'force-static';
+
 import * as Top from '@/features/top/conponents/Index';
 import MotionWrapper from './components/motion/motionWrapper';
 

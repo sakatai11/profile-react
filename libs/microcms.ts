@@ -81,7 +81,10 @@ export const getCategory = async (param?: string) => {
 };
 
 // 特定の記事の取得
-export const getBlogArticleDetail = async (contentId: string) => {
+export const getBlogArticleDetail = async (
+  contentId: string,
+  draftKey?: string,
+) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
       cache: 'force-cache', // キャッシュを強制的に使用
@@ -98,6 +101,7 @@ export const getBlogArticleDetail = async (contentId: string) => {
         'eyecatch',
         'toc_visible',
       ],
+      draftKey,
     },
   });
 

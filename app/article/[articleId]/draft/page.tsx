@@ -1,68 +1,35 @@
+//SSR
+export const dynamic = 'force-dynamic';
+
 import { getBlogArticle, getBlogArticleDetail } from '@/libs/microcms';
 import MotionWrapper from '@/app/components/motion/motionWrapper';
 import { createTableOfContents } from '@/libs/utils';
 import { notFound } from 'next/navigation';
-import { PAGE_NAVI } from '@/types/cms/setting';
 import type { Metadata } from 'next';
-import { articleSite } from '@/data/site';
 import * as Article from '@/features/article/conponents/Index';
-import dummy from '@/public/dummy.png';
 // シンタックスハイライト
 import { load } from 'cheerio';
 import { createHighlighter } from 'shiki';
 
+//noindexで検索エンジンにインデックスされないようにする
+export const metadata: Metadata = {
+  robots: 'noindex',
+};
+
 type Props = {
   params: { articleId: string };
+  searchParams: { [draftKey: string]: string | undefined };
 };
 
-export const generateMetadata = async ({
+export default async function ArticleDraftPage({
   params,
-}: Props): Promise<Metadata> => {
-  const { article } = await getBlogArticleDetail(params.articleId);
-
-  return {
-    title: article.title,
-    description: articleSite.description,
-    openGraph: {
-      url: new URL(
-        `/article/${params.articleId}`,
-        process.env.SERVER_DOMAIN || '',
-      ).toString(),
-      siteName: 'クリエイターさかの個人ウェブサイト',
-      images: [
-        {
-          width: article.eyecatch?.width ? article.eyecatch?.width : '1280',
-          height: article.eyecatch?.height ? article.eyecatch?.height : '800',
-          url: article.eyecatch?.url
-            ? article.eyecatch.url
-            : new URL(dummy.src, process.env.SERVER_DOMAIN || '').toString(), // URLを生成
-        },
-      ],
-      locale: 'jp',
-      type: 'website',
-    },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@skt1910hg_r',
-    },
-  };
-};
-
-export async function generateStaticParams() {
-  // 静的ルート生成
-  const { blogs } = await getBlogArticle('', {
-    limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, //取得記事数
-  });
-
-  return blogs.contents.map((article) => ({
-    articleId: article.id,
-  }));
-}
-
-export default async function ArticlePage({ params }: Props) {
+  searchParams,
+}: Props) {
   const param = params.articleId;
+  const { draftKey } = searchParams;
+
   // 特定の記事の取得
-  const { article } = await getBlogArticleDetail(param);
+  const { article } = await getBlogArticleDetail(param, draftKey);
 
   if (!article) {
     notFound();
@@ -121,6 +88,8 @@ export default async function ArticlePage({ params }: Props) {
 
   return (
     <>
+      {/* 下書きのプレビュー中であることを示すメッセージを表示 */}
+      <div className="text-center text-red-500">プレビュー画面です</div>
       <MotionWrapper>
         <Article.ArticleWrapper
           articleData={{ contents: article, richEditor: $.html(), toc: toc }}

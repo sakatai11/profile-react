@@ -1,3 +1,6 @@
+// SSG
+export const dynamic = 'force-static';
+
 import CategoryPage from './[categoryId]/page';
 import type { Metadata } from 'next';
 import { blogSite } from '@/data/site';
