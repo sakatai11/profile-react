@@ -39,3 +39,11 @@ export const blogSite: SiteInfo = {
 export const articleSite: SiteInfo = {
   description: 'クリエイターさかのブログです。',
 };
+
+export const contactSite: SiteInfo = {
+  title: 'Contact',
+  description: 'クリエイターさかのお問い合わせです。',
+  openGraph: {
+    url: new URL(pageLinks[1].href, process.env.SERVER_DOMAIN || '').toString(), // 完全なURLを生成
+  },
+};
