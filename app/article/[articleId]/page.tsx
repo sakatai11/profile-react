@@ -13,6 +13,7 @@ import { createHighlighter } from 'shiki';
 
 type Props = {
   params: { articleId: string };
+  searchParams: { dk?: string };
 };
 
 export const generateMetadata = async ({
@@ -59,10 +60,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function ArticlePage({ params, searchParams }: Props) {
   const param = params.articleId;
+  const draftKey = searchParams.dk;
+
   // 特定の記事の取得
-  const { article } = await getBlogArticleDetail(param);
+  const { article } = await getBlogArticleDetail(param, draftKey);
 
   if (!article) {
     notFound();
@@ -117,10 +120,9 @@ export default async function ArticlePage({ params }: Props) {
     }
   });
 
-  // console.log(blogs.length);
-
   return (
     <>
+      {draftKey && <p className="text-center text-red-500">プレビュー画面</p>}
       <MotionWrapper>
         <Article.ArticleWrapper
           articleData={{ contents: article, richEditor: $.html(), toc: toc }}
