@@ -64,6 +64,9 @@ export default async function ArticlePage({ params, searchParams }: Props) {
   const param = params.articleId;
   const draftKey = searchParams.dk;
 
+  console.log(searchParams);
+  console.log(param);
+
   // 特定の記事の取得
   const { article } = await getBlogArticleDetail(param, draftKey);
 

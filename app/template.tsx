@@ -1,6 +1,4 @@
 'use client';
-// SSG
-export const dynamic = 'force-static';
 
 import Section from './components/layouts/common/Section';
 import { usePathname } from 'next/navigation';
