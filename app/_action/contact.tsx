@@ -3,7 +3,7 @@
 type PrevState = unknown;
 
 function validateEmail(email: string) {
-  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|jp|net|to|cx)$/;
   return pattern.test(email);
 }
 
@@ -18,28 +18,68 @@ export async function createContactData(
     content: formData.get('content') as string,
   };
 
+  if (
+    !rawFormData.name &&
+    (!rawFormData.email || !validateEmail(rawFormData.email)) &&
+    !rawFormData.content
+  ) {
+    return {
+      status: 'error',
+      message: '必須項目を入力して下さい',
+    };
+  } else if (
+    !rawFormData.name &&
+    (!rawFormData.email || !validateEmail(rawFormData.email))
+  ) {
+    return {
+      status: 'error',
+      message: '名前とメールアドレス項目を入力して下さい',
+    };
+  } else if (
+    !rawFormData.name &&
+    (!rawFormData.content || !validateEmail(rawFormData.email))
+  ) {
+    return {
+      status: 'error',
+      message: '名前と内容を入力して下さい',
+    };
+  } else if (
+    (!rawFormData.email || !validateEmail(rawFormData.email)) &&
+    !rawFormData.content
+  ) {
+    return {
+      status: 'error',
+      message: 'メールアドレスと内容を入力して下さい',
+    };
+  }
+
   if (!rawFormData.name) {
     return {
       status: 'error',
+      option: 'name',
       message: '名前を入力してください',
     };
   }
+
   if (!rawFormData.email) {
     return {
       status: 'error',
-      message: 'メールアドレスを入力してください',
+      option: 'email',
+      message: 'メールアドレスを確認して下さい',
     };
-  }
-  if (!validateEmail(rawFormData.email)) {
+  } else if (!validateEmail(rawFormData.email)) {
     return {
       status: 'error',
-      message: 'メールアドレスの形式が誤っています',
+      option: 'email',
+      message: 'メールアドレスに問題があります',
     };
   }
+
   if (!rawFormData.content) {
     return {
       status: 'error',
-      message: '内容を入力してください',
+      option: 'content',
+      message: '内容を入力して下さい',
     };
   }
 
