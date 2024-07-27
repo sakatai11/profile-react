@@ -117,7 +117,10 @@ export async function createContactData(
   );
 
   try {
-    await result.json();
+    const responseData = await result.json();
+    if (!result.ok) {
+      throw new Error(responseData.message || 'お問い合わせに失敗しました');
+    }
   } catch (e) {
     console.log(e);
     return {
