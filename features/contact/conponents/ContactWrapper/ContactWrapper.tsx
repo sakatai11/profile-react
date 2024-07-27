@@ -1,4 +1,3 @@
-// import { ProfileContents } from "@/types/cms/profile";
 'use client';
 import { createContactData } from '@/app/_action/contact';
 import { useRef } from 'react';
@@ -14,7 +13,7 @@ const ContactWrapper = (): JSX.Element => {
   const [formState, formAction] = useFormState(createContactData, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
-  console.log(formState);
+  // console.log(formState);
 
   if (
     formState.success &&
