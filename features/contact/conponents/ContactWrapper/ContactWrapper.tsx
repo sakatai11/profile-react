@@ -127,9 +127,12 @@ const ContactWrapper = (): JSX.Element => {
         <div className="flex justify-center pt-4">
           <button
             type="submit"
-            className="rounded-lg bg-skyblue px-8 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
+            className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
           >
-            {formState.success ? '送信' : '送信中...'}
+            {formState.success &&
+            formState.message === 'お問い合わせを受け付けました'
+              ? '送信完了'
+              : '送信'}
           </button>
         </div>
 

@@ -87,5 +87,44 @@ export async function createContactData(
     };
   }
 
+  const result = await fetch(
+    `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        fields: [
+          {
+            objectTypeId: '0-1',
+            name: 'name',
+            value: rawFormData.name,
+          },
+          {
+            objectTypeId: '0-1',
+            name: 'email',
+            value: rawFormData.email,
+          },
+          {
+            objectTypeId: '0-1',
+            name: 'content',
+            value: rawFormData.content,
+          },
+        ],
+      }),
+    },
+  );
+
+  try {
+    await result.json();
+  } catch (e) {
+    console.log(e);
+    return {
+      success: false,
+      message: 'お問い合わせに失敗しました',
+    };
+  }
+
   return { success: true, message: 'お問い合わせを受け付けました' };
 }
