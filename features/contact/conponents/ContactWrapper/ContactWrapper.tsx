@@ -1,32 +1,36 @@
 // import { ProfileContents } from "@/types/cms/profile";
 'use client';
 import { createContactData } from '@/app/_action/contact';
+import { useRef } from 'react';
 import { useFormState } from 'react-dom';
 
 const initialState = {
-  status: '',
+  success: true,
   option: '',
   message: '',
-  // errors: {
-  //   name: '',
-  //   email: '',
-  //   content: '',
-  // },
 };
 
 const ContactWrapper = (): JSX.Element => {
   const [formState, formAction] = useFormState(createContactData, initialState);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  console.log(formState.message);
+  console.log(formState);
+
+  if (
+    formState.success &&
+    formState.message === 'お問い合わせを受け付けました'
+  ) {
+    formRef.current?.reset();
+  }
 
   return (
     <div className="mx-auto w-full max-w-[410px] pb-20 pt-14">
-      <form action={formAction}>
+      <form action={formAction} ref={formRef}>
         <div className="mb-4">
           <label
             htmlFor="name"
             className={`mb-2 block text-sm font-medium text-gray-600 ${
-              (formState.status === 'error' &&
+              (formState.success === false &&
                 (formState.message === '必須項目を入力して下さい' ||
                   formState.message === '名前を入力して下さい' ||
                   formState.message ===
@@ -53,7 +57,7 @@ const ContactWrapper = (): JSX.Element => {
           <label
             htmlFor="email"
             className={`mb-2 block text-sm font-medium text-gray-600 ${
-              (formState.status === 'error' &&
+              (formState.success === false &&
                 (formState.message === '必須項目を入力して下さい' ||
                   formState.message === 'メールアドレスを確認して下さい' ||
                   formState.message ===
@@ -72,13 +76,13 @@ const ContactWrapper = (): JSX.Element => {
             </span>
             <span
               className={`mx-2 inline-block text-[10px] leading-3 ${
-                formState.status === 'error' &&
+                formState.success === false &&
                 formState.message === 'メールアドレスに問題があります'
                   ? 'text-red-600'
                   : ''
               }`}
             >
-              {formState.status === 'error' &&
+              {formState.success === false &&
               formState.message === 'メールアドレスに問題があります'
                 ? formState.message
                 : null}
@@ -96,7 +100,7 @@ const ContactWrapper = (): JSX.Element => {
           <label
             htmlFor="content"
             className={`mb-2 block text-sm font-medium text-gray-600 ${
-              (formState.status === 'error' &&
+              (formState.success === false &&
                 (formState.message === '必須項目を入力して下さい' ||
                   formState.message === '内容を入力して下さい' ||
                   formState.message === '名前と内容を入力して下さい' ||
@@ -125,14 +129,14 @@ const ContactWrapper = (): JSX.Element => {
             type="submit"
             className="rounded-lg bg-skyblue px-8 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
           >
-            送信
+            {formState.success ? '送信' : '送信中...'}
           </button>
         </div>
 
         <p
-          className={`mt-4 flex justify-center ${formState.status === 'error' ? 'text-red-600' : ''}`}
+          className={`mt-4 flex justify-center ${formState.success === false ? 'text-red-600' : ''}`}
         >
-          {formState.status === 'error'
+          {formState.success === false
             ? '必須項目を入力して下さい'
             : formState.message}
         </p>
