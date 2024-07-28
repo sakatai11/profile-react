@@ -52,6 +52,9 @@ export default async function CategoryPage({ params }: Props) {
     <>
       <Title text="Blog" />
       <Blog.Tab categoryId={params.categoryId} categories={categories} />
+      {!blogs.contents.length && (
+        <p className="mt-14 text-center">記事がありません</p>
+      )}
       <MotionWrapper>
         <Blog.BlogWrapper contents={blogs.contents} />
       </MotionWrapper>
