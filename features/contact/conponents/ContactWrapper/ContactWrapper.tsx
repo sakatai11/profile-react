@@ -48,6 +48,10 @@ const ContactWrapper = (): JSX.Element => {
             id="name"
             name="name"
             className={'mt-1 w-full rounded-md border bg-[#F3F7FB] p-2'}
+            disabled={
+              formState.success &&
+              formState.message === 'お問い合わせを受け付けました'
+            }
           />
         </div>
         <div className="mb-4">
@@ -89,8 +93,11 @@ const ContactWrapper = (): JSX.Element => {
             type="email"
             id="email"
             name="email"
-            // required
             className={'mt-1 w-full rounded-md border bg-[#F3F7FB] p-2'}
+            disabled={
+              formState.success &&
+              formState.message === 'お問い合わせを受け付けました'
+            }
           />
         </div>
         <div className="mb-4">
@@ -117,14 +124,21 @@ const ContactWrapper = (): JSX.Element => {
             id="content"
             name="content"
             rows={6}
-            // required
             className={'mt-1 w-full rounded-md border bg-[#F3F7FB] p-2'}
+            disabled={
+              formState.success &&
+              formState.message === 'お問い合わせを受け付けました'
+            }
           ></textarea>
         </div>
         <div className="flex justify-center pt-4">
           <button
             type="submit"
             className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
+            disabled={
+              formState.success &&
+              formState.message === 'お問い合わせを受け付けました'
+            }
           >
             {formState.success &&
             formState.message === 'お問い合わせを受け付けました'
