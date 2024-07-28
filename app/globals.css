@@ -78,7 +78,7 @@ strong {
   @apply mt-9 text-lg leading-8 md:text-base md:leading-7;
 }
 .aricleContents > p > a {
-  @apply break-words hover:underline;
+  @apply break-words underline hover:opacity-60;
 }
 .aricleContents > ul > li {
   @apply relative pl-3.5 text-lg leading-8 md:pl-4 md:text-base md:leading-7;
