@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getCategory } from '@/libs/microcms';
+import { getBlogArticle, getCategory } from '@/libs/microcms';
 import { pageLinks } from '@/data/links';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const dynamicPages: MetadataRoute.Sitemap = pageLinks.map((page) => ({
-    url: `${baseURL}/${page.href}`,
+    url: baseURL + page.href,
     lastModified: new Date(),
   }));
 
@@ -21,10 +21,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogPages: MetadataRoute.Sitemap = categories.map((category) => ({
     url: `${baseURL}/blog/${category.id}`,
-    lastModified: category.publishedAt
-      ? new Date(category.publishedAt)
+    lastModified: new Date(),
+  }));
+
+  const { blogs } = await getBlogArticle();
+
+  const articlePages: MetadataRoute.Sitemap = blogs.contents.map((article) => ({
+    url: `${baseURL}/article/${article.id}`,
+    lastModified: article.publishedAt
+      ? new Date(article.publishedAt)
       : new Date(),
   }));
 
-  return [...defaultPages, ...dynamicPages, ...blogPages];
+  return [...defaultPages, ...dynamicPages, ...blogPages, ...articlePages];
 }
