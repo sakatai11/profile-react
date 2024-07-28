@@ -28,9 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const articlePages: MetadataRoute.Sitemap = blogs.contents.map((article) => ({
     url: `${baseURL}/article/${article.id}`,
-    lastModified: article.publishedAt
-      ? new Date(article.publishedAt)
-      : new Date(),
+    lastModified: article.updatedAt ? new Date(article.updatedAt) : new Date(),
   }));
 
   return [...defaultPages, ...dynamicPages, ...blogPages, ...articlePages];

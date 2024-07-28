@@ -50,6 +50,7 @@ export const getBlogArticle = async (
       offset: queries?.offset,
       fields: [
         'id',
+        'updatedAt',
         'publishedAt',
         'title',
         'categories',
@@ -58,7 +59,7 @@ export const getBlogArticle = async (
         'eyecatch',
       ],
       filters: param ? `categories[contains]${param}` : '',
-      orders: '-publishedAt',
+      orders: '-updatedAt',
     },
   });
 
@@ -104,6 +105,7 @@ export const getBlogArticleDetail = async (
     queries: {
       fields: [
         'id',
+        'updatedAt',
         'publishedAt',
         'title',
         'categories',

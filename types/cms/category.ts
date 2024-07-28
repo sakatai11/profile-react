@@ -4,4 +4,5 @@ import { MicroCMSDate } from 'microcms-js-sdk';
 export type Category = {
   id: string;
   category: string;
+  publishedAt?: string;
 } & MicroCMSDate;

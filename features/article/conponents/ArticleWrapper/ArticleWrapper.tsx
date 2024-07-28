@@ -46,10 +46,7 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
               priority
               sizes="100vw"
             />
-            {new Date(contents.publishedAt).toLocaleDateString(
-              'ja-JP',
-              options,
-            )}
+            {new Date(contents.updatedAt).toLocaleDateString('ja-JP', options)}
           </span>
         </time>
       </div>
