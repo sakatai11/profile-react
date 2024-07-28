@@ -69,7 +69,7 @@ export const getCategory = async (param?: string) => {
     },
     endpoint: 'category',
     queries: {
-      fields: ['id', 'category'],
+      fields: ['id', 'category', 'publishedAt'],
       filters: param ? `id[equals]${param}` : '',
     },
   });
