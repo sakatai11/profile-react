@@ -48,7 +48,15 @@ export const getBlogArticle = async (
     queries: {
       limit: queries?.limit,
       offset: queries?.offset,
-      fields: ['id', 'title', 'categories', 'url', 'content', 'eyecatch'],
+      fields: [
+        'id',
+        'publishedAt',
+        'title',
+        'categories',
+        'url',
+        'content',
+        'eyecatch',
+      ],
       filters: param ? `categories[contains]${param}` : '',
       orders: '-publishedAt',
     },

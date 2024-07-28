@@ -3,6 +3,7 @@ import { Category } from './category';
 
 export type BlogList = {
   id: string;
+  publishedAt?: string;
   title: string;
   categories: Category[];
   url: string;
