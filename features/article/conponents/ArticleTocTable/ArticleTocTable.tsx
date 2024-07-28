@@ -8,8 +8,6 @@ type ArticleTocTableProps = {
 const ArticleTocTable = ({
   toc,
 }: ArticleTocTableProps): JSX.Element | undefined => {
-  // console.log(toc)
-
   return toc.length > 0 ? (
     <div className="my-14">
       <div className="rounded-lg border-2 border-solid border-[#CED1D9] p-9 md:p-5">

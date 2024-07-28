@@ -64,9 +64,6 @@ export default async function ArticlePage({ params, searchParams }: Props) {
   const param = params.articleId;
   const draftKey = searchParams.dk;
 
-  // console.log(searchParams);
-  // console.log(param);
-
   // 特定の記事の取得
   const { article } = await getBlogArticleDetail(param, draftKey);
 
@@ -100,7 +97,6 @@ export default async function ArticlePage({ params, searchParams }: Props) {
   // ファイル名を表示するためのspanタグを生成
   $('div[data-filename]').each((_, elm) => {
     const fileName = $(elm).attr('data-filename');
-    // console.log(fileName);
     if (fileName) {
       $(elm).prepend(`<span class="filename">${fileName}</span>`);
     }
@@ -113,7 +109,7 @@ export default async function ArticlePage({ params, searchParams }: Props) {
     if (className?.includes('language-typescript')) {
       language = 'typescript';
     }
-    // console.log(language);
+
     if (language) {
       const html = highlighter.codeToHtml(codeText, {
         lang: language,

@@ -57,7 +57,6 @@ export async function generateStaticParams() {
 
 export default async function CurrentCategoryPage({ params }: Props) {
   const currentPage = parseInt(params.current as string, 10);
-  // console.log(currentPage);
 
   if (Number.isNaN(currentPage) || currentPage < 1) {
     notFound();

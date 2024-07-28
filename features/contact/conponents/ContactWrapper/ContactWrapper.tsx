@@ -13,8 +13,6 @@ const ContactWrapper = (): JSX.Element => {
   const [formState, formAction] = useFormState(createContactData, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
-  // console.log(formState);
-
   if (
     formState.success &&
     formState.message === 'お問い合わせを受け付けました'
