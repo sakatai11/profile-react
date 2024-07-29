@@ -1,6 +1,7 @@
 // SSG
 export const dynamic = 'force-static';
 
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
 import './globals.css';
@@ -42,6 +43,7 @@ export default function RootLayout({
         {children}
         <Default.Footer />
       </body>
+      <GoogleTagManager gtmId="GTM-T8DCTR56" />
     </html>
   );
 }
