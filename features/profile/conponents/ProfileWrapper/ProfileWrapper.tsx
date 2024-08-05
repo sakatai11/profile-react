@@ -24,7 +24,6 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
               alt="イラスト"
               className="md:size-44"
               priority={true}
-              sizes="100vw"
             />
           </div>
           <div className="flex items-center justify-start gap-8">
@@ -49,7 +48,6 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
                         width={icon.width || 32}
                         height={icon.height || 32}
                         alt={iconName}
-                        sizes="100vw"
                       />
                     </Link>
                   </div>

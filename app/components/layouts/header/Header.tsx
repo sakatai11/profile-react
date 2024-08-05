@@ -57,7 +57,6 @@ const Header = () => {
             width={24}
             alt="イラスト"
             priority={true}
-            sizes="100vw"
           />
         </Link>
         <div className="flex justify-center gap-7">
