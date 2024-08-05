@@ -23,7 +23,7 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
               width={260}
               alt="イラスト"
               className="md:size-44"
-              priority
+              priority={true}
               sizes="100vw"
             />
           </div>

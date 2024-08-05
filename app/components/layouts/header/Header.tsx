@@ -56,7 +56,7 @@ const Header = () => {
             height={24}
             width={24}
             alt="イラスト"
-            priority
+            priority={true}
             sizes="100vw"
           />
         </Link>

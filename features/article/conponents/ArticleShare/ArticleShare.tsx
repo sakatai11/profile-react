@@ -32,7 +32,7 @@ const ArticleShare = ({ param, title }: ParamProps): JSX.Element => {
                   width={35}
                   height={35}
                   alt={copyLink.alt}
-                  priority
+                  priority={true}
                   sizes="100vw"
                 />
               </Copy>

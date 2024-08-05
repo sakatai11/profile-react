@@ -23,7 +23,7 @@ export default function MicroCmsImage({
       height={height}
       alt={alt}
       className={className}
-      priority
+      priority={true}
       sizes={sizes}
     />
   );

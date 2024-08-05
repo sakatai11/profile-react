@@ -43,7 +43,7 @@ const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
               height={15}
               alt="公開日"
               className="mr-1"
-              priority
+              priority={true}
               sizes="100vw"
             />
             {new Date(contents.updatedAt).toLocaleDateString('ja-JP', options)}
