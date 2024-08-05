@@ -71,17 +71,21 @@ strong {
   @apply mt-9 text-[1.375rem] font-bold md:text-lg;
 }
 .aricleContents > ul,
-.aricleContents > div[data-filename] {
+.aricleContents > div[data-filename],
+.aricleContents > pre {
   @apply mt-9;
 }
 .aricleContents > p {
   @apply mt-9 text-lg leading-8 md:text-base md:leading-7;
 }
+.aricleContents > p > code {
+  @apply bg-[#215aa012] rounded p-1.5 text-sm;
+}
 .aricleContents > p > a {
   @apply break-words underline hover:opacity-60;
 }
 .aricleContents > ul > li {
-  @apply relative pl-3.5 text-lg leading-8 md:pl-4 md:text-base md:leading-7;
+  @apply relative pl-5 text-lg leading-8 md:pl-4 md:text-base md:leading-7;
 }
 .aricleContents > ul > li > .indent {
   @apply absolute left-0 top-0;
@@ -89,6 +93,10 @@ strong {
 .aricleContents > div[data-filename] > .filename {
   @apply inline-block rounded-t bg-[#dfdfdf] px-4 py-1 text-center;
 }
+.aricleContents > pre {
+  @apply overflow-x-scroll rounded p-3.5;
+}
+
 .aricleContents > div[data-filename] > pre {
   @apply overflow-x-scroll rounded-ee-lg rounded-es-lg rounded-se-lg p-3.5;
 }
@@ -110,33 +118,3 @@ strong {
     right: -18px;
   }
 }
-
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-} */

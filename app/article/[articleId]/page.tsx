@@ -80,7 +80,7 @@ export default async function ArticlePage({ params, searchParams }: Props) {
   // シンタックスハイライト
   const highlighter = await createHighlighter({
     themes: ['slack-dark'],
-    langs: ['tsx', 'shell', 'typescript'],
+    langs: ['tsx', 'shell', 'typescript', 'javascript', 'html', 'css', 'json'],
   });
 
   const $ = load(article.content);
@@ -99,6 +99,8 @@ export default async function ArticlePage({ params, searchParams }: Props) {
     const fileName = $(elm).attr('data-filename');
     if (fileName) {
       $(elm).prepend(`<span class="filename">${fileName}</span>`);
+    } else {
+      return;
     }
   });
 
@@ -106,8 +108,12 @@ export default async function ArticlePage({ params, searchParams }: Props) {
     const codeText = $(elm).text();
     const className = $(elm).attr('class');
     let language;
-    if (className?.includes('language-typescript')) {
-      language = 'typescript';
+    // クラス名から言語を抽出
+    if (className) {
+      const match = className.match(/language-(\w+)/);
+      if (match) {
+        language = match[1];
+      }
     }
 
     if (language) {
