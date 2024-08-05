@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint --fix",
     "prettier": "prettier --write .",
-    "format": "npm run lint && npm run prettier"
+    "format": "npm run prettier && npm run lint"
   },
   "dependencies": {
     "@alloc/quick-lru": "^5.2.0",
