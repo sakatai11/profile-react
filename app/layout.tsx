@@ -1,3 +1,6 @@
+// SSG
+export const dynamic = 'force-static';
+
 import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Noto_Sans_JP } from 'next/font/google';
