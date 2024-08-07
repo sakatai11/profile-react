@@ -8,7 +8,7 @@ import './globals.css';
 import { site } from '@/data/site';
 import { commonOpenGraph } from '@/data/ogp';
 import { commonTwitterOpenGraph } from '@/data/twitter';
-import * as Default from './components/layouts/Index';
+import * as Default from './_components/layouts/Index';
 
 const NotoSansJPFont = Noto_Sans_JP({
   weight: ['400', '500', '700'],

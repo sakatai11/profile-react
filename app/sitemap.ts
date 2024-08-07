@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { getBlogArticle, getCategory } from '@/libs/microcms';
+import { getBlogArticle, getCategory } from './_libs/microcms';
 import { pageLinks } from '@/data/links';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

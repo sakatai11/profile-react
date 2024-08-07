@@ -1,7 +1,7 @@
 import { copyLink } from '@/data/share';
 import Image from 'next/image';
-import Copy from '@/app/components/elements/copy/Index';
-import SnsBtn from '@/app/components/elements/snsBtn/Index';
+import Copy from '@/app/_components/elements/copy/Index';
+import SnsBtn from '@/app/_components/elements/snsBtn/Index';
 
 type ParamProps = {
   param: string;

@@ -1,4 +1,4 @@
-import { getBlogArticle } from '@/libs/microcms';
+import { getBlogArticle } from '../../../_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import CurrentCategoryPage from '../../[categoryId]/p/[current]/page';
 import { blogSite } from '@/data/site';

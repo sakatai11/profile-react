@@ -1,7 +1,7 @@
-import { getBlogArticle, getCategory } from '@/libs/microcms';
+import { getBlogArticle, getCategory } from '../../_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
-import MotionWrapper from '@/app/components/motion/motionWrapper';
-import Title from '@/app/components/elements/title/Index';
+import MotionWrapper from '@/app/_components/motion/motionWrapper';
+import Title from '@/app/_components/elements/title/Index';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import * as Blog from '@/features/blog/conponents/Index';

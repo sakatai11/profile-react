@@ -1,5 +1,5 @@
 import { BlogList } from '@/types/cms/blog';
-import LinkButton from '@/app/components/elements/button/Index';
+import LinkButton from '@/app/_components/elements/button/Index';
 import MicroCmsImage from '@/features/components/MicroCmsImage/MicroCmsImage';
 import Link from 'next/link';
 

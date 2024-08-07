@@ -2,7 +2,7 @@
 export const dynamic = 'force-static';
 
 import * as Top from '@/features/top/conponents/Index';
-import MotionWrapper from './components/motion/motionWrapper';
+import MotionWrapper from './_components/motion/motionWrapper';
 
 export default function TopPage() {
   return (

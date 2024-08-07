@@ -1,6 +1,6 @@
 'use client';
 
-import Section from './components/layouts/common/Section';
+import Section from './_components/layouts/common/Section';
 import { usePathname } from 'next/navigation';
 
 type Children = {

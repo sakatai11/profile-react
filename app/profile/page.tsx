@@ -1,11 +1,11 @@
 // SSG
 export const dynamic = 'force-static';
 
-import { getProfile } from '@/libs/microcms';
+import { getProfile } from '../_libs/microcms';
 import type { Metadata } from 'next';
 import { profileSite } from '@/data/site';
-import MotionWrapper from '../components/motion/motionWrapper';
-import Title from '../components/elements/title/Index';
+import MotionWrapper from '../_components/motion/motionWrapper';
+import Title from '../_components/elements/title/Index';
 import * as Profile from '@/features/profile/conponents/Index';
 
 export const metadata: Metadata = {
