@@ -1,3 +1,6 @@
+// SSG
+export const dynamic = 'force-static';
+
 import { getBlogArticle } from '../../../_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import CurrentCategoryPage from '../../[categoryId]/p/[current]/page';
