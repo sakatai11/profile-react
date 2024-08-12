@@ -16,5 +16,6 @@ export default function imgixLoader({ src, width, quality }: ImageProps) {
   params.set('fit', params.get('fit') || 'max');
   params.set('w', params.get('w') || width.toString());
   params.set('q', (quality || 50).toString());
+  params.set('fm', 'webp');
   return url.href;
 }
