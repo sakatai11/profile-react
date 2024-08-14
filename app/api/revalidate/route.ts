@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
-  // cacheの削除、再検証
+  // cacheの再検証
   const tag = request.nextUrl.searchParams.get('tag');
 
   if (!tag)
