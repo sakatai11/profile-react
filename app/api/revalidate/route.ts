@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
   }
 
   // cacheの削除、再検証
-  const tag = request.nextUrl.searchParams.get('blog');
+  const tag = request.nextUrl.searchParams.get('tag');
 
   if (!tag)
     return NextResponse.json({ message: 'No tag provided' }, { status: 400 });
