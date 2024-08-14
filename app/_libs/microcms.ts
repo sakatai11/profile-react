@@ -43,7 +43,7 @@ export const getBlogArticle = async (
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
       next: {
-        revalidate: 43200, // 43200秒（12時間）キャッシュを適用
+        tags: ['blog'],
       },
     },
     endpoint: 'blog',
@@ -98,9 +98,7 @@ export const getBlogArticleDetail = async (
 ) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-      next: {
-        revalidate: draftKey === undefined ? 43200 : 0,
-      },
+      next: draftKey ? { revalidate: 43200 } : { tags: ['blog'] },
     },
     endpoint: 'blog',
     contentId,
