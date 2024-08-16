@@ -1,4 +1,7 @@
 'use server';
+import { db } from '@/app/utils/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { FirebaseError } from 'firebase/app';
 
 type PrevState = {
   success?: boolean;
@@ -20,6 +23,7 @@ export async function createContactData(
     name: formData.get('name') as string,
     email: formData.get('email') as string,
     content: formData.get('content') as string,
+    timestamp: serverTimestamp(),
   };
 
   if (
@@ -87,42 +91,14 @@ export async function createContactData(
     };
   }
 
-  const result = await fetch(
-    `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fields: [
-          {
-            objectTypeId: '0-1',
-            name: 'name',
-            value: rawFormData.name,
-          },
-          {
-            objectTypeId: '0-1',
-            name: 'email',
-            value: rawFormData.email,
-          },
-          {
-            objectTypeId: '0-1',
-            name: 'content',
-            value: rawFormData.content,
-          },
-        ],
-      }),
-    },
-  );
-
   try {
-    const responseData = await result.json();
-    if (!result.ok) {
-      throw new Error(responseData.message || 'お問い合わせに失敗しました');
-    }
+    await addDoc(collection(db, 'contacts'), rawFormData);
   } catch (e) {
-    console.log(e);
+    if (e instanceof FirebaseError) {
+      console.error('FirebaseError:', e.code, e.message);
+    } else {
+      console.error('Error adding document:', e);
+    }
     return {
       success: false,
       message: 'お問い合わせに失敗しました',
