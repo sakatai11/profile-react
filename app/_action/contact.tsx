@@ -1,4 +1,7 @@
 'use server';
+import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
+import { Resend } from 'resend';
+import * as React from 'react';
 import { db } from '@/app/utils/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { FirebaseError } from 'firebase/app';
@@ -91,8 +94,20 @@ export async function createContactData(
     };
   }
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
     await addDoc(collection(db, 'contacts'), rawFormData);
+    const { error } = await resend.emails.send({
+      from: 'さかのパーソナルサイト <support@saka-tai.com>',
+      to: [rawFormData.email],
+      subject: 'お問い合わせを受け付けました',
+      react: EmailTemplate(rawFormData) as React.ReactElement,
+    });
+
+    if (error) {
+      return { error };
+    }
   } catch (e) {
     if (e instanceof FirebaseError) {
       console.error('FirebaseError:', e.code, e.message);

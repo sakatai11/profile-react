@@ -2,12 +2,26 @@
 import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef } from 'react';
-import { useFormState } from 'react-dom';
+import { useFormState, useFormStatus } from 'react-dom';
 
 const initialState = {
   success: true,
   option: '',
   message: '',
+};
+
+const SubmitButton = () => {
+  // 初期値false
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
+      disabled={pending}
+    >
+      {pending ? '送信中' : '送信'}
+    </button>
+  );
 };
 
 const ContactWrapper = (): JSX.Element => {
@@ -137,7 +151,8 @@ const ContactWrapper = (): JSX.Element => {
           ></textarea>
         </div>
         <div className="flex justify-center pt-4">
-          <button
+          <SubmitButton />
+          {/* <button
             type="submit"
             className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
             disabled={
@@ -149,7 +164,7 @@ const ContactWrapper = (): JSX.Element => {
             formState.message === 'お問い合わせを受け付けました'
               ? '送信完了'
               : '送信'}
-          </button>
+          </button> */}
         </div>
 
         <p
