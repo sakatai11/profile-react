@@ -21,7 +21,7 @@ export default function MotionWrapper({
     <AnimatePresence mode="wait">
       <motion.div
         key={pathName}
-        initial={{ opacity: 0, y: 35 }} //初期状態
+        initial={{ opacity: 0, y: 35 }} // 初期状態
         animate={{ opacity: 1, y: 0 }} // マウント時
         transition={{ delay: delay }}
         exit={{ opacity: 0 }} // アンマウント時

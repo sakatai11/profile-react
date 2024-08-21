@@ -63,7 +63,7 @@ export default async function CurrentCategoryPage({ params }: Props) {
 
   if (Number.isNaN(currentPage) || currentPage < 1) {
     notFound();
-  } //カテゴリの取得
+  } // カテゴリの取得
   const { categories } = await getCategory();
 
   const { blogs } = await getBlogArticle(params.categoryId, {

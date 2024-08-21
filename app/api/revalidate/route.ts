@@ -13,8 +13,9 @@ export async function POST(request: NextRequest) {
   // cacheの再検証
   const tag = request.nextUrl.searchParams.get('tag');
 
-  if (!tag)
+  if (!tag) {
     return NextResponse.json({ message: 'No tag provided' }, { status: 400 });
+  }
 
   revalidateTag(tag);
 

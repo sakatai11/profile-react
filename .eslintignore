@@ -9,3 +9,7 @@ next-env.d.ts
 postcss.config.mjs
 *.cjs
 *.mjs
+.firebaserc
+firebase.json
+firestore.indexes.json
+firestore.rules

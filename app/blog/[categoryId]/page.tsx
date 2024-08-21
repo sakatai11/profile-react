@@ -44,7 +44,7 @@ export default async function CategoryPage({ params }: Props) {
     offset: PAGE_NAVI.NEW_LIST_LIMIT * (currentPage - 1),
   });
 
-  //カテゴリの取得
+  // カテゴリの取得
   const { categories } = await getCategory();
 
   if (blogs.contents.length === 0 && !blogs) {

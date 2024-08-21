@@ -1,5 +1,7 @@
 'use server';
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
+import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
+
 import { Resend } from 'resend';
 import * as React from 'react';
 import { db } from '@/app/utils/firebase';
@@ -98,15 +100,25 @@ export async function createContactData(
 
   try {
     await addDoc(collection(db, 'contacts'), rawFormData);
-    const { error } = await resend.emails.send({
-      from: 'さかのパーソナルサイト <support@saka-tai.com>',
-      to: [rawFormData.email],
-      subject: 'お問い合わせを受け付けました',
-      react: EmailTemplate(rawFormData) as React.ReactElement,
-    });
+    const emailSendResults = [
+      await resend.emails.send({
+        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        to: [rawFormData.email],
+        subject: 'お問い合わせを受け付けました',
+        react: EmailTemplate(rawFormData) as React.ReactElement,
+      }),
+      await resend.emails.send({
+        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        to: [process.env.ADDRESS as string],
+        subject: 'お問い合わせがありました',
+        react: EmailMeTemplate(rawFormData) as React.ReactElement,
+      }),
+    ];
 
-    if (error) {
-      return { error };
+    for (const result of emailSendResults) {
+      if (result.error) {
+        throw new Error(result.error.message || 'Unknown error occurred');
+      }
     }
   } catch (e) {
     if (e instanceof FirebaseError) {

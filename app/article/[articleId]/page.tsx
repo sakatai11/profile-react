@@ -55,7 +55,7 @@ export const generateMetadata = async ({
 export async function generateStaticParams() {
   // 静的ルート生成
   const { blogs } = await getBlogArticle('', {
-    limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, //取得記事数
+    limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, // 取得記事数
   });
 
   return blogs.contents.map((article) => ({
