@@ -92,13 +92,12 @@ export const getCategory = async (param?: string) => {
 };
 
 // 特定の記事の取得
-export const getBlogArticleDetail = async (
-  contentId: string,
-  draftKey?: string,
-) => {
+export const getBlogArticleDetail = async (contentId: string) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-      next: draftKey ? { revalidate: 43200 } : { tags: ['blog'] },
+      next: {
+        tags: ['blog'],
+      },
     },
     endpoint: 'blog',
     contentId,

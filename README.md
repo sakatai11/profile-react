@@ -40,9 +40,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 To deploy Firebase Functions, follow these steps:
 
 1. Navigate to the `functions` directory:
+
    ```bash
    cd functions
 
    ```
+
 2. Deploy the functions:
    firebase deploy --only functions
