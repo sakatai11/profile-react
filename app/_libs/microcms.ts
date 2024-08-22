@@ -22,7 +22,7 @@ export const microCMSClient = createClient({
 export const getProfile = async () => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
-      cache: 'no-store',
+      cache: 'force-cache', // キャッシュを強制的に使用
     },
     endpoint: 'profile',
     queries: {
