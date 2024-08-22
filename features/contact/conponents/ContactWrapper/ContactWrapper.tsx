@@ -1,5 +1,4 @@
 'use client';
-import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef } from 'react';
 import { useFormState, useFormStatus } from 'react-dom';
@@ -28,10 +27,6 @@ const ContactWrapper = (): JSX.Element => {
   const [formState, formAction] = useFormState(createContactData, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = () => {
-    sendGTMEvent({ event: 'contact', value: 'submit' });
-  };
-
   if (
     formState.success &&
     formState.message === 'お問い合わせを受け付けました'
@@ -41,7 +36,7 @@ const ContactWrapper = (): JSX.Element => {
 
   return (
     <div className="mx-auto w-full max-w-[410px] pb-20 pt-14">
-      <form action={formAction} onSubmit={handleSubmit} ref={formRef}>
+      <form action={formAction} ref={formRef}>
         <div className="mb-4">
           <label
             htmlFor="name"

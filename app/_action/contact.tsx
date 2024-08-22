@@ -1,12 +1,8 @@
 'use server';
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
 import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
-
 import { Resend } from 'resend';
 import * as React from 'react';
-import { db } from '@/app/utils/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { FirebaseError } from 'firebase/app';
 
 type PrevState = {
   success?: boolean;
@@ -28,7 +24,6 @@ export async function createContactData(
     name: formData.get('name') as string,
     email: formData.get('email') as string,
     content: formData.get('content') as string,
-    timestamp: serverTimestamp(),
   };
 
   if (
@@ -99,7 +94,6 @@ export async function createContactData(
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await addDoc(collection(db, 'contacts'), rawFormData);
     const emailSendResults = [
       await resend.emails.send({
         from: 'さかのパーソナルサイト <support@saka-tai.com>',
@@ -121,11 +115,7 @@ export async function createContactData(
       }
     }
   } catch (e) {
-    if (e instanceof FirebaseError) {
-      console.error('FirebaseError:', e.code, e.message);
-    } else {
-      console.error('Error adding document:', e);
-    }
+    console.error('Error adding document:', e);
     return {
       success: false,
       message: 'お問い合わせに失敗しました',

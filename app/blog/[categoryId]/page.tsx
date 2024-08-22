@@ -1,6 +1,3 @@
-// SSG
-export const dynamic = 'force-static';
-
 import { getBlogArticle, getCategory } from '../../_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
@@ -25,15 +22,6 @@ export const generateMetadata = async ({
     description: `${category.category}の記事一覧です。`,
   };
 };
-
-export async function generateStaticParams() {
-  // 静的ルート生成
-  const { categories } = await getCategory();
-
-  return categories.map((category) => ({
-    categoryId: category.id,
-  }));
-}
 
 export default async function CategoryPage({ params }: Props) {
   const currentPage = 1; // 最初のページ

@@ -22,7 +22,7 @@ export const microCMSClient = createClient({
 export const getProfile = async () => {
   const result = await microCMSClient.getList<ProfileContents>({
     customRequestInit: {
-      cache: 'force-cache', // キャッシュを強制的に使用
+      cache: 'no-store',
     },
     endpoint: 'profile',
     queries: {
@@ -43,7 +43,7 @@ export const getBlogArticle = async (
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
       next: {
-        tags: ['blog'],
+        revalidate: 43200, // 43200秒（12時間）キャッシュを適用
       },
     },
     endpoint: 'blog',
@@ -98,7 +98,7 @@ export const getBlogArticleDetail = async (
 ) => {
   const result = await microCMSClient.getListDetail<Article>({
     customRequestInit: {
-      next: draftKey ? { revalidate: 43200 } : { tags: ['blog'] },
+      cache: 'no-store',
     },
     endpoint: 'blog',
     contentId,
@@ -113,6 +113,7 @@ export const getBlogArticleDetail = async (
         'eyecatch',
         'toc_visible',
       ],
+      draftKey: draftKey,
     },
   });
 

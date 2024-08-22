@@ -1,6 +1,3 @@
-// SSG
-export const dynamic = 'force-static';
-
 import * as NotFound from '@/features/404/conponents/Index';
 
 export default function NotFoundPage() {

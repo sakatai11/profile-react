@@ -1,6 +1,3 @@
-// SSG
-export const dynamic = 'force-static';
-
 import { getBlogArticle, getCategory } from '../../../../_libs/microcms';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
 import Title from '@/app/_components/elements/title/Index';
@@ -26,37 +23,6 @@ export const generateMetadata = async ({
     description: `${category.category}の記事一覧です。`,
   };
 };
-
-export async function generateStaticParams() {
-  const { categories } = await getCategory();
-
-  const paramsArray = await Promise.all(
-    categories.map(async (category) => {
-      const { blogs } = await getBlogArticle(category.id, {
-        limit: PAGE_NAVI.NEW_LIST_LIMIT,
-      });
-
-      const totalPages = Math.ceil(blogs.totalCount / PAGE_NAVI.NEW_LIST_LIMIT);
-
-      return [...Array(totalPages)]
-        .map((_, i) => {
-          const currentPage = (i + 1).toString();
-          // totalPagesが2以降存在する場合、各カテゴリの最初のページを除外
-          if (currentPage === '1' && totalPages > 1) {
-            return null;
-          }
-          return {
-            current: currentPage,
-            categoryId: category.id,
-          };
-        })
-        .filter(Boolean); // null値を削除
-    }),
-  );
-
-  // 二次元配列をフラットにする
-  return paramsArray.flat();
-}
 
 export default async function CurrentCategoryPage({ params }: Props) {
   const currentPage = parseInt(params.current as string, 10);

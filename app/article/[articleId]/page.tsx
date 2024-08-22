@@ -1,11 +1,7 @@
-// SSG
-export const dynamic = 'force-static';
-
 import { getBlogArticle, getBlogArticleDetail } from '../../_libs/microcms';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
 import { createTableOfContents } from '../../_libs/utils';
 import { notFound } from 'next/navigation';
-import { PAGE_NAVI } from '@/types/cms/setting';
 import type { Metadata } from 'next';
 import { articleSite } from '@/data/site';
 import * as Article from '@/features/article/conponents/Index';
@@ -21,8 +17,12 @@ type Props = {
 
 export const generateMetadata = async ({
   params,
+  searchParams,
 }: Props): Promise<Metadata> => {
-  const { article } = await getBlogArticleDetail(params.articleId);
+  const { article } = await getBlogArticleDetail(
+    params.articleId,
+    searchParams.dk,
+  );
 
   return {
     title: article.title,
@@ -51,17 +51,6 @@ export const generateMetadata = async ({
     },
   };
 };
-
-export async function generateStaticParams() {
-  // 静的ルート生成
-  const { blogs } = await getBlogArticle('', {
-    limit: PAGE_NAVI.ARTICLE_LIST_LIMIT, // 取得記事数
-  });
-
-  return blogs.contents.map((article) => ({
-    articleId: article.id,
-  }));
-}
 
 export default async function ArticlePage({ params, searchParams }: Props) {
   const param = params.articleId;
