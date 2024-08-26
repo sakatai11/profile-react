@@ -23,6 +23,7 @@ export default function MicroCmsImage({
       alt={alt}
       className={className}
       priority={true}
+      sizes="{max-width: 767px} 100vw, 50vw"
     />
   );
 }

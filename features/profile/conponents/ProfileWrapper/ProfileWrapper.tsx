@@ -24,6 +24,7 @@ const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
               alt="イラスト"
               className="md:size-44"
               priority={true}
+              sizes="{max-width: 767px} 100vw, 50vw"
             />
           </div>
           <div className="flex items-center justify-start gap-8">
