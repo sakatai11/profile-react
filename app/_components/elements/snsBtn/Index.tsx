@@ -37,8 +37,8 @@ const SnsBtn = ({ url, title }: SnsProps): JSX.Element => {
               width={35}
               height={35}
               alt={shareLink.alt}
-              priority={true}
               sizes="{max-width: 767px} 100vw, 50vw"
+              priority={true}
             />
           </Link>
         </li>
