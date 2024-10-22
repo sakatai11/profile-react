@@ -81,7 +81,16 @@ export default async function ArticlePage({ params }: Props) {
   // シンタックスハイライト
   const highlighter = await createHighlighter({
     themes: ['slack-dark'],
-    langs: ['tsx', 'shell', 'typescript', 'javascript', 'html', 'css', 'json'],
+    langs: [
+      'tsx',
+      'shell',
+      'typescript',
+      'javascript',
+      'html',
+      'css',
+      'json',
+      'powershell',
+    ],
   });
 
   const $ = load(article.content);
