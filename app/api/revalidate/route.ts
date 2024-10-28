@@ -1,15 +1,15 @@
-// import { secureCompare } from '@/app/_libs/utils';
+import { secureCompare } from '@/app/_libs/utils';
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // API Keyの検証
-  // const apiKey =
-  //   request.headers.get('X-WEBHOOK-API-KEY') ||
-  //   request.headers.get('x-webhook-api-key');
-  // if (!apiKey || !secureCompare(apiKey, process.env.WEBHOOK_API_KEY!)) {
-  //   return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
-  // }
+  const apiKey =
+    request.headers.get('X-MICROCMS-Signature') ||
+    request.headers.get('x-microcms-signature');
+  if (!apiKey || !secureCompare(apiKey, process.env.X_MICROCMS_Signature!)) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
 
   // Cacheの再検証
   const tag = request.nextUrl.searchParams.get('tag');
