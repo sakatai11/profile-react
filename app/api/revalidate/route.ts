@@ -1,4 +1,4 @@
-import { secureCompare } from '@/app/_libs/utils';
+import crypto from 'crypto';
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -7,7 +7,16 @@ export async function POST(request: NextRequest) {
   const apiKey =
     request.headers.get('X-MICROCMS-Signature') ||
     request.headers.get('x-microcms-signature');
-  if (!apiKey || !secureCompare(apiKey)) {
+  const secret = process.env.X_MICROCMS_SIGNATURE;
+
+  if (!apiKey || !secret) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+  }
+
+  const body = await request.text(); // リクエストボディを取得
+  const hash = crypto.createHmac('sha256', secret).update(body).digest('hex');
+
+  if (apiKey !== hash) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 

@@ -17,28 +17,3 @@ export const createTableOfContents = (richText: string): TocProps[] => {
     .filter((item): item is TocProps => item !== undefined); // `undefined` を除外
   return tableOfContents;
 };
-
-export const secureCompare = (apiKey: string) => {
-  console.log('api:', apiKey);
-  console.log('Env Variable:', process.env.X_MICROCMS_SIGNATURE);
-  if (
-    typeof apiKey !== 'string' ||
-    typeof process.env.X_MICROCMS_SIGNATURE !== 'string'
-  ) {
-    console.error('API Key or Environment Variable is not a string');
-    return false;
-  }
-  const bufferA = Buffer.from(apiKey, 'utf8');
-  const bufferB = Buffer.from(process.env.X_MICROCMS_SIGNATURE, 'utf8');
-
-  if (bufferA.length !== bufferB.length) {
-    console.error('Buffer lengths do not match');
-    return false;
-  }
-
-  let result = 0;
-  for (let i = 0; i < bufferA.length; i++) {
-    result |= bufferA[i] ^ bufferB[i];
-  }
-  return result === 0;
-};
