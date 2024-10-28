@@ -1,8 +1,8 @@
 'use client';
 import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
-import { useRef } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
+import { useRef, useActionState } from 'react';
+import { useFormStatus } from 'react-dom';
 
 const initialState = {
   success: true,
@@ -24,8 +24,11 @@ const SubmitButton = () => {
   );
 };
 
-const ContactWrapper = (): JSX.Element => {
-  const [formState, formAction] = useFormState(createContactData, initialState);
+const ContactWrapper = () => {
+  const [formState, formAction] = useActionState(
+    createContactData,
+    initialState,
+  );
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = () => {

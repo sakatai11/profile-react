@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "rm -rf .next/cache/fetch-cache && next build",
     "start": "next start",
     "lint": "next lint --fix",
@@ -12,31 +12,35 @@
   },
   "dependencies": {
     "@alloc/quick-lru": "^5.2.0",
-    "@next/third-parties": "^14.2.5",
+    "@next/third-parties": "15.0.1",
     "cheerio": "^1.0.0-rc.12",
     "firebase": "^10.13.0",
     "framer-motion": "^11.3.0",
     "html-react-parser": "^5.1.10",
     "microcms-js-sdk": "^3.1.1",
-    "next": "^14.2.12",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.0.1",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "resend": "^4.0.0",
     "shiki": "^1.10.1"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
     "eslint": "^8",
-    "eslint-config-next": "14.2.4",
+    "eslint-config-next": "15.0.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-tailwindcss": "^3.17.4",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.2"
+  },
+  "overrides": {
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
   }
 }

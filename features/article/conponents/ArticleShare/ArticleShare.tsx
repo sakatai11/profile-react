@@ -8,7 +8,7 @@ type ParamProps = {
   title: string;
 };
 
-const ArticleShare = ({ param, title }: ParamProps): JSX.Element => {
+const ArticleShare = ({ param, title }: ParamProps): React.ReactElement => {
   const url = process.env.SERVER_DOMAIN + '/article/' + param;
 
   if (!url) {

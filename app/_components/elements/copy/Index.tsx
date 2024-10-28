@@ -6,7 +6,7 @@ type CopyProps = {
   children: React.ReactNode;
 };
 
-const Copy = ({ url, children }: CopyProps): JSX.Element => {
+const Copy = ({ url, children }: CopyProps): React.ReactElement => {
   const [copied, setCopied] = useState(false);
 
   const clickHandler = async () => {

@@ -4,14 +4,14 @@ import parse from 'html-react-parser';
 import Link from 'next/link';
 import MicroCmsImage from '@/features/components/MicroCmsImage/MicroCmsImage';
 import Image from 'next/image';
-import illustration from '/public/illustration.webp';
+import illustration from '@/public/illustration.webp';
 import React from 'react';
 
 type ProfileDataProps = {
   contents: ProfileContents[];
 };
 
-const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
+const ProfileWrapper = ({ contents }: ProfileDataProps): React.ReactElement => {
   return (
     <div className="mt-28 w-full md:mt-11">
       <div className="mx-[12.5%] flex justify-center gap-24 md:mx-0 md:mb-10 md:flex-col md:gap-12">

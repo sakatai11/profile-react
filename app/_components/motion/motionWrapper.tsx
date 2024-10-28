@@ -12,7 +12,7 @@ export default function MotionWrapper({
   children,
   delay,
   className,
-}: Children): JSX.Element {
+}: Children): React.ReactElement {
   // 一意のキーを設定するためにラップした画面のパスを取得
   const pathName = usePathname();
 

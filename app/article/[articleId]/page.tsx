@@ -15,12 +15,11 @@ import { load } from 'cheerio';
 import { createHighlighter } from 'shiki';
 
 type Props = {
-  params: { articleId: string };
+  params: Promise<{ articleId: string }>;
 };
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
   const { article } = await getBlogArticleDetail(params.articleId);
 
   return {
@@ -62,7 +61,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ArticlePage({ params }: Props) {
+export default async function ArticlePage(props: Props) {
+  const params = await props.params;
   const param = params.articleId;
 
   // 特定の記事の取得

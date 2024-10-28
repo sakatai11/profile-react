@@ -7,7 +7,7 @@ type Children = {
   children: React.ReactNode;
 };
 
-export default function Template({ children }: Children): JSX.Element {
+export default function Template({ children }: Children) {
   const pathName = usePathname();
 
   return (

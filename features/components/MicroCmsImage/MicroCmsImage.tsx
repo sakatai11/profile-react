@@ -10,7 +10,7 @@ export default function MicroCmsImage({
   format = 'auto=format',
   alt,
   className,
-}: MicroCMSImageProps): JSX.Element {
+}: MicroCMSImageProps): React.ReactElement {
   return (
     <Image
       src={

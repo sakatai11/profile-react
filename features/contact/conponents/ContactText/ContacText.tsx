@@ -1,4 +1,4 @@
-const ContactText = (): JSX.Element => {
+const ContactText = (): React.ReactElement => {
   return (
     <p className="mx-auto w-full max-w-[410px] pt-28 text-center md:pt-16">
       ブログに関するご感想など、

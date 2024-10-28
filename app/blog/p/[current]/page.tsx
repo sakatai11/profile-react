@@ -8,10 +8,10 @@ import { blogSite } from '@/data/site';
 import type { Metadata } from 'next';
 
 type Props = {
-  params: {
+  params: Promise<{
     categoryId: string;
     current: string;
-  };
+  }>;
 };
 
 export const metadata: Metadata = {
@@ -42,7 +42,8 @@ export async function generateStaticParams() {
     .filter(Boolean); // null値を削除
 }
 
-export default function CurrentBlogIndex({ params }: Props) {
+export default async function CurrentBlogIndex(props: Props) {
+  const params = await props.params;
   const { current } = params;
 
   // 全ての記事を表示

@@ -4,7 +4,7 @@ type LinkButtonProps = {
   text: string;
 };
 
-const LinkButton = ({ text }: LinkButtonProps): JSX.Element => {
+const LinkButton = ({ text }: LinkButtonProps): React.ReactElement => {
   return (
     <div className="m-auto w-[320px] py-14 text-center md:w-full">
       <Link

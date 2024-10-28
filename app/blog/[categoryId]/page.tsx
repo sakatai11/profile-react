@@ -10,14 +10,13 @@ import type { Metadata } from 'next';
 import * as Blog from '@/features/blog/conponents/Index';
 
 type Props = {
-  params: {
+  params: Promise<{
     categoryId: string;
-  };
+  }>;
 };
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
   const { category } = await getCategory(params.categoryId);
 
   return {
@@ -35,7 +34,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage(props: Props) {
+  const params = await props.params;
   const currentPage = 1; // 最初のページ
 
   // 記事一覧の取得
