@@ -19,6 +19,7 @@ export const createTableOfContents = (richText: string): TocProps[] => {
 };
 
 export const secureCompare = (apiKey: string) => {
+  console.log('Env Variable:', process.env.X_MICROCMS_SIGNATURE);
   if (
     typeof apiKey !== 'string' ||
     typeof process.env.X_MICROCMS_SIGNATURE !== 'string'
