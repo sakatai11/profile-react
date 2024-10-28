@@ -18,15 +18,19 @@ export const createTableOfContents = (richText: string): TocProps[] => {
   return tableOfContents;
 };
 
-export const secureCompare = (a: string, b: string) => {
-  if (typeof a !== 'string' || typeof b !== 'string') {
+export const secureCompare = (apiKey: string) => {
+  if (
+    typeof apiKey !== 'string' ||
+    typeof process.env.X_MICROCMS_SIGNATURE !== 'string'
+  ) {
+    console.error('API Key or Environment Variable is not a string');
     return false;
   }
-
-  const bufferA = Buffer.from(a);
-  const bufferB = Buffer.from(b);
+  const bufferA = Buffer.from(apiKey, 'utf8');
+  const bufferB = Buffer.from(process.env.X_MICROCMS_SIGNATURE, 'utf8');
 
   if (bufferA.length !== bufferB.length) {
+    console.error('Buffer lengths do not match');
     return false;
   }
 
@@ -34,6 +38,5 @@ export const secureCompare = (a: string, b: string) => {
   for (let i = 0; i < bufferA.length; i++) {
     result |= bufferA[i] ^ bufferB[i];
   }
-
   return result === 0;
 };

@@ -1,4 +1,4 @@
-// import { secureCompare } from '@/app/_libs/utils';
+import { secureCompare } from '@/app/_libs/utils';
 import { revalidateTag } from 'next/cache';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -7,7 +7,7 @@ export async function POST(request: NextRequest) {
   const apiKey =
     request.headers.get('X-MICROCMS-Signature') ||
     request.headers.get('x-microcms-signature');
-  if (!apiKey) {
+  if (!apiKey || !secureCompare(apiKey)) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
