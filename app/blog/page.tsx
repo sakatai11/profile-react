@@ -10,14 +10,14 @@ export const metadata: Metadata = {
   description: blogSite.description,
 };
 
-export default function BlogIndex() {
-  // categoryIdが空の場合に渡すデフォルトのprops
+export default async function BlogIndex() {
+  // defaultPropsのparamsをPromiseでラップ
   const defaultProps = {
-    params: {
-      categoryId: '',
-    },
+    params: Promise.resolve({
+      categoryId: '', // デフォルトカテゴリID
+    }),
   };
 
-  // 全ての記事を表示
+  // 非同期でCategoryPageコンポーネントをレンダリング
   return <CategoryPage {...defaultProps} />;
 }

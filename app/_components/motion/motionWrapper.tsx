@@ -1,8 +1,8 @@
 'use client';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, HTMLMotionProps } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
-type Children = {
+type Children = HTMLMotionProps<'div'> & {
   children: React.ReactNode;
   delay?: number;
   className?: string;
@@ -11,7 +11,6 @@ type Children = {
 export default function MotionWrapper({
   children,
   delay,
-  className,
 }: Children): React.ReactElement {
   // 一意のキーを設定するためにラップした画面のパスを取得
   const pathName = usePathname();
@@ -25,7 +24,6 @@ export default function MotionWrapper({
         animate={{ opacity: 1, y: 0 }} // マウント時
         transition={{ delay: delay }}
         exit={{ opacity: 0 }} // アンマウント時
-        className={className}
       >
         {children}
       </motion.div>

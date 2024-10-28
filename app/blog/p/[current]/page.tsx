@@ -44,8 +44,14 @@ export async function generateStaticParams() {
 
 export default async function CurrentBlogIndex(props: Props) {
   const params = await props.params;
-  const { current } = params;
+
+  // categoryIdのデフォルト値を設定
+  const categoryId = ''; // 必要に応じて設定
 
   // 全ての記事を表示
-  return <CurrentCategoryPage params={{ categoryId: '', current }} />;
+  return (
+    <CurrentCategoryPage
+      params={Promise.resolve({ categoryId, current: params.current })}
+    />
+  );
 }
