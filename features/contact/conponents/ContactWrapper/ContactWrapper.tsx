@@ -2,7 +2,6 @@
 import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef, useActionState } from 'react';
-import { useFormStatus } from 'react-dom';
 
 const initialState = {
   success: true,
@@ -10,25 +9,12 @@ const initialState = {
   message: '',
 };
 
-const SubmitButton = () => {
-  // 初期値false
-  const { pending } = useFormStatus();
-  return (
-    <button
-      type="submit"
-      className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
-      disabled={pending}
-    >
-      {pending ? '送信中' : '送信'}
-    </button>
-  );
-};
-
 const ContactWrapper = () => {
-  const [formState, formAction] = useActionState(
+  const [formState, formAction, isPending] = useActionState(
     createContactData,
     initialState,
   );
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleSubmit = () => {
@@ -154,20 +140,13 @@ const ContactWrapper = () => {
           ></textarea>
         </div>
         <div className="flex justify-center pt-4">
-          <SubmitButton />
-          {/* <button
+          <button
             type="submit"
             className="w-32 rounded-lg bg-skyblue px-7 py-2 text-center text-white opacity-100 duration-500 hover:opacity-70 hover:duration-500"
-            disabled={
-              formState.success &&
-              formState.message === 'お問い合わせを受け付けました'
-            }
+            disabled={isPending}
           >
-            {formState.success &&
-            formState.message === 'お問い合わせを受け付けました'
-              ? '送信完了'
-              : '送信'}
-          </button> */}
+            {isPending ? '送信中' : '送信'}
+          </button>
         </div>
 
         <p
