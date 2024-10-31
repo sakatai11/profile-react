@@ -1,32 +1,46 @@
 'use client';
 import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
-import { useRef, useActionState } from 'react';
+import { useRef, useEffect, useActionState, startTransition } from 'react';
+import { PrevState } from '@/types/email/formData';
 
+// 初期値
 const initialState = {
-  success: true,
+  success: false,
   option: '',
   message: '',
 };
 
 const ContactWrapper = () => {
   const [formState, formAction, isPending] = useActionState(
-    createContactData,
+    async (_prevState: PrevState, formData: FormData) => {
+      const { success, option, message } = await createContactData(
+        _prevState,
+        formData,
+      );
+      return { success, option, message };
+    },
     initialState,
-  );
+  ); // 第2引数に初期値を指定
+
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    sendGTMEvent({ event: 'contact', value: 'submit' });
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    startTransition(() => {
+      formAction(formData);
+    });
+  };
 
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = () => {
-    sendGTMEvent({ event: 'contact', value: 'submit' });
-  };
-
-  if (
-    formState.success &&
-    formState.message === 'お問い合わせを受け付けました'
-  ) {
-    formRef.current?.reset();
-  }
+  // successがtrueになったらフォームをリセット
+  useEffect(() => {
+    if (formState.success) {
+      formRef.current?.reset();
+    }
+  }, [formState.success]);
 
   return (
     <div className="mx-auto w-full max-w-[410px] pb-20 pt-14">
@@ -152,7 +166,7 @@ const ContactWrapper = () => {
         <p
           className={`mt-4 flex justify-center ${formState.success === false ? 'text-red-600' : ''}`}
         >
-          {formState.success === false
+          {formState.success === false && formState.message
             ? '必須項目を入力して下さい'
             : formState.message}
         </p>

@@ -3,3 +3,9 @@ export type FormData = {
   email: string;
   content: string;
 };
+
+export type PrevState = {
+  success?: boolean;
+  option?: string;
+  message?: string;
+};
