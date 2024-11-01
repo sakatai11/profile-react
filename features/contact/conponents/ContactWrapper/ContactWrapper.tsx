@@ -1,4 +1,5 @@
 'use client';
+import * as Field from './components/Index';
 import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef, useEffect, useActionState, startTransition } from 'react';
@@ -45,6 +46,7 @@ const ContactWrapper = () => {
   return (
     <div className="mx-auto w-full max-w-[410px] pb-20 pt-14">
       <form action={formAction} onSubmit={handleSubmit} ref={formRef}>
+        <Field.NameField />
         <div className="mb-4">
           <label
             htmlFor="name"
@@ -76,6 +78,7 @@ const ContactWrapper = () => {
             }
           />
         </div>
+        <Field.MailField />
         <div className="mb-4">
           <label
             htmlFor="email"
@@ -122,6 +125,7 @@ const ContactWrapper = () => {
             }
           />
         </div>
+        <Field.ContentField />
         <div className="mb-4">
           <label
             htmlFor="content"
