@@ -1,21 +1,23 @@
 import { PrevState } from '@/types/email/formData';
+import { defaultMessage, messageType } from '@/data/form';
 
 const MailField = ({
   success,
   message,
   option,
 }: PrevState): React.ReactElement => {
+  console.log(message);
   return (
     <div className="mb-4">
       <label
         htmlFor="email"
         className={`mb-2 block text-sm font-medium text-gray-600 ${
           (success === false &&
-            (message === '必須項目を入力して下さい' ||
-              message === 'メールアドレスを確認して下さい' ||
-              message === '名前とメールアドレス項目を入力して下さい' ||
-              message === 'メールアドレスと内容を入力して下さい' ||
-              message === 'メールアドレスに問題があります')) ||
+            (message === defaultMessage.errorMessage ||
+              message === messageType.mail ||
+              message === messageType.nameAndmail ||
+              message === messageType.mailAndcontent ||
+              message === messageType.addressError)) ||
           option === 'email'
             ? 'text-red-600'
             : ''
@@ -27,13 +29,25 @@ const MailField = ({
         </span>
         <span
           className={`mx-2 inline-block text-[10px] leading-3 ${
-            success === false && message === 'メールアドレスに問題があります'
+            (success === false &&
+              (message === defaultMessage.errorMessage ||
+                message === messageType.mail ||
+                message === messageType.nameAndmail ||
+                message === messageType.mailAndcontent ||
+                message === messageType.addressError)) ||
+            option === 'email'
               ? 'text-red-600'
               : ''
           }`}
         >
-          {success === false && message === 'メールアドレスに問題があります'
-            ? message
+          {(success === false &&
+            (message === defaultMessage.errorMessage ||
+              message === messageType.mail ||
+              message === messageType.nameAndmail ||
+              message === messageType.mailAndcontent ||
+              message === messageType.addressError)) ||
+          option === 'email'
+            ? messageType.mail
             : null}
         </span>
       </label>
@@ -42,7 +56,7 @@ const MailField = ({
         id="email"
         name="email"
         className={'mt-1 w-full rounded-md border bg-[#F3F7FB] p-2'}
-        disabled={success && message === 'お問い合わせを受け付けました'}
+        disabled={success && message === defaultMessage.successMessage}
       />
     </div>
   );

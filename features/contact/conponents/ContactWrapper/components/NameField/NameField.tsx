@@ -1,4 +1,5 @@
 import { PrevState } from '@/types/email/formData';
+import { defaultMessage, messageType } from '@/data/form';
 
 const NameField = ({
   success,
@@ -11,10 +12,10 @@ const NameField = ({
         htmlFor="name"
         className={`mb-2 block text-sm font-medium text-gray-600 ${
           (success === false &&
-            (message === '必須項目を入力して下さい' ||
-              message === '名前を入力して下さい' ||
-              message === '名前とメールアドレス項目を入力して下さい' ||
-              message === '名前と内容を入力して下さい')) ||
+            (message === defaultMessage.errorMessage ||
+              message === messageType.name ||
+              message === messageType.nameAndmail ||
+              message === messageType.nameAndcontent)) ||
           option === 'name'
             ? 'text-red-600'
             : ''
@@ -24,13 +25,34 @@ const NameField = ({
         <span className="mx-2 inline-block rounded-xl bg-skyblue p-1 text-[10px] leading-3 text-white">
           必須
         </span>
+        <span
+          className={`mx-2 inline-block text-[10px] leading-3 ${
+            (success === false &&
+              (message === defaultMessage.errorMessage ||
+                message === messageType.name ||
+                message === messageType.nameAndmail ||
+                message === messageType.nameAndcontent)) ||
+            option === 'name'
+              ? 'text-red-600'
+              : ''
+          }`}
+        >
+          {(success === false &&
+            (message === defaultMessage.errorMessage ||
+              message === messageType.name ||
+              message === messageType.nameAndmail ||
+              message === messageType.nameAndcontent)) ||
+          option === 'name'
+            ? messageType.name
+            : null}
+        </span>
       </label>
       <input
         type="text"
         id="name"
         name="name"
         className={'mt-1 w-full rounded-md border bg-[#F3F7FB] p-2'}
-        disabled={success && message === 'お問い合わせを受け付けました'}
+        disabled={success && message === defaultMessage.successMessage}
       />
     </div>
   );
