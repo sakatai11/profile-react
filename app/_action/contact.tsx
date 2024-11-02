@@ -2,7 +2,8 @@
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
 import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
 import { PrevState } from '@/types/email/formData';
-
+import { defaultMessage, messageType } from '@/data/form';
+import { sendMessage } from '@/data/accounts';
 import { Resend } from 'resend';
 import * as React from 'react';
 import { db } from '@/app/utils/firebase';
@@ -33,7 +34,7 @@ export async function createContactData(
   ) {
     return {
       success: false,
-      message: '必須項目を入力して下さい',
+      message: defaultMessage.errorMessage,
     };
   }
 
@@ -43,7 +44,7 @@ export async function createContactData(
   ) {
     return {
       success: false,
-      message: '名前とメールアドレス項目を入力して下さい',
+      message: messageType.nameAndmail,
     };
   }
 
@@ -53,7 +54,7 @@ export async function createContactData(
   ) {
     return {
       success: false,
-      message: '名前と内容を入力して下さい',
+      message: messageType.nameAndcontent,
     };
   }
 
@@ -63,7 +64,7 @@ export async function createContactData(
   ) {
     return {
       success: false,
-      message: 'メールアドレスと内容を入力して下さい',
+      message: messageType.mailAndcontent,
     };
   }
 
@@ -71,7 +72,7 @@ export async function createContactData(
     return {
       success: false,
       option: 'name',
-      message: '名前を入力してください',
+      message: messageType.name,
     };
   }
 
@@ -79,13 +80,13 @@ export async function createContactData(
     return {
       success: false,
       option: 'email',
-      message: 'メールアドレスを確認して下さい',
+      message: messageType.mail,
     };
   } else if (!validateEmail(rawFormData.email)) {
     return {
       success: false,
       option: 'email',
-      message: 'メールアドレスに問題があります',
+      message: messageType.addressError,
     };
   }
 
@@ -93,7 +94,7 @@ export async function createContactData(
     return {
       success: false,
       option: 'content',
-      message: '内容を入力して下さい',
+      message: messageType.content,
     };
   }
 
@@ -103,15 +104,15 @@ export async function createContactData(
     await addDoc(collection(db, 'contacts'), rawFormData);
     const emailSendResults = [
       await resend.emails.send({
-        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        from: sendMessage.form,
         to: [rawFormData.email],
-        subject: 'お問い合わせを受け付けました',
+        subject: sendMessage.subject,
         react: EmailTemplate(rawFormData) as React.ReactElement,
       }),
       await resend.emails.send({
-        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        from: sendMessage.form,
         to: [process.env.ADDRESS as string],
-        subject: 'お問い合わせがありました',
+        subject: sendMessage.meSubject,
         react: EmailMeTemplate(rawFormData) as React.ReactElement,
       }),
     ];
@@ -129,9 +130,9 @@ export async function createContactData(
     }
     return {
       success: false,
-      message: 'お問い合わせに失敗しました',
+      message: sendMessage.error,
     };
   }
 
-  return { success: true, message: 'お問い合わせを受け付けました' };
+  return { success: true, message: sendMessage.success };
 }
