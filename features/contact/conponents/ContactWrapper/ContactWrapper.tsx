@@ -4,6 +4,10 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef, useEffect, useActionState, startTransition } from 'react';
 import { PrevState } from '@/types/email/formData';
+import { Message } from '@/functions/src/data/form';
+import { sendMessage } from '@/functions/src/data/accounts';
+
+type validationMessage = Message | typeof sendMessage.error;
 
 // 初期値
 const initialState = {
@@ -14,12 +18,19 @@ const initialState = {
 
 const ContactWrapper = () => {
   const [formState, formAction, isPending] = useActionState(
-    async (_prevState: PrevState, formData: FormData) => {
+    async (
+      _prevState: PrevState,
+      formData: FormData,
+    ): Promise<{
+      success: boolean;
+      option: string;
+      message: validationMessage;
+    }> => {
       const { success, option, message } = await createContactData(
         _prevState,
         formData,
       );
-      return { success, option, message };
+      return { success, option: option ?? '', message };
     },
     initialState,
   ); // 第2引数に初期値を指定

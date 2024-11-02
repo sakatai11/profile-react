@@ -12,3 +12,15 @@ export const messageType = {
   addressError: 'メールアドレスに問題があります',
   content: '内容を入力して下さい',
 } as const;
+
+// Message 型定義
+export type Message =
+  | typeof defaultMessage.successMessage
+  | typeof defaultMessage.errorMessage
+  | typeof messageType.name
+  | typeof messageType.nameAndmail
+  | typeof messageType.nameAndcontent
+  | typeof messageType.mail
+  | typeof messageType.mailAndcontent
+  | typeof messageType.addressError
+  | typeof messageType.content;
