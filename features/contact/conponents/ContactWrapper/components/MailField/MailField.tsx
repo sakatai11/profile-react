@@ -1,12 +1,11 @@
 import { PrevState } from '@/types/email/formData';
-import { defaultMessage, messageType } from '@/data/form';
+import { defaultMessage, messageType } from '@/functions/src/data/form';
 
 const MailField = ({
   success,
   message,
   option,
 }: PrevState): React.ReactElement => {
-  console.log(message);
   return (
     <div className="mb-4">
       <label
@@ -47,7 +46,11 @@ const MailField = ({
               message === messageType.mailAndcontent ||
               message === messageType.addressError)) ||
           option === 'email'
-            ? messageType.mail
+            ? message === messageType.mail
+              ? messageType.mail
+              : message === messageType.addressError
+                ? messageType.addressError
+                : messageType.mail
             : null}
         </span>
       </label>

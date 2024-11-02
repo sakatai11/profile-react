@@ -1,4 +1,5 @@
 import { PrevState } from '@/types/email/formData';
+import { defaultMessage, messageType } from '@/functions/src/data/form';
 
 const ContentField = ({
   success,
@@ -11,10 +12,10 @@ const ContentField = ({
         htmlFor="content"
         className={`mb-2 block text-sm font-medium text-gray-600 ${
           (success === false &&
-            (message === '必須項目を入力して下さい' ||
-              message === '内容を入力して下さい' ||
-              message === '名前と内容を入力して下さい' ||
-              message === 'メールアドレスと内容を入力して下さい')) ||
+            (message === defaultMessage.errorMessage ||
+              message === messageType.content ||
+              message === messageType.nameAndcontent ||
+              message === messageType.mailAndcontent)) ||
           option === 'content'
             ? 'text-red-600'
             : ''
@@ -23,6 +24,27 @@ const ContentField = ({
         Content
         <span className="mx-2 inline-block rounded-xl bg-skyblue p-1 text-[10px] leading-3 text-white">
           必須
+        </span>
+        <span
+          className={`mx-2 inline-block text-[10px] leading-3 ${
+            (success === false &&
+              (message === defaultMessage.errorMessage ||
+                message === messageType.content ||
+                message === messageType.nameAndcontent ||
+                message === messageType.mailAndcontent)) ||
+            option === 'content'
+              ? 'text-red-600'
+              : ''
+          }`}
+        >
+          {(success === false &&
+            (message === defaultMessage.errorMessage ||
+              message === messageType.content ||
+              message === messageType.nameAndcontent ||
+              message === messageType.mailAndcontent)) ||
+          option === 'content'
+            ? messageType.content
+            : null}
         </span>
       </label>
       <textarea
