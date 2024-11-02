@@ -1,5 +1,5 @@
 import { PrevState } from '@/types/email/formData';
-import { defaultMessage, messageType } from '@/functions/src/data/form';
+import { defaultMessage, messageType } from '@/data/form';
 
 const NameField = ({
   success,

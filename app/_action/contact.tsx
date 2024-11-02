@@ -2,8 +2,8 @@
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
 import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
 import { PrevState } from '@/types/email/formData';
-import { defaultMessage, messageType } from '@/functions/src/data/form';
-import { sendMessage } from '@/functions/src/data/accounts';
+import { defaultMessage, messageType } from '@/data/form';
+import { sendMessage } from '@/data/accounts';
 import { Resend } from 'resend';
 import * as React from 'react';
 import { db } from '@/app/utils/firebase';

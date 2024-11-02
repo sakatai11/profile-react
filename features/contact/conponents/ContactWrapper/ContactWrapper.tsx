@@ -4,8 +4,8 @@ import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef, useEffect, useActionState, startTransition } from 'react';
 import { PrevState } from '@/types/email/formData';
-import { Message } from '@/functions/src/data/form';
-import { sendMessage } from '@/functions/src/data/accounts';
+import { Message } from '@/data/form';
+import { sendMessage } from '@/data/accounts';
 
 type validationMessage = Message | typeof sendMessage.error;
 
