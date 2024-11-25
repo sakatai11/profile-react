@@ -1,6 +1,7 @@
 'use server';
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
 import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
+import { revalidatePath } from 'next/cache';
 import { PrevState } from '@/types/email/formData';
 import { defaultMessage, messageType } from '@/data/form';
 import { sendMessage } from '@/data/accounts';
@@ -133,6 +134,9 @@ export async function createContactData(
       message: sendMessage.error,
     };
   }
+
+  // Cacheの再検証
+  revalidatePath('/contact');
 
   return { success: true, message: sendMessage.success };
 }
