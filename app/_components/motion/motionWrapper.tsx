@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 type Children = HTMLMotionProps<'div'> & {
   children: React.ReactNode;
   delay?: number;
-  className?: string;
 };
 
 export default function MotionWrapper({
