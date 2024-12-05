@@ -8,7 +8,10 @@ type BlogDataProps = {
   param: string;
 };
 
-const ArticleCategory = ({ contents, param }: BlogDataProps): JSX.Element => {
+const ArticleCategory = ({
+  contents,
+  param,
+}: BlogDataProps): React.ReactElement => {
   // 現在のページのIDと一致するコンテンツを除外
   const filteredContents = contents.filter((content) => content.id !== param);
 

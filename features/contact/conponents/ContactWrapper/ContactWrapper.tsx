@@ -23,7 +23,7 @@ const SubmitButton = () => {
   );
 };
 
-const ContactWrapper = (): JSX.Element => {
+const ContactWrapper = (): React.ReactElement => {
   const [formState, formAction] = useFormState(createContactData, initialState);
   const formRef = useRef<HTMLFormElement>(null);
 

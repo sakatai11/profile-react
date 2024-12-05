@@ -15,7 +15,7 @@ const BlogPagination = ({
   currentPage,
   totalCount,
   postlimit = PAGE_NAVI.NEW_LIST_LIMIT,
-}: PaginationProps): JSX.Element => {
+}: PaginationProps): React.ReactElement => {
   const totalPages = Math.ceil(totalCount / postlimit);
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 

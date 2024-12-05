@@ -6,7 +6,7 @@ type ArticleRichEditorProps = {
 
 const ArticleRichEditor = ({
   richEditor,
-}: ArticleRichEditorProps): JSX.Element => {
+}: ArticleRichEditorProps): React.ReactElement => {
   return <div className="aricleContents pb-14">{parse(richEditor)}</div>;
 };
 

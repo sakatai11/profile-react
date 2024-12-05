@@ -2,7 +2,7 @@ type Children = {
   children: React.ReactNode;
 };
 
-const Section = ({ children }: Children): JSX.Element => {
+const Section = ({ children }: Children): React.ReactElement => {
   return (
     <section>
       <div className="container">{children}</div>

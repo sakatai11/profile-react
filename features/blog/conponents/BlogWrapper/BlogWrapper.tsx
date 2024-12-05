@@ -6,7 +6,7 @@ type BlogDataProps = {
   contents: BlogList[];
 };
 
-const BlogWrapper = ({ contents }: BlogDataProps): JSX.Element => {
+const BlogWrapper = ({ contents }: BlogDataProps): React.ReactElement => {
   // 各記事のカテゴリーをコンソールに出力
 
   return (

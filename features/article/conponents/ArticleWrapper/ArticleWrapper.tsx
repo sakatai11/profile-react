@@ -15,7 +15,9 @@ type AricleDataProps = {
   };
 };
 
-const ArticleWrapper = ({ articleData }: AricleDataProps): JSX.Element => {
+const ArticleWrapper = ({
+  articleData,
+}: AricleDataProps): React.ReactElement => {
   const { contents, richEditor, toc } = articleData;
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',

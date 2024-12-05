@@ -8,7 +8,7 @@ type SnsProps = {
   title: string;
 };
 
-const SnsBtn = ({ url, title }: SnsProps): JSX.Element => {
+const SnsBtn = ({ url, title }: SnsProps): React.ReactElement => {
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
   const accountName = commonTwitterOpenGraph.site.replace(/^@/, '');

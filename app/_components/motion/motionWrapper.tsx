@@ -5,14 +5,12 @@ import { usePathname } from 'next/navigation';
 type Children = {
   children: React.ReactNode;
   delay?: number;
-  className?: string;
 };
 
 export default function MotionWrapper({
   children,
   delay,
-  className,
-}: Children): JSX.Element {
+}: Children): React.ReactElement {
   // 一意のキーを設定するためにラップした画面のパスを取得
   const pathName = usePathname();
 
@@ -25,7 +23,6 @@ export default function MotionWrapper({
         animate={{ opacity: 1, y: 0 }} // マウント時
         transition={{ delay: delay }}
         exit={{ opacity: 0 }} // アンマウント時
-        className={className}
       >
         {children}
       </motion.div>

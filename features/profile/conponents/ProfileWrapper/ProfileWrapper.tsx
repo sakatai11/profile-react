@@ -11,7 +11,7 @@ type ProfileDataProps = {
   contents: ProfileContents[];
 };
 
-const ProfileWrapper = ({ contents }: ProfileDataProps): JSX.Element => {
+const ProfileWrapper = ({ contents }: ProfileDataProps): React.ReactElement => {
   return (
     <div className="mt-28 w-full md:mt-11">
       <div className="mx-[12.5%] flex justify-center gap-24 md:mx-0 md:mb-10 md:flex-col md:gap-12">
