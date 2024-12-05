@@ -11,14 +11,14 @@ import { load } from 'cheerio';
 import { createHighlighter } from 'shiki';
 
 type Props = {
-  params: { articleId: string };
-  searchParams: { dk?: string };
+  params: Promise<{ articleId: string }>;
+  searchParams: Promise<{ dk?: string }>;
 };
 
-export const generateMetadata = async ({
-  params,
-  searchParams,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
+  const searchParams = await props.searchParams;
+
   const { article } = await getBlogArticleDetail(
     params.articleId,
     searchParams.dk,
@@ -56,8 +56,11 @@ export default async function ArticlePage(props: Props) {
   const params = await props.params;
   const param = params.articleId;
 
+  const searchParams = await props.searchParams;
+  const draftKey = searchParams.dk;
+
   // 特定の記事の取得
-  const { article } = await getBlogArticleDetail(param);
+  const { article } = await getBlogArticleDetail(param, draftKey);
 
   if (!article) {
     notFound();
@@ -128,6 +131,7 @@ export default async function ArticlePage(props: Props) {
 
   return (
     <>
+      {draftKey && <p className="text-center text-red-500">プレビュー画面</p>}
       <MotionWrapper>
         <Article.ArticleWrapper
           articleData={{ contents: article, richEditor: $.html(), toc: toc }}
