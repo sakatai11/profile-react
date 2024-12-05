@@ -1,6 +1,5 @@
 'use client';
 import * as Field from './components/Index';
-import { sendGTMEvent } from '@next/third-parties/google';
 import { createContactData } from '@/app/_action/contact';
 import { useRef, useEffect, useActionState, startTransition } from 'react';
 import { PrevState } from '@/types/email/formData';
@@ -37,7 +36,6 @@ const ContactWrapper = () => {
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    sendGTMEvent({ event: 'contact', value: 'submit' });
 
     const formData = new FormData(event.target as HTMLFormElement);
     startTransition(() => {
