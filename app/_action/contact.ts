@@ -1,14 +1,15 @@
 'use server';
 import { EmailTemplate } from '@/app/_components/email/EmailTemplate';
 import { EmailMeTemplate } from '@/app/_components/email/EmailMeTemplate';
+import { revalidatePath } from 'next/cache';
+import { PrevState } from '@/types/email/formData';
+import { defaultMessage, messageType } from '@/data/form';
+import { sendMessage } from '@/data/accounts';
 import { Resend } from 'resend';
 import * as React from 'react';
-
-type PrevState = {
-  success?: boolean;
-  option?: string;
-  message?: string;
-};
+// import { db } from '@/app/utils/firebase';
+// import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { FirebaseError } from 'firebase/app';
 
 function validateEmail(email: string) {
   const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|jp|net|to|cx)$/;
@@ -24,6 +25,7 @@ export async function createContactData(
     name: formData.get('name') as string,
     email: formData.get('email') as string,
     content: formData.get('content') as string,
+    // timestamp: serverTimestamp(),
   };
 
   if (
@@ -33,31 +35,37 @@ export async function createContactData(
   ) {
     return {
       success: false,
-      message: '必須項目を入力して下さい',
+      message: defaultMessage.errorMessage,
     };
-  } else if (
+  }
+
+  if (
     !rawFormData.name &&
     (!rawFormData.email || !validateEmail(rawFormData.email))
   ) {
     return {
       success: false,
-      message: '名前とメールアドレス項目を入力して下さい',
+      message: messageType.nameAndmail,
     };
-  } else if (
+  }
+
+  if (
     !rawFormData.name &&
     (!rawFormData.content || !validateEmail(rawFormData.email))
   ) {
     return {
       success: false,
-      message: '名前と内容を入力して下さい',
+      message: messageType.nameAndcontent,
     };
-  } else if (
+  }
+
+  if (
     (!rawFormData.email || !validateEmail(rawFormData.email)) &&
     !rawFormData.content
   ) {
     return {
       success: false,
-      message: 'メールアドレスと内容を入力して下さい',
+      message: messageType.mailAndcontent,
     };
   }
 
@@ -65,7 +73,7 @@ export async function createContactData(
     return {
       success: false,
       option: 'name',
-      message: '名前を入力してください',
+      message: messageType.name,
     };
   }
 
@@ -73,13 +81,13 @@ export async function createContactData(
     return {
       success: false,
       option: 'email',
-      message: 'メールアドレスを確認して下さい',
+      message: messageType.mail,
     };
   } else if (!validateEmail(rawFormData.email)) {
     return {
       success: false,
       option: 'email',
-      message: 'メールアドレスに問題があります',
+      message: messageType.addressError,
     };
   }
 
@@ -87,24 +95,25 @@ export async function createContactData(
     return {
       success: false,
       option: 'content',
-      message: '内容を入力して下さい',
+      message: messageType.content,
     };
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
+    // await addDoc(collection(db, 'contacts'), rawFormData);
     const emailSendResults = [
       await resend.emails.send({
-        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        from: sendMessage.form,
         to: [rawFormData.email],
-        subject: 'お問い合わせを受け付けました',
+        subject: sendMessage.subject,
         react: EmailTemplate(rawFormData) as React.ReactElement,
       }),
       await resend.emails.send({
-        from: 'さかのパーソナルサイト <support@saka-tai.com>',
+        from: sendMessage.form,
         to: [process.env.ADDRESS as string],
-        subject: 'お問い合わせがありました',
+        subject: sendMessage.meSubject,
         react: EmailMeTemplate(rawFormData) as React.ReactElement,
       }),
     ];
@@ -115,12 +124,19 @@ export async function createContactData(
       }
     }
   } catch (e) {
-    console.error('Error adding document:', e);
+    if (e instanceof FirebaseError) {
+      console.error('FirebaseError:', e.code, e.message);
+    } else {
+      console.error('Error adding document:', e);
+    }
     return {
       success: false,
-      message: 'お問い合わせに失敗しました',
+      message: sendMessage.error,
     };
   }
 
-  return { success: true, message: 'お問い合わせを受け付けました' };
+  // Cacheの再検証
+  revalidatePath('/contact');
+
+  return { success: true, message: sendMessage.success };
 }
