@@ -52,12 +52,12 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function ArticlePage({ params, searchParams }: Props) {
+export default async function ArticlePage(props: Props) {
+  const params = await props.params;
   const param = params.articleId;
-  const draftKey = searchParams.dk;
 
   // 特定の記事の取得
-  const { article } = await getBlogArticleDetail(param, draftKey);
+  const { article } = await getBlogArticleDetail(param);
 
   if (!article) {
     notFound();
@@ -128,7 +128,6 @@ export default async function ArticlePage({ params, searchParams }: Props) {
 
   return (
     <>
-      {draftKey && <p className="text-center text-red-500">プレビュー画面</p>}
       <MotionWrapper>
         <Article.ArticleWrapper
           articleData={{ contents: article, richEditor: $.html(), toc: toc }}
