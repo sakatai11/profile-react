@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default async function ContactPage() {
   return (
     <>
-      <Title text={'Contact'} />
+      <Title text="Contact" />
       <Contact.ContactText />
       <MotionWrapper>
         <Contact.ContactWrapper />
