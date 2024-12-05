@@ -4,7 +4,7 @@ import parse from 'html-react-parser';
 import Link from 'next/link';
 import MicroCmsImage from '@/features/components/MicroCmsImage/MicroCmsImage';
 import Image from 'next/image';
-import illustration from '/public/illustration.webp';
+import illustration from '@/public/illustration.webp';
 import React from 'react';
 
 type ProfileDataProps = {
