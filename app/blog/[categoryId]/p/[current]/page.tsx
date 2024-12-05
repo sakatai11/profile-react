@@ -7,15 +7,14 @@ import { PAGE_NAVI } from '@/types/cms/setting';
 import type { Metadata } from 'next';
 
 type Props = {
-  params: {
+  params: Promise<{
     current?: string;
     categoryId: string;
-  };
+  }>;
 };
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
   const { category } = await getCategory(params.categoryId);
 
   return {
@@ -24,7 +23,8 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function CurrentCategoryPage({ params }: Props) {
+export default async function CurrentCategoryPage(props: Props) {
+  const params = await props.params;
   const currentPage = parseInt(params.current as string, 10);
 
   if (Number.isNaN(currentPage) || currentPage < 1) {
