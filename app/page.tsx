@@ -12,12 +12,11 @@ export default function TopPage() {
           <Top.TopTitle />
         </MotionWrapper>
       </div>
-      <MotionWrapper
-        delay={0.4}
-        className={'flex grow flex-col justify-center'}
-      >
-        <Top.TopNav />
-      </MotionWrapper>
+      <div className={'flex grow flex-col justify-center'}>
+        <MotionWrapper delay={0.4}>
+          <Top.TopNav />
+        </MotionWrapper>
+      </div>
     </div>
   );
 }
