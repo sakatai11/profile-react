@@ -1,6 +1,7 @@
 import { TocProps } from '@/types/cms/toc';
 import * as cheerio from 'cheerio';
 
+//----- blogの目次生成 -----//
 export const createTableOfContents = (richText: string): TocProps[] => {
   const $ = cheerio.load(richText);
   const headings = $('h2, h3').toArray();
