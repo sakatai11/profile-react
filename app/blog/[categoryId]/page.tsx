@@ -7,14 +7,13 @@ import type { Metadata } from 'next';
 import * as Blog from '@/features/blog/conponents/Index';
 
 type Props = {
-  params: {
+  params: Promise<{
     categoryId: string;
-  };
+  }>;
 };
 
-export const generateMetadata = async ({
-  params,
-}: Props): Promise<Metadata> => {
+export const generateMetadata = async (props: Props): Promise<Metadata> => {
+  const params = await props.params;
   const { category } = await getCategory(params.categoryId);
 
   return {
@@ -23,8 +22,10 @@ export const generateMetadata = async ({
   };
 };
 
-export default async function CategoryPage({ params }: Props) {
+export default async function CategoryPage(props: Props) {
   const currentPage = 1; // 最初のページ
+
+  const params = await props.params;
 
   // 記事一覧の取得
   const { blogs } = await getBlogArticle(params.categoryId, {
