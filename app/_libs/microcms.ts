@@ -42,7 +42,9 @@ export const getBlogArticle = async (
 ) => {
   const result = await microCMSClient.getList<BlogList>({
     customRequestInit: {
-      cache: 'no-store',
+      next: {
+        revalidate: 43200, // 43200秒（12時間）キャッシュを適用
+      },
     },
     endpoint: 'blog',
     queries: {
