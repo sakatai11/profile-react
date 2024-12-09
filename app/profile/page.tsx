@@ -1,6 +1,3 @@
-// SSG
-export const dynamic = 'force-static';
-
 import { getProfile } from '../_libs/microcms';
 import type { Metadata } from 'next';
 import { profileSite } from '@/data/site';
