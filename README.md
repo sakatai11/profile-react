@@ -1,50 +1,43 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# profile-react
 
-## Getting Started
+## 概要
 
-First, run the development server:
+このプロジェクトは、ユーザーが記事を閲覧し、ブログやプロフィールを管理できるウェブアプリケーションです。また、コンタクトフォームを通じたユーザ
+ーからの問い合わせを可能にしています。
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 主な機能
+
+- **ユーザー管理:** プロフィール管理機能により、ユーザーが自身のプロフィールを編集できます。
+- **コンテンツ管理:** 記事の作成、編集、および表示が可能。ブログカテゴリの追加や、各記事の詳細表示をサポートしています。
+- **お問い合わせ機能:** ユーザーがコンタクトフォームを通じて問い合わせを行える機能があります。
+- **レスポンシブデザイン:** モバイルデバイスでも快適に使用できるインターフェースを提供。
+- **サンプルコンポーネントの実装:** ボタンやフィールドコンポーネントを使用して、効率的な開発をサポート。
+
+## 使用技術
+
+- **プログラミング言語:** TypeScript
+- **フレームワーク:** Next.js（Reactベース）
+- **スタイリング:** Tailwind CSSを使用して、スタイルを効率的に管理。
+- **API通信:** microCMSと連携してコンテンツを取得。
+
+## プロジェクト構造
+
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Deploy Firebase Functions
-
-To deploy Firebase Functions, follow these steps:
-
-1. Navigate to the `functions` directory:
-
-   ```bash
-   cd functions
-
-   ```
-
-2. Deploy the functions:
-   firebase deploy --only functions
+/my_project
+├── /app                  # アプリケーションのコード
+│   ├── /_action          # アクション（主にAPIとの連携）
+│   ├── /_components      # 再利用可能なUIコンポーネント
+│   ├── /_libs            # ライブラリやユーティリティ関数
+│   ├── /api              # APIエンドポイント
+│   ├── /article          # 記事関連のページ
+│   ├── /blog             # ブログ関連のページ
+│   ├── /contact          # お問い合わせページ
+│   ├── /profile          # プロフィールページ
+│   ├── /utils            # ユーティリティ関数
+│   └── ...               # その他のページ
+├── /data                 # データファイル
+├── /features             # 各種機能の実装
+├── /public               # 静的ファイル（画像など）
+├── package.json          # プロジェクト設定ファイル
+└── tsconfig.json         # TypeScript設定ファイル
+```
