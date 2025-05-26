@@ -18,3 +18,10 @@ export type SiteConfig = {
   titleTemplate: string;
   defaultOpenGraph: OpenGraph;
 };
+
+export type OgpResult = {
+  title: string;
+  image: string;
+  domain: string;
+  url: string;
+};

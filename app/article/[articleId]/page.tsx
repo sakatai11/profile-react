@@ -11,9 +11,6 @@ import dummy from '@/public/dummy.png';
 import { load } from 'cheerio';
 import { createHighlighter } from 'shiki';
 
-import Image from 'next/image';
-import Link from 'next/link';
-
 type Props = {
   params: Promise<{ articleId: string }>;
 };
@@ -138,36 +135,6 @@ export default async function ArticlePage(props: Props) {
   return (
     <>
       <MotionWrapper>
-      <div className='mt-[36px] w-full overflow-hidden rounded-lg border border-solid shadow'>
-        <Link href='#' className='block'>
-          <div className='flex h-36 items-center'>
-            <div className='aspect-square h-36 w-36'>
-              <Image
-                src='https://placehold.jp/30/dd6699/ffffff/300x150.png?text=placeholder+image'
-                alt='Markdown Editor'
-                width={144}
-                height={144}
-                loading='lazy'
-                className='h-full w-full object-cover'
-              />
-            </div>
-            <div className='flex h-full w-full flex-col justify-center p-3'>
-             <h3 className='mb-2 font-medium'>このコンテンツは、Markdownで書かれた記事をRich Text Editorで編集したものです。</h3>
-
-             <div className='flex aspect-square h-5 w-5 items-center gap-1'>
-                <Image
-                  src='/no-image-ogp.png'
-                  alt='Markdown Editor'
-                  width={16}
-                  height={16}
-                  loading='lazy'
-                />
-                <span className='text-sm text-[#686868]'>https://example.com</span>
-             </div>
-            </div>
-          </div>
-        </Link>
-      </div>
         <Article.ArticleWrapper
           articleData={{ contents: article, richEditor: $.html(), toc: toc }}
         />
