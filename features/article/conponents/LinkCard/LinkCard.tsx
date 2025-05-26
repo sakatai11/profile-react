@@ -12,7 +12,7 @@ const LinkCard = async ({ url }: LinkCardProps): Promise<React.ReactElement> => 
 
   return (
     <div className="mt-[36px] w-full overflow-hidden rounded-lg border border-solid shadow">
-      <Link href={ogp.url} className="block">
+      <Link href={ogp.url} className="block" target='_blank'>
         <div className="flex h-36 items-center">
           <div className="aspect-square size-36">
             <Image
@@ -28,8 +28,8 @@ const LinkCard = async ({ url }: LinkCardProps): Promise<React.ReactElement> => 
             <h3 className="mb-2 font-medium">{ogp.title || ogp.url}</h3>
             <div className="flex h-5 items-center gap-1">
               <Image
-                src="/no-image-ogp.png"
-                alt="domain icon"
+                src={ogp.favicon || '/no-image-ogp.png'}
+                alt="favicon"
                 width={16}
                 height={16}
                 loading="lazy"
