@@ -61,7 +61,7 @@ export const getBlogArticle = async (
         'eyecatch',
       ],
       filters: param ? `categories[contains]${param}` : '',
-      orders: '-updatedAt',
+      orders: '-publishedAt',
     },
   });
 
