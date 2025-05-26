@@ -47,7 +47,7 @@ const ArticleWrapper = ({
               className="mr-1"
               priority={true}
             />
-            {new Date(contents.updatedAt).toLocaleDateString('ja-JP', options)}
+            {new Date(contents.publishedAt).toLocaleDateString('ja-JP', options)}
           </span>
         </time>
       </div>
