@@ -12,7 +12,7 @@ const ArticleRichEditor = async ({
   // span 要素内の link-card を持つパターンをアンカー要素へ正規化
   const normalizedHtml = richEditor.replace(
     /<a([^>]*)href="([^"]+)"([^>]*)>\s*<span class="link-card">(.*?)<\/span>\s*<\/a>/g,
-    '<a href="$2" class="link-card">$4</a>'
+    '<a href="$2" class="link-card">$4</a>',
   );
   const options = {
     replace: (domNode: DOMNode) => {
@@ -28,9 +28,7 @@ const ArticleRichEditor = async ({
   };
 
   return (
-    <div className="aricleContents pb-14">
-      {parse(normalizedHtml, options)}
-    </div>
+    <div className="aricleContents pb-14">{parse(normalizedHtml, options)}</div>
   );
 };
 

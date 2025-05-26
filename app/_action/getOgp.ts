@@ -21,8 +21,8 @@ export async function getOgp(url: string): Promise<OgpResult> {
       Array.isArray(result.ogImage) && result.ogImage.length > 0
         ? (result.ogImage[0].url as string)
         : typeof result.ogImage === 'object' && 'url' in result.ogImage
-        ? (result.ogImage.url as string)
-        : '';
+          ? (result.ogImage.url as string)
+          : '';
     let favicon = defaultFavicon;
     if ('favicon' in result) {
       if (Array.isArray(result.favicon) && result.favicon.length > 0) {
