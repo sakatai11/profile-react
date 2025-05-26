@@ -4,47 +4,42 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+/my_project
+├── /app                  # アプリケーションのコード
+│   ├── /_action          # アクション（主にAPIとの連携）
+│   ├── /_components      # 再利用可能なUIコンポーネント
+│   ├── /_libs            # ライブラリやユーティリティ関数
+│   ├── /api              # APIエンドポイント
+│   ├── /article          # 記事関連のページ
+│   ├── /blog             # ブログ関連のページ
+│   ├── /contact          # お問い合わせページ
+│   ├── /profile          # プロフィールページ
+│   ├── /utils            # ユーティリティ関数
+│   └── ...               # その他のページ
+├── /data                 # データファイル
+├── /features             # 各種機能の実装
+├── /public               # 静的ファイル（画像など）
+├── package.json          # プロジェクト設定ファイル
+└── tsconfig.json         # TypeScript設定ファイル
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
-## Deploy Firebase Functions
-
-To deploy Firebase Functions, follow these steps:
-
-1. Navigate to the `functions` directory:
-
-   ```bash
-   cd functions
-
-   ```
-
-2. Deploy the functions:
-   firebase deploy --only functions
+>>>>>>> 812a329 (画像表示とフォーマット調整)
+=======
+/my_project
+├── /app                  # アプリケーションのコード
+│   ├── /_action          # アクション（主にAPIとの連携）
+│   ├── /_components      # 再利用可能なUIコンポーネント
+│   ├── /_libs            # ライブラリやユーティリティ関数
+│   ├── /api              # APIエンドポイント
+│   ├── /article          # 記事関連のページ
+│   ├── /blog             # ブログ関連のページ
+│   ├── /contact          # お問い合わせページ
+│   ├── /profile          # プロフィールページ
+│   ├── /utils            # ユーティリティ関数
+│   └── ...               # その他のページ
+├── /data                 # データファイル
+├── /features             # 各種機能の実装
+├── /public               # 静的ファイル（画像など）
+├── package.json          # プロジェクト設定ファイル
+└── tsconfig.json         # TypeScript設定ファイル
+```
+>>>>>>> 812a329 (画像表示とフォーマット調整)
