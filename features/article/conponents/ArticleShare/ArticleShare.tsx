@@ -20,6 +20,7 @@ const ArticleShare = ({ param, title }: ParamProps): React.ReactElement => {
     <section>
       <div className="mx-[12.5%] md:mx-0">
         <div className="border-t-2 border-[#CED1D9] py-14">
+          {/* eslint-disable-next-line tailwindcss/no-custom-classname, tailwindcss/classnames-order */}
           <h2 className="mx-auto flex w-fit items-center font-medium before:mr-4 before:inline-block before:size-5 before:bg-share-icon before:bg-contain before:bg-no-repeat before:align-middle">
             記事をシェア
           </h2>
