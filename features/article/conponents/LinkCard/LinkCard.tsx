@@ -13,24 +13,29 @@ const LinkCard = async ({
 }: LinkCardProps): Promise<React.ReactElement> => {
   const ogp = await getOgp(url);
   const serverDomain = process.env.SERVER_DOMAIN;
+  let isDomainFlag: boolean = false;
 
   // 環境変数SERVER_DOMAINと同じドメインの場合は空の結果を返す
   if (serverDomain) {
     // www.の有無を無視して比較
     const normalizedDomain = ogp.domain.replace(/^www\./, '');
-    const normalizedServerDomain = serverDomain.replace(/^www\./, '');
+const normalizedServerDomain = new URL(serverDomain).hostname.replace(/^www\./, '');
 
   // ドメインが一致する場合、相対パスの形式に変更
     if (normalizedDomain === normalizedServerDomain) {
-    ogp.domain = '';
     const parsed = new URL(ogp.url);
     ogp.url = parsed.pathname + parsed.search + parsed.hash;
+    isDomainFlag = true;
     }
   }
 
   return (
     <div className="mt-[36px] w-full overflow-hidden rounded-lg border border-solid shadow">
-      <Link href={ogp.url} className="block"  target={ogp.domain === "" ? "_self" : "_blank"}>
+      <Link
+        href={ogp.url}
+        className="block hover:opacity-80"
+        target={isDomainFlag ? '_self' : '_blank'}
+      >
         <div className="flex h-36 items-center sm:h-24">
           <div className="aspect-square h-36 w-full max-w-60 sm:size-24">
             <Image
