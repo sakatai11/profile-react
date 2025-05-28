@@ -20,8 +20,11 @@ const LinkCard = async ({
     const normalizedDomain = ogp.domain.replace(/^www\./, '');
     const normalizedServerDomain = serverDomain.replace(/^www\./, '');
 
+  // ドメインが一致する場合、相対パスの形式に変更
     if (normalizedDomain === normalizedServerDomain) {
-      ogp.domain === '';
+    ogp.domain = '';
+    const parsed = new URL(ogp.url);
+    ogp.url = parsed.pathname + parsed.search + parsed.hash;
     }
   }
 
