@@ -25,10 +25,14 @@ export async function getOgp(url: string): Promise<OgpResult> {
           : '';
     let favicon = defaultFavicon;
     if ('favicon' in result) {
-      if (Array.isArray(result.favicon) && result.favicon.length > 0) {
-        favicon = result.favicon[0] as string;
-      } else if (typeof result.favicon === 'string') {
-        favicon = result.favicon;
+      const raw =
+        Array.isArray(result.favicon) && result.favicon.length > 0
+          ? (result.favicon[0] as string)
+          : typeof result.favicon === 'string'
+            ? result.favicon
+            : null;
+      if (raw) {
+        favicon = raw.startsWith('http') ? raw : new URL(raw, url).toString();
       }
     }
 

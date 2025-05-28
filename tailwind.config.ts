@@ -25,9 +25,6 @@ const config: Config = {
       fontFamily: {
         spartan: ['Spartan', 'sans-serif'],
       },
-      // flexGrow: {
-      //   1.3: "1.3",
-      // },
       backgroundImage: {
         'anker-icon': "url('/anker-icon.svg')",
         'share-icon': "url('/share-icon.svg')",
@@ -43,6 +40,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };
 export default config;

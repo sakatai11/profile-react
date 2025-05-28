@@ -14,17 +14,17 @@ const ArticleRichEditor = async ({
     // <p><span class="link-card">URL</span></p> パターンを a.link-card に変換
     .replace(
       /<p[^>]*>\s*<span class="link-card">([^<]+)<\/span>\s*<\/p>/g,
-      '<a href="$1" class="link-card">$1</a>'
+      '<a href="$1" class="link-card">$1</a>',
     )
     // <span class="link-card">URL</span> 単体パターンを a.link-card に変換
     .replace(
       /<span class="link-card">([^<]+)<\/span>/g,
-      '<a href="$1" class="link-card">$1</a>'
+      '<a href="$1" class="link-card">$1</a>',
     )
     // aタグ内の span.link-card パターンを a.link-card に変換
     .replace(
       /<a([^>]*)href="([^"]+)"([^>]*)>\s*<span class="link-card">(.*?)<\/span>\s*<\/a>/g,
-      '<a href="$2" class="link-card">$4</a>'
+      '<a href="$2" class="link-card">$4</a>',
     );
   const options = {
     replace: (domNode: DOMNode) => {
