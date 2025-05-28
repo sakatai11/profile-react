@@ -48,7 +48,10 @@ const ArticleWrapper = ({
               priority={true}
               sizes="{max-width: 767px} 100vw, 50vw"
             />
-            {new Date(contents.publishedAt).toLocaleDateString('ja-JP', options)}
+            {new Date(contents.publishedAt).toLocaleDateString(
+              'ja-JP',
+              options,
+            )}
           </span>
         </time>
       </div>
