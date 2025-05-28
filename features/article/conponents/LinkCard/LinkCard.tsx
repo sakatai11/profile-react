@@ -18,14 +18,15 @@ const LinkCard = async ({
       <Link href={ogp.url} className="block" target="_blank">
         <div className="flex h-36 items-center">
           <div className="aspect-square size-36">
-            <Image
-              src={ogp.image || noImage}
-              alt={ogp.title || 'link preview'}
-              width={144}
-              height={144}
-              loading="lazy"
-              className="size-full object-cover"
-            />
+              <Image
+                src={ogp.image || noImage}
+                unoptimized
+                alt=""
+                width={144}
+                height={144}
+                loading="lazy"
+                className="size-full object-cover"
+              />
           </div>
           <div className="flex size-full flex-col justify-center p-3">
             <h3 className="mb-2 font-medium">{ogp.title || ogp.url}</h3>
@@ -33,6 +34,7 @@ const LinkCard = async ({
               {ogp.favicon && (
                 <Image
                   src={ogp.favicon}
+                  unoptimized
                   alt="favicon"
                   width={16}
                   height={16}
