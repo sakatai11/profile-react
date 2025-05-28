@@ -14,8 +14,18 @@ const LinkCard = async ({
   const ogp = await getOgp(url);
   const serverDomain = process.env.SERVER_DOMAIN;
 
-  if (ogp.domain === serverDomain) {
+  // 環境変数SERVER_DOMAINと同じドメインの場合は空の結果を返す
+  if (serverDomain) {
+    // www.の有無を無視して比較
+    const normalizedDomain = ogp.domain.replace(/^www\./, '');
+    const normalizedServerDomain = serverDomain.replace(/^www\./, '');
+
+  // ドメインが一致する場合、相対パスの形式に変更
+    if (normalizedDomain === normalizedServerDomain) {
     ogp.domain = '';
+    const parsed = new URL(ogp.url);
+    ogp.url = parsed.pathname + parsed.search + parsed.hash;
+    }
   }
 
   return (
