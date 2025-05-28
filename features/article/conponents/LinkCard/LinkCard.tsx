@@ -12,10 +12,15 @@ const LinkCard = async ({
   url,
 }: LinkCardProps): Promise<React.ReactElement> => {
   const ogp = await getOgp(url);
+  const serverDomain = process.env.SERVER_DOMAIN;
+
+  if (ogp.domain === serverDomain) {
+    ogp.domain = '';
+  }
 
   return (
     <div className="mt-[36px] w-full overflow-hidden rounded-lg border border-solid shadow">
-      <Link href={ogp.url} className="block" target="_blank">
+      <Link href={ogp.url} className="block"  target={ogp.domain === "" ? "_self" : "_blank"}>
         <div className="flex h-36 items-center sm:h-24">
           <div className="aspect-square h-36 w-full max-w-60 sm:size-24">
             <Image
@@ -37,7 +42,7 @@ const LinkCard = async ({
                 <Image
                   src={ogp.favicon}
                   unoptimized
-                  alt="favicon"
+                  alt=""
                   width={16}
                   height={16}
                   loading="lazy"
