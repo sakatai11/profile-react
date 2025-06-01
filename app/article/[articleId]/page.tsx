@@ -32,7 +32,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
         `/article/${params.articleId}`,
         process.env.SERVER_DOMAIN || '',
       ).toString(),
-      siteName: 'クリエイターさかの個人ウェブサイト',
+      siteName: 'クリエイターさかのウェブサイト',
       images: [
         {
           width: article.eyecatch?.width ? article.eyecatch?.width : '1280',

@@ -11,10 +11,10 @@ export type SiteInfo = {
 
 /** サイトの情報 */
 export const site: SiteConfig = {
-  defaultTitle: "Saka's personal website",
+  defaultTitle: 'saka.dev',
   defaultDescription:
-    'クリエイターさかの個人ウェブサイトです。趣味、ウェブ技術についてまとめています。',
-  titleTemplate: '%s | さか',
+    'クリエイターさかのウェブサイトです。趣味、ウェブ技術についてまとめています。',
+  titleTemplate: '%s | saka.dev',
   defaultOpenGraph: {
     url: new URL(topLink.href, process.env.SERVER_DOMAIN || '').toString(), // 完全なURLを生成
   },

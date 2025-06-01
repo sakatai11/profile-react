@@ -25,7 +25,7 @@ export const EmailTemplate = ({ name, email, content }: FormData) => (
     <p>何卒よろしくお願い致します。</p>
     <p>------------------------------------</p>
     <p>
-      ■さかのパーソナルサイト
+      ■さかのウェブサイト
       <br />
       <a href="https://www.saka-tai.com/">https://www.saka-tai.com/</a>
     </p>
