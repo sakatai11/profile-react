@@ -16,10 +16,10 @@ export const commonOpenGraph: CommonOpenGraph = {
       height: '260',
       url: new URL(
         '/illustration.webp',
-        process.env.SERVER_DOMAIN || '',
+        process.env.SERVER_DOMAIN || 'https://saka-tai.com',
       ).toString(), // URLを生成
     },
   ],
-  locale: 'jp',
+  locale: 'ja_JP',
   type: 'website',
 };

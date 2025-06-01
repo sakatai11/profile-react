@@ -19,13 +19,16 @@ const LinkCard = async ({
   if (serverDomain) {
     // www.の有無を無視して比較
     const normalizedDomain = ogp.domain.replace(/^www\./, '');
-const normalizedServerDomain = new URL(serverDomain).hostname.replace(/^www\./, '');
+    const normalizedServerDomain = new URL(serverDomain).hostname.replace(
+      /^www\./,
+      '',
+    );
 
-  // ドメインが一致する場合、相対パスの形式に変更
+    // ドメインが一致する場合、相対パスの形式に変更
     if (normalizedDomain === normalizedServerDomain) {
-    const parsed = new URL(ogp.url);
-    ogp.url = parsed.pathname + parsed.search + parsed.hash;
-    isDomainFlag = true;
+      const parsed = new URL(ogp.url);
+      ogp.url = parsed.pathname + parsed.search + parsed.hash;
+      isDomainFlag = true;
     }
   }
 
