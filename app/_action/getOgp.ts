@@ -20,11 +20,10 @@ export async function getOgp(url: string): Promise<OgpResult> {
   }
   
   if (domain.includes('udemy.com')) {
-    return handleUdemyOgp(url, domain, defaultFavicon);
+    return handleUdemyOgp(url, domain);
   }
 
   try {
-    console.log(`Fetching OGP for: ${url}`);
     const { result } = await ogs({ 
       url,
       fetchOptions: {
@@ -72,18 +71,36 @@ export async function getOgp(url: string): Promise<OgpResult> {
 
 async function handleYouTubeOgp(url: string, domain: string, defaultFavicon: string): Promise<OgpResult> {
   try {
-    // YouTube Video IDを抽出
-    const videoId = extractYouTubeVideoId(url);
-    if (videoId) {
-      // YouTube APIまたは直接的な方法でタイトルを取得
-      const title = `YouTube Video - ${videoId}`;
-      const image = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
-      const favicon = 'https://www.youtube.com/favicon.ico';
+    // YouTube oEmbed APIを使用してタイトルを取得
+    const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
+    const response = await fetch(oembedUrl);
+    
+    if (response.ok) {
+      const data = await response.json();
+      const videoId = extractYouTubeVideoId(url);
       
-      return { title, image, domain, url, favicon };
+      return {
+        title: data.title || 'YouTube Video',
+        image: data.thumbnail_url || (videoId ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg` : ''),
+        domain,
+        url,
+        favicon: 'https://www.youtube.com/favicon.ico',
+      };
     }
   } catch (error) {
-    console.error(`Error handling YouTube OGP for ${url}:`, error);
+    console.error(`Error handling YouTube oEmbed for ${url}:`, error);
+  }
+  
+  // フォールバック: Video IDから基本情報を生成
+  const videoId = extractYouTubeVideoId(url);
+  if (videoId) {
+    return {
+      title: 'YouTube Video',
+      image: `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`,
+      domain,
+      url,
+      favicon: 'https://www.youtube.com/favicon.ico',
+    };
   }
   
   return {
@@ -95,27 +112,54 @@ async function handleYouTubeOgp(url: string, domain: string, defaultFavicon: str
   };
 }
 
-async function handleUdemyOgp(url: string, domain: string, defaultFavicon: string): Promise<OgpResult> {
+async function handleUdemyOgp(url: string, domain: string): Promise<OgpResult> {
   try {
-    // Udemyの場合は基本情報のみ返す
+    // 実際にOGP情報を取得してみる
+    const { result } = await ogs({ 
+      url,
+      fetchOptions: {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        }
+      },
+      timeout: 10000
+    });
+
+    const title = (result.ogTitle as string) || generateTitleFromSlug(url);
+    const image = Array.isArray(result.ogImage) && result.ogImage.length > 0
+      ? (result.ogImage[0].url as string)
+      : typeof result.ogImage === 'object' && 'url' in result.ogImage
+        ? (result.ogImage.url as string)
+        : '';
+
     return {
-      title: 'Udemy Course',
-      image: '',
+      title: title.includes('Udemy') ? title : `${title} - Udemy`,
+      image,
       domain,
       url,
       favicon: 'https://www.udemy.com/staticx/udemy/images/v7/favicon.ico',
     };
   } catch (error) {
-    console.error(`Error handling Udemy OGP for ${url}:`, error);
+    console.log(`Udemy OGP fetch failed for ${url}, using fallback`);
+    
+    // フォールバック: URLから情報を推測
+    const title = generateTitleFromSlug(url);
+    return {
+      title: `${title} - Udemy`,
+      image: '',
+      domain,
+      url,
+      favicon: 'https://www.udemy.com/staticx/udemy/images/v7/favicon.ico',
+    };
   }
-  
-  return {
-    title: 'Udemy Course',
-    image: '',
-    domain,
-    url,
-    favicon: defaultFavicon,
-  };
+}
+
+function generateTitleFromSlug(url: string): string {
+  const courseSlug = extractUdemyCourseSlug(url);
+  return courseSlug 
+    ? courseSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+    : 'Udemy Course';
 }
 
 function extractYouTubeVideoId(url: string): string | null {
@@ -132,4 +176,9 @@ function extractYouTubeVideoId(url: string): string | null {
   }
   
   return null;
+}
+
+function extractUdemyCourseSlug(url: string): string | null {
+  const match = url.match(/udemy\.com\/course\/([^/?]+)/);
+  return match ? match[1] : null;
 }
