@@ -15,7 +15,15 @@ export async function getOgp(url: string): Promise<OgpResult> {
   const defaultFavicon = new URL('/favicon.ico', url).toString();
 
   try {
-    const { result } = await ogs({ url });
+    const { result } = await ogs({ 
+      url,
+      fetchOptions: {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+        }
+      },
+      timeout: 10000
+    });
     const title = (result.ogTitle as string) ?? '';
     const image =
       Array.isArray(result.ogImage) && result.ogImage.length > 0

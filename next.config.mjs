@@ -2,8 +2,7 @@
 const nextConfig = {
   experimental: {
     staleTimes: {
-      dynamic: 0,
-      static: 180, 
+      dynamic: 30,
     },
   },
   images: {
@@ -12,14 +11,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'images.microcms-assets.io',
-      },
-      {
-        protocol: 'https',
-        hostname: 'i.ytimg.com',
-      },
-      {
-        protocol: 'https',
-        hostname: 'img-c.udemycdn.com',
       },
     ],
   },
