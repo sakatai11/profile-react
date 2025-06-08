@@ -13,6 +13,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.microcms-assets.io',
       },
+      {
+        protocol: 'https',
+        hostname: 'youtube.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'udemy.com',
+      },
     ],
   },
 };
