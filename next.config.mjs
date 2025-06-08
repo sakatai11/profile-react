@@ -15,11 +15,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'youtube.com',
+        hostname: 'i.ytimg.com',
       },
       {
         protocol: 'https',
-        hostname: 'udemy.com',
+        hostname: 'img-c.udemycdn.com',
       },
     ],
   },
