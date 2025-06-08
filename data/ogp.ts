@@ -9,7 +9,7 @@ type CommonOpenGraph = {
 
 // top,profile,blog対応
 export const commonOpenGraph: CommonOpenGraph = {
-  siteName: 'クリエイターさかの個人ウェブサイト',
+  siteName: 'クリエイターさかのウェブサイト',
   images: [
     {
       width: '260',
