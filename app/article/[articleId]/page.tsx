@@ -28,10 +28,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
     title: article.title,
     description: articleSite.description,
     openGraph: {
-      url: new URL(
-        `/article/${params.articleId}`,
-        process.env.SERVER_DOMAIN || '',
-      ).toString(),
+      url: `${process.env.SERVER_DOMAIN || 'http://localhost:3000'}/article/${params.articleId}`,
       siteName: 'クリエイターさかのウェブサイト',
       images: [
         {
@@ -39,7 +36,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
           height: article.eyecatch?.height ? article.eyecatch?.height : '800',
           url: article.eyecatch?.url
             ? article.eyecatch.url
-            : new URL(dummy.src, process.env.SERVER_DOMAIN || '').toString(), // URLを生成
+            : `${process.env.SERVER_DOMAIN || 'http://localhost:3000'}${dummy.src}`, // URLを生成
         },
       ],
       locale: 'jp',
