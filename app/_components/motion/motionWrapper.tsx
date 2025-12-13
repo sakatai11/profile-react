@@ -1,8 +1,8 @@
 'use client';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, HTMLMotionProps } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
-type Children = {
+type Children = HTMLMotionProps<'div'> & {
   children: React.ReactNode;
   delay?: number;
 };

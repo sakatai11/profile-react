@@ -55,8 +55,9 @@ const Header = () => {
             src="/home-img.svg"
             height={24}
             width={24}
-            alt="イラスト"
+            alt="アイコン"
             priority={true}
+            sizes="{max-width: 767px} 100vw, 50vw"
           />
         </Link>
         <div className="flex justify-center gap-7">

@@ -46,6 +46,7 @@ const ArticleWrapper = ({
               alt="公開日"
               className="mr-1"
               priority={true}
+              sizes="{max-width: 767px} 100vw, 50vw"
             />
             {new Date(contents.publishedAt).toLocaleDateString(
               'ja-JP',

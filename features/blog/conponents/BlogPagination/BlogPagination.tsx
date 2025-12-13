@@ -33,6 +33,7 @@ const BlogPagination = ({
                   alt="arrow-left"
                   className="rotate-90"
                   priority={true}
+                  sizes="{max-width: 767px} 100vw, 50vw"
                 />
               </Link>
             ) : (
@@ -46,6 +47,7 @@ const BlogPagination = ({
                   alt="arrow-left"
                   className="rotate-90"
                   priority={true}
+                  sizes="{max-width: 767px} 100vw, 50vw"
                 />
               </Link>
             )}
@@ -81,6 +83,7 @@ const BlogPagination = ({
                 alt="arrow-right"
                 className="-rotate-90"
                 priority={true}
+                sizes="{max-width: 767px} 100vw, 50vw"
               />
             </Link>
           </li>
