@@ -66,7 +66,9 @@ export default async function ArticlePage(props: Props) {
     notFound();
   }
 
-  const toc = createTableOfContents(article.content);
+  const toc = article.toc_visible
+    ? createTableOfContents(article.content)
+    : undefined;
 
   const category = article.categories[0].id;
 
