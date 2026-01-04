@@ -1,4 +1,4 @@
-import { getBlogArticle, getCategory } from '../../../../_libs/microcms';
+import { getBlogArticle, getCategory } from '@/app/_libs/microcms';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
 import Title from '@/app/_components/elements/title/Index';
 import * as Blog from '@/features/blog/conponents/Index';
