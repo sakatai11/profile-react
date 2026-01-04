@@ -10,21 +10,18 @@ import * as React from 'react';
 import { db } from '@/app/utils/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { FirebaseError } from 'firebase/app';
-
-function validateEmail(email: string) {
-  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|jp|net|to|cx)$/;
-  return pattern.test(email);
-}
+import { validateEmail, trimAll } from '@/app/utils/validation';
 
 export async function createContactData(
   _prevState: PrevState,
   formData: FormData,
 ) {
   // formのname属性ごとにformData.get()で値を取り出す
+  // 半角・全角スペースを含む前後の空白を削除
   const rawFormData = {
-    name: formData.get('name') as string,
-    email: formData.get('email') as string,
-    content: formData.get('content') as string,
+    name: trimAll(formData.get('name') as string),
+    email: trimAll(formData.get('email') as string),
+    content: trimAll(formData.get('content') as string),
     timestamp: serverTimestamp(),
   };
 
