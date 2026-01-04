@@ -1,4 +1,4 @@
-import CurrentCategoryPage from '../../[categoryId]/p/[current]/page';
+import CurrentCategoryPage from '@/app/blog/[categoryId]/p/[current]/page';
 import { blogSite } from '@/data/site';
 import type { Metadata } from 'next';
 

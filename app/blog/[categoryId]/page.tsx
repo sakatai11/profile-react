@@ -1,4 +1,4 @@
-import { getBlogArticle, getCategory } from '../../_libs/microcms';
+import { getBlogArticle, getCategory } from '@/app/_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
 import Title from '@/app/_components/elements/title/Index';

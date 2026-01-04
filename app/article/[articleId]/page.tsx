@@ -1,6 +1,6 @@
-import { getBlogArticle, getBlogArticleDetail } from '../../_libs/microcms';
+import { getBlogArticle, getBlogArticleDetail } from '@/app/_libs/microcms';
 import MotionWrapper from '@/app/_components/motion/motionWrapper';
-import { createTableOfContents } from '../../_libs/utils';
+import { createTableOfContents } from '@/app/_libs/toc';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { articleSite } from '@/data/site';
