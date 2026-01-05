@@ -18,10 +18,11 @@ export async function createContactData(
 ) {
   // formのname属性ごとにformData.get()で値を取り出す
   // 半角・全角スペースを含む前後の空白を削除
+  // formData.get()はnullを返す可能性があるため、?? ''で安全に処理
   const rawFormData = {
-    name: trimAll(formData.get('name') as string),
-    email: trimAll(formData.get('email') as string),
-    content: trimAll(formData.get('content') as string),
+    name: trimAll(String(formData.get('name') ?? '')),
+    email: trimAll(String(formData.get('email') ?? '')),
+    content: trimAll(String(formData.get('content') ?? '')),
     timestamp: serverTimestamp(),
   };
 
