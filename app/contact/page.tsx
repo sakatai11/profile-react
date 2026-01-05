@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { contactSite } from '@/data/site';
-import MotionWrapper from '../_components/motion/motionWrapper';
-import Title from '../_components/elements/title/Index';
+import MotionWrapper from '@/app/_components/motion/motionWrapper';
+import Title from '@/app/_components/elements/title/Index';
 import * as Contact from '@/features/contact/conponents/Index';
 
 export const metadata: Metadata = {

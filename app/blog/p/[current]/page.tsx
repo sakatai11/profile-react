@@ -1,6 +1,6 @@
-import { getBlogArticle } from '../../../_libs/microcms';
+import { getBlogArticle } from '@/app/_libs/microcms';
 import { PAGE_NAVI } from '@/types/cms/setting';
-import CurrentCategoryPage from '../../[categoryId]/p/[current]/page';
+import CurrentCategoryPage from '@/app/blog/[categoryId]/p/[current]/page';
 import { blogSite } from '@/data/site';
 import type { Metadata } from 'next';
 
