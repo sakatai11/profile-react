@@ -8,7 +8,7 @@
  * @returns メールアドレスが有効な場合はtrue
  */
 export function validateEmail(email: string): boolean {
-  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|jp|net|to|cx)$/;
+  const pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   return pattern.test(email);
 }
 
