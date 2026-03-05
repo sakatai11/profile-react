@@ -31,7 +31,7 @@ const LinkCard = async ({
         ogp.url = parsed.pathname + parsed.search + parsed.hash;
         isDomainFlag = true;
       }
-    } catch (error) {
+    } catch {
       // Invalid URL の場合は何もしない
       console.warn('Invalid SERVER_DOMAIN URL:', serverDomain);
     }

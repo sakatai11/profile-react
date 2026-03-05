@@ -14,7 +14,7 @@ const Copy = ({ url, children }: CopyProps): React.ReactElement => {
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000); // 2秒後にメッセージを消す
-    } catch (error) {
+    } catch {
       alert('失敗しました。');
     }
   };

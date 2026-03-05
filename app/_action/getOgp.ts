@@ -19,7 +19,7 @@ export async function getOgp(url: string): Promise<OgpResult> {
     if (domain.includes('youtube.com') || domain.includes('youtu.be')) {
       return handleYouTubeOgp(url, domain);
     }
-    
+
     if (domain.includes('udemy.com')) {
       return handleUdemyOgp(url, domain);
     }
@@ -47,7 +47,7 @@ export async function getOgp(url: string): Promise<OgpResult> {
       }
 
       return { title, image, domain, url, favicon };
-    } catch (error) {
+    } catch {
       return {
         title: '',
         image: '',
@@ -56,7 +56,7 @@ export async function getOgp(url: string): Promise<OgpResult> {
         favicon: defaultFavicon,
       };
     }
-  } catch (error) {
+  } catch {
     // Invalid URL の場合は空のデータを返す
     return {
       title: '',
@@ -68,18 +68,25 @@ export async function getOgp(url: string): Promise<OgpResult> {
   }
 }
 
-async function handleYouTubeOgp(url: string, domain: string): Promise<OgpResult> {
+async function handleYouTubeOgp(
+  url: string,
+  domain: string,
+): Promise<OgpResult> {
   const videoId = extractYouTubeVideoId(url);
-  
+
   try {
     const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
     const response = await fetch(oembedUrl);
-    
+
     if (response.ok) {
       const data = await response.json();
       return {
         title: data.title || 'YouTube Video',
-        image: data.thumbnail_url || (videoId ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg` : ''),
+        image:
+          data.thumbnail_url ||
+          (videoId
+            ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`
+            : ''),
         domain,
         url,
         favicon: 'https://www.youtube.com/favicon.ico',
@@ -88,7 +95,7 @@ async function handleYouTubeOgp(url: string, domain: string): Promise<OgpResult>
   } catch (error) {
     console.error(`YouTube oEmbed failed for ${url}:`, error);
   }
-  
+
   return {
     title: 'YouTube Video',
     image: videoId ? `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg` : '',
@@ -101,25 +108,28 @@ async function handleYouTubeOgp(url: string, domain: string): Promise<OgpResult>
 function extractYouTubeVideoId(url: string): string | null {
   const patterns = [
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
-    /youtube\.com\/v\/([^&\n?#]+)/
+    /youtube\.com\/v\/([^&\n?#]+)/,
   ];
-  
+
   for (const pattern of patterns) {
     const match = url.match(pattern);
     if (match) {
       return match[1];
     }
   }
-  
+
   return null;
 }
 
 function handleUdemyOgp(url: string, domain: string): OgpResult {
   const courseSlug = extractUdemyCourseSlug(url);
-  const title = courseSlug 
-    ? courseSlug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
+  const title = courseSlug
+    ? courseSlug
+        .split('-')
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
     : 'Udemy Course';
-  
+
   return {
     title: `${title} - Udemy`,
     image: '',
