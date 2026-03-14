@@ -20,7 +20,7 @@ npm run serve     # ローカルエミュレーター起動
 
 ## アーキテクチャ
 
-```
+```text
 app/              # Next.js App Router
   _action/        # Server Actions (contact, OGP取得)
   _components/    # 共有UIコンポーネント
@@ -69,7 +69,7 @@ Next.js 16 から `revalidateTag(tag, 'max')` のように第2引数が必須に
 
 `.env.local` に以下を設定（Firebase は `functions/.env` または Firebase コンソールで管理）：
 
-```
+```env
 MICROCMS_API_KEY=
 MICROCMS_SERVICE_DOMAIN=
 RESEND_API_KEY=
