@@ -76,7 +76,9 @@ async function handleYouTubeOgp(
 
   try {
     const oembedUrl = `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`;
-    const response = await fetch(oembedUrl);
+    const response = await fetch(oembedUrl, {
+      signal: AbortSignal.timeout(5000),
+    });
 
     if (response.ok) {
       const data = await response.json();

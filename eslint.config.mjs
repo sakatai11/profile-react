@@ -26,8 +26,8 @@ export default defineConfig([
   },
   ...nextConfig,
   ...tseslint.configs.recommended,
+  ...tailwindcss.configs['flat/recommended'],
   {
-    plugins: { tailwindcss },
     rules: {
       'tailwindcss/classnames-order': ['error', { officialSorting: true, prependCustom: true }],
     },
