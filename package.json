@@ -19,7 +19,7 @@
     "framer-motion": "^12.36.0",
     "html-react-parser": "^5.2.17",
     "microcms-js-sdk": "^3.1.1",
-    "next": "^16.0.0",
+    "next": "^16.2.6",
     "open-graph-scraper": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
